@@ -5,6 +5,7 @@ ruby '2.5.3'
 
 # add by me when first commit
 gem 'bootstrap', '~> 4.3.1'
+gem 'mini_racer'
 gem 'jquery-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
