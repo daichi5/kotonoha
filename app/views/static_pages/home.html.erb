@@ -1,2 +1,85 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<header>
+  <div class="container">
+    <nav class="navbar navbar-expand-sm navbar-light py-1 px-0">
+      <h1>
+        <a href="#">
+          <img src="logo.png" class="logo" />
+        </a>
+      </h1>
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="menu" class="collapse navbar-collapse  justify-content-end mt-auto mb-0">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a href="" class="nav-link mx-1 my-1 py-1 px-3 btn btn-success btn-md text-white">新規登録</a>
+          </li>
+          <li class="nav-item">
+            <a href="" class="nav-link mx-1 my-1 py-1 px-3 btn btn-outline-secondary btn-md">ログイン</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <div class="top_box">
+  </div>
+</header>
+<main>
+  <section>
+    <div class="container main_container">
+      <ul class="tab_menu"><li><a href="#" class="active tab_left">人気</a></li><li><a href="#" class="tab_right">新着</a></li><li class="blank">&nbsp;</li></ul>
+      <ul class="phrases">
+        <li>
+          <a href="">
+            <div class="post_title">phrase 1</div>
+            <span class="post_date"> date 2018.3.4 AM10:00</span>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <div class="post_title">phrase 2</div>
+            <span class="post_date"> date 2018.3.4 AM10:00</span>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <div class="post_title">phrase 3</div>
+            <span class="post_date"> date 2018.3.4 AM10:00</span>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <div class="post_title">phrase 4</div>
+            <span class="post_date"> date 2018.3.4 AM10:00</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section class="py-3">
+    <div class="container sub_container">
+      <h3>注目のユーザー</h3>
+      <ul class="users">
+        <li><a href="">
+          <span>User 1</span>
+        </a></li>
+        <li><a href="">
+            <span>User 2</span>
+        </a></li>
+        <li><a href="">
+            <span>User 3</span>
+        </a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+<footer>
+  <ul>
+    <li>menu A</li>
+    <li>menu B</li>
+    <li>menu C</li>
+    <li>menu D</li>
+
+  </ul>
+  Copyright YYYY kotonoha.com
+</footer>
