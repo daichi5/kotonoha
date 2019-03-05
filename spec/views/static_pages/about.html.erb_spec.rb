@@ -1,5 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe "static_pages/about.html.erb", type: :view do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe do
+    it 'render home page' do
+      render
+      expect(rendered).to include("kotonoha")
+    end
+   end
 end
