@@ -41,7 +41,6 @@ h3 {
   background-color: #ffffff;
 }
 
-
 /* header */
 img.logo {
   width: 150px;
@@ -225,12 +224,26 @@ footer {
       display: inline-block;
       width: 150px;
     }
+
+    li > a {
+      text-decoration: none;
+      color: #fff;
+    }
+
+    li > a:hover {
+      color: #fff;
+    }
   }
 }
 
 @media screen and (max-width: 576px) {
  footer > ul > li {
    display: block;
-   width: 100px;
+   width: 200px;
+   text-align: left;
+
+   a {
+     font-size: 14px;
+   }
  }
 }
