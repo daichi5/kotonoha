@@ -38,11 +38,15 @@ h3 {
   font-weight: bold;
 }
 
-.container {
-  background-color: #ffffff;
-}
 
 /* header */
+
+header > div.container {
+  border-radius: 0;
+  padding: 5px 10px;  
+  border: 0;
+}
+
 img.logo {
   width: 150px;
   height: auto;
@@ -84,9 +88,18 @@ main {
   padding: 10px 8px;
 }
 
-.main_container {
+.container {
+  padding: 20px;
+  background-color: white;
+  border: solid 1px #777777;
+  border-radius: 5px;
+}
+
+.home_container {
   padding: 0;
   background-color: #DCDCDC;
+  border: 0;
+  margin-bottom: 10px;
 }
 
 ul.tab_menu {
@@ -188,13 +201,6 @@ div.post_title {
 span.post_date {
   color: #555555;
   font-size: 12px;
-}
-
-.sub_container {
-  padding: 10px;
-  background-color: white;
-  border: solid 1px #777777;
-  border-radius: 5px;
 }
 
 ul.users {

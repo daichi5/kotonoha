@@ -1,45 +1,41 @@
 <% provide('title', 'toppage') %>
-<section>
-  <div class="container main_container">
-    <ul class="tab_menu"><li><a href="#" class="active tab_left">人気</a></li><li><a href="#" class="tab_right">新着</a></li><li class="blank">&nbsp;</li></ul>
-    <ul class="posts">
-      <li>
-        <a href="">
-          <div class="post_title">phrase 1</div>
-          <span class="post_date"> date 2018.3.4 AM10:00</span>
-        </a>
-      </li>
-      <li>
-        <a href="">
-          <div class="post_title">phrase 2</div>
-          <span class="post_date"> date 2018.3.4 AM10:00</span>
-        </a>
-      </li>
-      <li>
-        <a href="">
-          <div class="post_title">phrase 3</div>
-          <span class="post_date"> date 2018.3.4 AM10:00</span>
-        </a>
-      </li>
-      <li>
-        <a href="">
-          <div class="post_title">phrase 4</div>
-          <span class="post_date"> date 2018.3.4 AM10:00</span>
-        </a>
-      </li>
-    </ul>
-  </div>
-</section>
-<section class="py-3">
-  <div class="container sub_container">
-    <h3>注目のユーザー</h3>
-    <ul class="users">
-    <% @user.each do |user| %>
-      <li><a href="">
-        <span><%= link_to user.name, user %></span>
-      </a></li>
-    <% end %>
-    </ul>
-    <%= link_to '全ユーザーを表示', users_path %> 
-  </div>
-</section>
+<div class="container home_container">
+  <ul class="tab_menu"><li><a href="#" class="active tab_left">人気</a></li><li><a href="#" class="tab_right">新着</a></li><li class="blank">&nbsp;</li></ul>
+  <ul class="posts">
+    <li>
+      <a href="">
+        <div class="post_title">phrase 1</div>
+        <span class="post_date"> date 2018.3.4 AM10:00</span>
+      </a>
+    </li>
+    <li>
+      <a href="">
+        <div class="post_title">phrase 2</div>
+        <span class="post_date"> date 2018.3.4 AM10:00</span>
+      </a>
+    </li>
+    <li>
+      <a href="">
+        <div class="post_title">phrase 3</div>
+        <span class="post_date"> date 2018.3.4 AM10:00</span>
+      </a>
+    </li>
+    <li>
+      <a href="">
+        <div class="post_title">phrase 4</div>
+        <span class="post_date"> date 2018.3.4 AM10:00</span>
+      </a>
+    </li>
+  </ul>
+</div>
+<div class="container">
+  <h3>注目のユーザー</h3>
+  <ul class="users">
+  <% @user.each do |user| %>
+    <li><a href="">
+      <span><%= link_to user.name, user %></span>
+    </a></li>
+  <% end %>
+  </ul>
+  <%= link_to '全ユーザーを表示', users_path %> 
+</div>
