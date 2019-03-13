@@ -16,6 +16,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params);
 
     if @user.save
+      flash[:success] = 'ユーザー登録を受け付けました。'
       redirect_to root_path
     else
       render 'new'
@@ -23,13 +24,24 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def update
+    
+    @user = User.find(params[:id])
+
+    if @user.update_attributes(user_params)
+      flash[:success] = 'プロフィール変更を保存しました。'
+      redirect_to @user
+    else
+      render 'edit'
+    end
+  
   end
 
   private
     def user_params
-      params.require(:user).permit(:name, :email)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 end

@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.1'
 
+gem 'bcrypt'
 # add by me when first commit
 gem 'bootstrap', '~> 4.3.1'
 gem 'mini_racer'

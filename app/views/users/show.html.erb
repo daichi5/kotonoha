@@ -1,6 +1,10 @@
 <% provide('title', @user.name) %>
-<ul>
-<li><%= @user.name %></li>
-<li><%= @user.email %></li>
-</ul>
-<%= link_to 'ユーザー一覧', users_path %>
+<div class="container">
+  <ul>
+  <li>[name]  <%= @user.name %></li>
+  <li>[email] <%= @user.email %></li>
+  <li><%= link_to '編集', edit_user_path(@user) %></li>
+  <li><%= link_to '削除', @user %></li>
+  </ul>
+  <%= link_to 'ユーザー一覧', users_path %>
+</div>
