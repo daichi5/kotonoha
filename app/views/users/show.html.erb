@@ -4,7 +4,7 @@
   <li>[name]  <%= @user.name %></li>
   <li>[email] <%= @user.email %></li>
   <li><%= link_to '編集', edit_user_path(@user) %></li>
-  <li><%= link_to '削除', @user %></li>
+  <li><%= link_to '削除', @user, method: :delete, data: {confirm: 'Are you sure?'}  %></li>
   </ul>
   <%= link_to 'ユーザー一覧', users_path %>
 </div>
