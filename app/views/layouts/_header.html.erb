@@ -11,12 +11,18 @@
       </button>
       <div id="menu" class="collapse navbar-collapse  justify-content-end mt-auto mb-0">
         <ul class="navbar-nav">
+          <% if !logged_in? %>
           <li class="nav-item">
-            <a href="/signup" class="nav-link mx-1 my-1 py-1 px-3 btn btn-success btn-md text-white">新規登録</a>
+            <%= link_to '新規登録', signup_path, class: 'nav-link mx-1 my-1 py-1 px-3 btn btn-success text-white btn-md' %>
           </li>
           <li class="nav-item">
-            <a href="/login" class="nav-link mx-1 my-1 py-1 px-3 btn btn-outline-secondary btn-md">ログイン</a>
+            <%= link_to 'ログイン', login_path, class: 'nav-link mx-1 my-1 py-1 px-3 btn btn-outline-secondary btn-md' %>
           </li>
+          <% else %>
+          <li class="nav-item">
+            <%= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link mx-1 my-1 py-1 px-3 btn btn-outline-secondary btn-md' %>
+          </li>
+          <% end %>
         </ul>
       </div>
     </nav>

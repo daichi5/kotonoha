@@ -1,6 +1,6 @@
 <% provide('title', 'Users') %>
 <div class="container">
-  <ul>
+  <ul class="users">
   <% @users.each do |user| %>
     <li><%= link_to user.name, user %></li>
   <% end %>
