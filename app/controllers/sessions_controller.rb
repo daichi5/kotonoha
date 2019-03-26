@@ -6,7 +6,12 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email])
 
     if user.nil? === false && user.authenticate(params[:session][:password])
-      flash[:success] = 'success!'
+      #永続セッション保持
+      if (params[:session][:remember_me] == '1') 
+        remember(user)
+        flash[:danger] = params[:session][:remember_me] 
+      end 
+      #flash[:success] = 'success!'
       session[:user_id] = user.id
       redirect_to user
     else
@@ -17,7 +22,7 @@ class SessionsController < ApplicationController
 
 
   def destroy
-    session[:user_id] = nil
+    log_out
     redirect_to root_path
   end
 
