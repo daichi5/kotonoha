@@ -13,7 +13,10 @@ class SessionsController < ApplicationController
       end 
       #flash[:success] = 'success!'
       session[:user_id] = user.id
-      redirect_to user
+
+      #friendly forwarding
+      redirect_to (session[:forwarding_url] ? session[:forwarding_url] : user ) 
+      session.delete(:forwarding_url)
     else
       flash[:danger] = 'Emailまたはパスワードが間違っています'
       render 'new'
