@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= yield('title') %></title>
+    <title><%= yield('title') != '' ? "#{yield('title')} | Kotonoha" : "Kotonoha" %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
