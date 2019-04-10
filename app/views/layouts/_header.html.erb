@@ -1,32 +1,31 @@
 <header>
-  <div class="container">
-    <nav class="navbar navbar-expand-sm navbar-light py-1 px-0">
-      <h1>
-        <a href="/">
-          <%= image_tag 'logo.png', class:"logo" %>
-        </a>
-      </h1>
-      <button class="navbar-toggler" data-toggle="collapse" data-target="#menu">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div id="menu" class="collapse navbar-collapse  justify-content-end mt-auto mb-0">
-        <ul class="navbar-nav">
-          <% if !logged_in? %>
-          <li class="nav-item">
-            <%= link_to '新規登録', signup_path, class: 'nav-link mx-1 my-1 py-1 px-3 btn btn-success text-white btn-md' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'ログイン', login_path, class: 'nav-link mx-1 my-1 py-1 px-3 btn btn-outline-secondary btn-md' %>
-          </li>
-          <% else %>
-          <li class="nav-item">
-            <%= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link mx-1 my-1 py-1 px-3 btn btn-outline-secondary btn-md' %>
-          </li>
-          <% end %>
-        </ul>
-      </div>
-    </nav>
-  </div>
-  <div class="top_box">
+  <nav>
+    <h1>
+      <a href="/">
+        Kotonoha
+      </a>
+    </h1>
+    <ul>
+      <li>
+        <%= link_to '人気', signup_path %>
+      </li>
+      <li>
+        <%= link_to 'カテゴリ', signup_path %>
+      </li>
+      <% if !logged_in? %>
+      <li>
+        <%= link_to '新規登録', signup_path %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'ログイン', login_path %>
+      </li>
+      <% else %>
+      <li class="nav-item">
+        <%= link_to 'ログアウト', logout_path, method: :delete %>
+      </li>
+      <% end %>
+    </ul>
+  </nav>
+<div class="top_box">
   </div>
 </header>

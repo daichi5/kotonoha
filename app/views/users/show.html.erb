@@ -1,10 +1,50 @@
 <% provide('title', @user.name) %>
-<div class="container">
-  <ul>
-  <li>[name]  <%= @user.name %></li>
-  <li>[email] <%= @user.email %></li>
-  <li><%= link_to '編集', edit_user_path(@user) %></li>
-  <li><%= link_to '削除', @user, method: :delete, data: {confirm: 'Are you sure?'}  %></li>
-  </ul>
-  <%= link_to 'ユーザー一覧', users_path %>
+<div class="row">
+  <aside class="col-md-4">
+    <div class="profile">
+      <h2>
+        <%= image_tag 'prof.jpg', style:"width: 100px; height: 100px;" %>
+        <%= @user.name %>
+      </h2>
+      <ul>
+        <li><%= @user.email %></li>
+        <li>情報２</li>
+        <li>情報３</li>
+      </ul>
+      <p>
+        自己紹介文...example...example...example...
+      </p>
+      <%= link_to '編集', edit_user_path(@user), class: 'btn btn-primary'%>
+      <%= link_to '削除', @user, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger'  %>
+    </div>
+  </aside>
+  <div class="col-md-8">
+    <h2>投稿一覧</h2>
+    <ul class="posts">
+      <li>
+        <a href="">
+          <div class="post_title">貴方と世の中との戦いなら、世の中のほうに賭けなさい。</div>
+          <span class="post_date"> date 2018.3.4 AM10:00</span>
+        </a>
+      </li>
+      <li>
+        <a href="">
+          <div class="post_title">phrase 2</div>
+          <span class="post_date"> date 2018.3.4 AM10:00</span>
+        </a>
+      </li>
+      <li>
+        <a href="">
+          <div class="post_title">貴方と世の中との戦いなら、世の中のほうに賭けなさい。</div>
+          <span class="post_date"> date 2018.3.4 AM10:00</span>
+        </a>
+      </li>
+      <li>
+        <a href="">
+          <div class="post_title">貴方と世の中との戦いなら、世の中のほうに賭けなさい。</div>
+          <span class="post_date"> date 2018.3.4 AM10:00</span>
+        </a>
+      </li>
+    </ul>
+  </div>
 </div>
