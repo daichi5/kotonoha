@@ -1,21 +1,24 @@
 <% provide('title', 'ログイン') %>
-<%= form_for :session, url: login_path do |f| %>
+<div class="input_form">
+  <h2>ログイン</h2>
+  <%= form_for :session, url: login_path do |f| %>
 
-  <div class="form-group">
+    <div class="form-group">
 
-    <%= f.label :email %>
-    <%= f.text_field :email, class: 'form-control' %>
+      <%= f.label :email %>
+      <%= f.text_field :email, class: 'form-control' %>
 
-    <%= f.label :password %>
-    <%= f.password_field :password, class: 'form-control' %>
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
 
-    <%= f.label :remember_me, class: 'checkbox inline' do %>
-      <%= f.check_box :remember_me %>
-      <span>Remember me on this computer</span>
-    <% end %>
-    <br />
-    <br />
-    <%= f.submit 'ログイン', class: 'btn btn-primary' %>
+      <%= f.label :remember_me, class: 'checkbox inline' do %>
+        <%= f.check_box :remember_me %>
+        <span>Remember me on this computer</span>
+      <% end %>
+      <br />
+      <br />
+      <%= f.submit 'ログイン', class: 'btn btn-primary' %>
 
-  </div>
-<% end %>
+    </div>
+  <% end %>
+</div>
