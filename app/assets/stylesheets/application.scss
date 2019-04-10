@@ -21,6 +21,7 @@
 body {
   font-family: sans-serif, Arial;
   background-color: #fff;
+  font-size: 16px;
 }
 
 ul, li, a, div, span, h1 {
@@ -58,7 +59,9 @@ nav {
 
 nav h1 {
   margin-right: auto;
-  font-size: 32px;
+  font-size: 1.4em;
+  font-weight: bold;
+  line-height: 40px;
 }
 
 nav h1 a, nav h1 a:hover {
@@ -168,6 +171,10 @@ div.profile {
   padding: 15px;
   border: 1px solid #ddd;
   border-radius: 5px;
+}
+div.profile ul li {
+  word-wrap: break-word;
+  margin-bottom: 5px;
 }
 
 ul.users {
