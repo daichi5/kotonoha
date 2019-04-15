@@ -7,7 +7,7 @@ describe 'User', type: :system do
       fill_in User.human_attribute_name(:name), with: 'test_user'
       fill_in User.human_attribute_name(:email), with: 'test_user@example.com'
       fill_in User.human_attribute_name(:password), with: 'password'
-      fill_in 'Confirmation', with: 'password'
+      fill_in User.human_attribute_name(:password_confirmation), with: 'password'
     end
 
     it 'should success' do
