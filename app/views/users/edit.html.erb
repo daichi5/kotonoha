@@ -29,7 +29,7 @@
     <br />
     <%= f.label :image, 'プロフィール画像' %>
     <br />
-    <%= f.file_field :image %>
+    <%= f.file_field :image, accept: "image/png, image/jpeg, image/gif" %>
     <br />
     <br />
     <%= f.submit '変更を保存', class: 'btn btn-primary'  %>
