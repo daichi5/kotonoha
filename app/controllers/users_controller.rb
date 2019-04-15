@@ -31,7 +31,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    
     @user = User.find(params[:id])
 
     if @user.update(user_params)
@@ -40,7 +39,6 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
-  
   end
 
   def destroy
@@ -53,7 +51,7 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmaton, :description)
+      params.require(:user).permit(:name, :email, :password, :password_confirmaton, :description, :image)
     end
 
     def correct_user

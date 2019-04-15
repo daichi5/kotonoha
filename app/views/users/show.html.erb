@@ -3,7 +3,7 @@
   <aside class="col-md-4">
     <div class="profile">
       <h2>
-        <%= image_tag 'prof.jpg', style:"width: 100px; height: 100px;" %>
+        <%= image_tag @user.image.url, style:"width: 100px; height: 100px;" %>
         <%= @user.name %>
       </h2>
       <ul>

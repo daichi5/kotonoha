@@ -1,5 +1,14 @@
 <% provide('title', 'プロフィール編集') %>
 <h2>プロフィール編集</h2>
+<% if @user.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 <%= form_for @user do |f| %>
   <div class="form-group">
 
@@ -17,6 +26,11 @@
     <br />
     <%= f.label :password_confirmation, 'パスワード（確認）' %>
     <%= f.password_field :password_confirmation, class:'form-control' %>
+    <br />
+    <%= f.label :image, 'プロフィール画像' %>
+    <br />
+    <%= f.file_field :image %>
+    <br />
     <br />
     <%= f.submit '変更を保存', class: 'btn btn-primary'  %>
 
