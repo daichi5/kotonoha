@@ -17,8 +17,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params);
 
     if @user.save
-      flash[:success] = 'ユーザー登録を受け付けました。'
-      redirect_to root_path
+      session[:user_id] = @user.id
+      flash[:success] = 'ユーザー登録が完了しました'
+      redirect_to @user
     else
       render 'new'
     end
