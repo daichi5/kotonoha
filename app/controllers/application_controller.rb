@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  #viewからcurrent_userを使用できるように設定
+  #viewからメソッドを使用できるように設定
   helper_method :current_user
 
   private
@@ -20,9 +20,7 @@ class ApplicationController < ActionController::Base
     #ログインしていないユーザーをリダイレクト
     def login_required
       unless current_user
-        #friednly forwarding
         session[:forwarding_url] = request.original_url if request.get?
-
         flash[:danger] = 'ログインしてください'
         redirect_to login_path 
       end

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :login_required, only: [:edit, :update, :destroy]
+  before_action :login_required, only: [:index, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
   
   def index
     @users = User.all
@@ -53,6 +54,11 @@ class UsersController < ApplicationController
   private
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmaton, :description)
+    end
+
+    def correct_user
+      user = User.find(params[:id])
+      redirect_to root_path unless user.id == current_user.id
     end
 
 end
