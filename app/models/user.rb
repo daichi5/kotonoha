@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: VALID_EMAIL_REGEX }
   has_secure_password
   mount_uploader :image, ImageUploader
-  validates :password, presence: true, Length: { minimum: 6 }
+  validates :password, presence: true, Length: { minimum: 6 }, on: :create
 
   #ハッシュ化
   def User.digest(string)
