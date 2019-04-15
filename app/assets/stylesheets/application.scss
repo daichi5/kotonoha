@@ -200,6 +200,11 @@ ul.users {
   border: 1px solid #ddd;
   border-radius: 5px;
 }
+
+#img_prev {
+  max-width: 256px;
+  max-height: 256px; 
+}
 /* footer */
 footer {
   padding: 10px;
