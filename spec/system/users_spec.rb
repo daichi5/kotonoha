@@ -11,7 +11,11 @@ describe 'User', type: :system do
     end
 
     it 'should success' do
-      click_button '登録'
+      user_count = User.all.count
+      expect {
+        click_button '登録'
+        user_count = User.all.count
+      }.to change { user_count }
 
       expect(page).to have_content '登録を受け付けました'
     end
@@ -22,7 +26,8 @@ describe 'User', type: :system do
 
       expect(page).not_to have_content '登録を受け付けました'
       expect(page).to have_css('.alert')
-
     end
+
+
   end
 end
