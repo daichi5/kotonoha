@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  before_action :logout_required, only: [:new, :create]
+  before_action :login_required, only: [:destroy]
+
   def new
   end
 

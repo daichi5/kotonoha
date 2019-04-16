@@ -25,4 +25,10 @@ class ApplicationController < ActionController::Base
         redirect_to login_path 
       end
     end
+
+    def logout_required
+      if user = current_user
+        redirect_to user
+      end
+    end
 end
