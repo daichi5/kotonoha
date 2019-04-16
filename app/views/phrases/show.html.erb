@@ -1,2 +1,11 @@
-<h1>Phrases#show</h1>
-<p>Find me in app/views/phrases/show.html.erb</p>
+<h2><%= @phrase.title %></h2>
+<p>
+  <%= @phrase.content %>
+</p>
+<div>
+  共有ユーザー:<%= @phrase.user.name %>
+</div>
+<div>
+  <%= Phrase.human_attribute_name(:updated_at) %>:
+  <%= @phrase.updated_at %>
+</div>

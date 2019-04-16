@@ -19,30 +19,15 @@
   <div class="col-md-8">
     <h2>投稿一覧</h2>
     <ul class="posts">
-      <li>
-        <a href="">
-          <div class="post_title">貴方と世の中との戦いなら、世の中のほうに賭けなさい。</div>
-          <span class="post_date"> date 2018.3.4 AM10:00</span>
-        </a>
-      </li>
-      <li>
-        <a href="">
-          <div class="post_title">phrase 2</div>
-          <span class="post_date"> date 2018.3.4 AM10:00</span>
-        </a>
-      </li>
-      <li>
-        <a href="">
-          <div class="post_title">貴方と世の中との戦いなら、世の中のほうに賭けなさい。</div>
-          <span class="post_date"> date 2018.3.4 AM10:00</span>
-        </a>
-      </li>
-      <li>
-        <a href="">
-          <div class="post_title">貴方と世の中との戦いなら、世の中のほうに賭けなさい。</div>
-          <span class="post_date"> date 2018.3.4 AM10:00</span>
-        </a>
-      </li>
+      <% @phrases.each do |phrase| %>
+        <li>
+          <%= link_to phrase do %>
+            <div class="post_title"><%= phrase.title %></div>
+            <span class="post_date"><%= phrase.updated_at %></span>
+          <% end %>
+          </a>
+        </li>
+      <% end %>
     </ul>
   </div>
 </div>

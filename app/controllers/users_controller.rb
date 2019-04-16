@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @phrases = @user.phrases.all.order("updated_at DESC")
   end
   
   def new
