@@ -1,4 +1,4 @@
-# README
+# README updated
 
 This web application that I develop is 'kotonoha'.
 You can find and share powerful phrases with other people on this service.
