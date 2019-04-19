@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   #viewからメソッドを使用できるように設定
-  helper_method :current_user, :liked?
+  helper_method :current_user, :liked?, :count_liked
 
   private
 
@@ -20,6 +20,11 @@ class ApplicationController < ActionController::Base
     #自分がlikeしていればtrueを返す
     def liked?(phrase_id)
       current_user.likes.find_by(phrase_id: phrase_id)
+    end
+    
+    #like数を返す
+    def count_liked(phrase_id)
+      Like.where(phrase_id: phrase_id).size
     end
 
     #ログインしていないユーザーをリダイレクト

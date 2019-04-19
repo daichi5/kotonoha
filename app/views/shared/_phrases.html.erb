@@ -3,16 +3,19 @@
     <li>
       <%= link_to phrase do %>
         <div class="post_title"><%= phrase.title %></div>
-      <% end %>
-      <span class="post_date">
-        <%= phrase.updated_at.strftime("%Y年%m月%d日 %H:%M") %>
-        <% if liked?(phrase) %>
-          <%= link_to like_path(phrase), method: :delete do %><i class="fas fa-heart"></i><% end %>1
+      <div class="post_date">
+      <div class="post_buttons">
+        <% if liked?(phrase.id) %>
+          <%= link_to like_path(phrase), method: :delete do %><i class="fas fa-heart"></i><% end %>
         <% else %>
-          <%= link_to like_path(phrase), method: :post do %><i class="far fa-heart"></i><% end %>1
+          <%= link_to like_path(phrase), method: :post do %><i class="far fa-heart"></i><% end %>
         <% end %>
+        <%= count_liked(phrase.id) %>
         <i class="far fa-comment"></i>1 
-      </span>
+      </div>
+        <%= phrase.updated_at.strftime("%Y年%m月%d日 %H:%M") %>
+      </div>
+      <% end %>
     </li>
   <% end %>
 </ul>
