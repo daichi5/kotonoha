@@ -1,0 +1,18 @@
+<ul class="posts">
+  <% phrases.each do |phrase| %>
+    <li>
+      <%= link_to phrase do %>
+        <div class="post_title"><%= phrase.title %></div>
+      <% end %>
+      <span class="post_date">
+        <%= phrase.updated_at.strftime("%Y年%m月%d日 %H:%M") %>
+        <% if liked?(phrase) %>
+          <%= link_to like_path(phrase), method: :delete do %><i class="fas fa-heart"></i><% end %>1
+        <% else %>
+          <%= link_to like_path(phrase), method: :post do %><i class="far fa-heart"></i><% end %>1
+        <% end %>
+        <i class="far fa-comment"></i>1 
+      </span>
+    </li>
+  <% end %>
+</ul>
