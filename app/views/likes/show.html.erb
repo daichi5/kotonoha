@@ -20,7 +20,7 @@
     <h2>投稿一覧</h2>
     <%= link_to 'いいね一覧', user_likes_path(@user) %>
     <ul class="posts">
-      <% @phrases.each do |phrase| %>
+      <% @liked_phrases.each do |phrase| %>
         <li>
           <%= link_to phrase do %>
             <div class="post_title"><%= phrase.title %></div>
@@ -34,7 +34,6 @@
             <% end %>
             <i class="far fa-comment"></i>1 
           </span>
-        </li>
       <% end %>
     </ul>
   </div>

@@ -131,13 +131,13 @@ ul.posts {
   li {
     text-align: center;
     display: block;
+    border-bottom: 1px solid #DCDCDC;
   }
 
 
   li > a {
     display: inline-block;
     width: 100%;
-    border-bottom: 1px solid #DCDCDC;
     color: #424242;
 
   }
@@ -146,6 +146,7 @@ ul.posts {
     text-decoration: none;
     background-color: #F3F3F3;
   }
+
   li img {
     width: 30px;
     height: 30px;
@@ -154,6 +155,17 @@ ul.posts {
     float: left;
   }
 
+
+}
+
+.fa-heart {
+  color: #FA5882;  
+  font-size: 22px;
+  margin-right: 3px;
+}
+.fa-comment {
+  color: #2E9AFE;  
+  font-size: 22px;
 }
 
 div.post_title {
@@ -162,8 +174,8 @@ div.post_title {
 }
 
 span.post_date {
-  color: #555555;
-  font-size: 18px;
+  color: #A4A4A4;
+  font-size: 12px;
 }
 
 
