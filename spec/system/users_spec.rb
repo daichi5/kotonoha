@@ -10,7 +10,7 @@ describe 'User', type: :system do
       fill_in User.human_attribute_name(:password_confirmation), with: 'password'
     end
 
-    it 'should success' do
+    it 'success with valid attributes' do
       user_count = User.all.count
       expect {
         click_button '登録'
@@ -20,7 +20,7 @@ describe 'User', type: :system do
       expect(page).to have_content '登録が完了'
     end
 
-    it 'should failure with invalid name' do
+    it 'failure with invalid name' do
       fill_in User.human_attribute_name(:name), with: ''
       click_button '登録'
 
