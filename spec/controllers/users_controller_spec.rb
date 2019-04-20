@@ -194,19 +194,31 @@ RSpec.describe UsersController, type: :controller do
         post :update, params: { id: @user.id, user: user_params }
         expect(@user.reload.name).to eq "updated user"
       end
+      
+      it "redirects to user-page " do
+        user_params = FactoryBot.attributes_for(:user, name: "updated user")
+        post :update, params: { id: @user.id, user: user_params }
+        expect(response).to redirect_to @user 
+      end
     end
 
     context "as an unauthorized user" do
       before do
         @user = FactoryBot.create(:user, name: "test user")
-        other_user = FactoryBot.create(:user)
-        login(other_user)
+        @other_user = FactoryBot.create(:user)
+        login(@other_user)
       end
 
       it "does not update a user" do
         user_params = FactoryBot.attributes_for(:user, name: "updated user")
         post :update, params: { id: @user.id, user: user_params }
         expect(@user.reload.name).to eq "test user"
+      end
+
+      it "redirects to root_path " do
+        user_params = FactoryBot.attributes_for(:user, name: "updated user")
+        post :update, params: { id: @user.id, user: user_params }
+        expect(response).to redirect_to root_path
       end
     end
 
@@ -219,38 +231,68 @@ RSpec.describe UsersController, type: :controller do
         user_params = FactoryBot.attributes_for(:user, name: "updated user")
         post :update, params: { id: @user.id, user: user_params }
         expect(@user.reload.name).to eq "test user"
+      end
+
+      it "redirects to login-page " do
+        user_params = FactoryBot.attributes_for(:user, name: "updated user")
+        post :update, params: { id: @user.id, user: user_params }
+        expect(response).to redirect_to login_path
       end
     end
   end
 
   describe "#destroy" do
     context "as an authorized user" do
+      before do
+        @user = FactoryBot.create(:user)
+        login(@user)
+      end
+
       it "deletes a user" do
-        user = FactoryBot.create(:user)
-        login(user)
         expect {
-          delete :destroy, params: { id: user.id }
+          delete :destroy, params: { id: @user.id }
         }.to change(User, :count).by(-1)
+      end
+
+      it "redirects to root_path" do
+        delete :destroy, params: { id: @user.id }
+        expect(response).to redirect_to root_path
       end
     end
 
     context "as an unauthorized user" do
+      before do
+        @user = FactoryBot.create(:user)
+        @other_user = FactoryBot.create(:user)
+        login(@other_user)
+      end
+
       it "does not deletes a user" do
-        user = FactoryBot.create(:user)
-        other_user = FactoryBot.create(:user)
-        login(other_user)
         expect {
-          delete :destroy, params: { id: user.id }
+          delete :destroy, params: { id: @user.id }
         }.to_not change(User, :count)
+      end
+
+      it "redirects to root_path" do
+        delete :destroy, params: { id: @user.id }
+        expect(response).to redirect_to root_path
       end
     end
 
     context "as a guest" do
+      before do
+        @user = FactoryBot.create(:user)
+      end
+
       it "does not deletes a user" do
-        user = FactoryBot.create(:user)
         expect {
-          delete :destroy, params: { id: user.id }
+          delete :destroy, params: { id: @user.id }
         }.to_not change(User, :count)
+      end
+
+      it "redirects to login_path" do
+        delete :destroy, params: { id: @user.id }
+        expect(response).to redirect_to login_path
       end
     end
   end
