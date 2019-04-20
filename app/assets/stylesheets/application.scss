@@ -105,9 +105,13 @@ li.account-menu > a {
   display: block;
 }
 
+li.account-menu > a:hover {
+  border: 0;  
+}
+
 li.account-menu > ul {
   position: absolute;
-  top: 40px;
+  top: 39px;
   visibility: hidden;  
   width: 100%;
   flex-direction: column;
@@ -117,6 +121,7 @@ li.account-menu > ul {
 li.account-menu:hover > ul {
   visibility: visible;
   background: #111111;
+  transition: 0.2s;
 
   li:hover {
     background: #333333;
@@ -177,7 +182,9 @@ ul.posts {
 
   li > a:hover {
     text-decoration: none;
-    background-color: #F3F3F3;
+    color: #000000;
+    font-size: 1.01em;
+    transition: 1s;
   }
 
   li img {
