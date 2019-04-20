@@ -192,12 +192,9 @@ ul.posts {
 }
 
 .fa-heart {
-  color: #FA5882;  
   font-size: 22px;
-  margin-right: 3px;
 }
 .fa-comment {
-  color: #2E9AFE;  
   font-size: 22px;
 }
 
@@ -214,6 +211,20 @@ ul.posts {
 
 .post_buttons {
   margin-top: 5px;
+  a {
+    text-decoration: none;
+    font-size: 18px;
+    margin-right: 3px;
+  }
+  a.fav-button {
+    color: #FA5882;  
+  }
+  a.fav-button-off {
+    color: #BDBDBD;  
+  }
+  a.comment-button {
+    color: #BDBDBD;
+  }
 }
 
 

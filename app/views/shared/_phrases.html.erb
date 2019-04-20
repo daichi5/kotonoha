@@ -6,12 +6,19 @@
       <div class="post_date">
       <div class="post_buttons">
         <% if liked?(phrase.id) %>
-          <%= link_to like_path(phrase), method: :delete do %><i class="fas fa-heart"></i><% end %>
+          <%= link_to like_path(phrase), method: :delete, class: 'fav-button' do %>
+            <i class="fas fa-heart"></i>
+            <%= count_liked(phrase.id) %>
+          <% end %>
         <% else %>
-          <%= link_to like_path(phrase), method: :post do %><i class="far fa-heart"></i><% end %>
+          <%= link_to like_path(phrase), method: :post, class: 'fav-button-off' do %>
+            <i class="far fa-heart"></i>
+            <%= count_liked(phrase.id) %>
+          <% end %>
         <% end %>
-        <%= count_liked(phrase.id) %>
-        <i class="far fa-comment"></i>1 
+        <%= link_to '#', class: 'comment-button' do %>
+          <i class="far fa-comment"></i>1 
+        <% end %>
       </div>
         <%= phrase.updated_at.strftime("%Y年%m月%d日 %H:%M") %>
       </div>
