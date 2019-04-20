@@ -54,6 +54,7 @@ nav {
   display: flex;
   color: #fff;
   width: 70%;
+  height: 40px;
   margin: 0 auto;
 }
 
@@ -78,7 +79,7 @@ nav ul li {
   text-align: center;
 }
 
-nav ul li a {
+nav ul  li  a {
   text-decoration: none;
   color: #fff;
   display: inline-block;
@@ -95,6 +96,42 @@ nav ul li a:hover {
   text-decoration: none;
 
 }
+
+li.account-menu {
+  position: relative;
+}
+
+li.account-menu > a {
+  display: block;
+}
+
+li.account-menu > a:hover {
+  border: 0;  
+}
+
+li.account-menu > ul {
+  position: absolute;
+  top: 39px;
+  visibility: hidden;  
+  width: 100%;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+li.account-menu:hover > ul {
+  visibility: visible;
+  background: #111111;
+  transition: 0.2s;
+
+  li:hover {
+    background: #333333;
+  }
+  li a:hover {
+    border: 0;  
+  }
+}
+
+
 
 div.top_box {
   height: 300px;
@@ -115,6 +152,7 @@ div.top_box {
 }
 
 
+
 /* main */
 
 main {
@@ -131,21 +169,24 @@ ul.posts {
   li {
     text-align: center;
     display: block;
+    border-bottom: 1px solid #DCDCDC;
   }
 
 
   li > a {
     display: inline-block;
     width: 100%;
-    border-bottom: 1px solid #DCDCDC;
     color: #424242;
 
   }
 
   li > a:hover {
     text-decoration: none;
-    background-color: #F3F3F3;
+    color: #000000;
+    font-size: 1.01em;
+    transition: 1s;
   }
+
   li img {
     width: 30px;
     height: 30px;
@@ -154,16 +195,43 @@ ul.posts {
     float: left;
   }
 
+
 }
 
-div.post_title {
+.fa-heart {
+  font-size: 22px;
+}
+.fa-comment {
+  font-size: 22px;
+}
+
+.post_title {
   font-size: 2.0em;
   font-weight: bold;
 }
 
-span.post_date {
-  color: #555555;
-  font-size: 18px;
+.post_date {
+  text-align: right;
+  color: #A4A4A4;
+  font-size: 12px;
+}
+
+.post_buttons {
+  margin-top: 5px;
+  a {
+    text-decoration: none;
+    font-size: 18px;
+    margin-right: 3px;
+  }
+  a.fav-button {
+    color: #FA5882;  
+  }
+  a.fav-button-off {
+    color: #BDBDBD;  
+  }
+  a.comment-button {
+    color: #BDBDBD;
+  }
 }
 
 

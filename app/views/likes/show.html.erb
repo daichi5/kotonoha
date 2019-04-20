@@ -6,6 +6,6 @@
   <div class="col-md-8">
     <h2>投稿一覧</h2>
     <%= link_to 'いいね一覧', user_likes_path(@user) %>
-    <%= render partial: "shared/phrases", locals: { phrases: @phrases}%>
+    <%= render partial: "shared/phrases", locals: { phrases: @liked_phrases}%>
   </div>
 </div>

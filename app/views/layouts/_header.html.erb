@@ -13,17 +13,22 @@
         <%= link_to 'カテゴリ', signup_path %>
       </li>
       <% if current_user %>
-        <li>
-          <%= link_to '新規投稿', new_phrase_path %>
-        </li>
-        <li>
-          <%= link_to 'マイページ', current_user %>
-        </li>
-        <li>
-          <%= link_to 'ユーザー', users_path %>
-        </li>
-        <li>
-          <%= link_to 'ログアウト', logout_path, method: :delete %>
+        <li class="account-menu">
+          <a href="#">アカウント <i class="fas fa-angle-down"></i></a>
+          <ul>
+            <li>
+              <%= link_to '新規投稿', new_phrase_path %>
+            </li>
+            <li>
+              <%= link_to 'マイページ', current_user %>
+            </li>
+            <li>
+              <%= link_to 'ユーザー', users_path %>
+            </li>
+            <li>
+              <%= link_to 'ログアウト', logout_path, method: :delete %>
+            </li>
+          </ul>
         </li>
       <% else  %>
         <li>

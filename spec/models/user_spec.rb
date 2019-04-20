@@ -47,12 +47,12 @@ RSpec.describe User, type: :model do
   end
 
   it "is valid with password of 6 characters" do
-    FactoryBot.create(:user, password: "passwd")
+    user = FactoryBot.build(:user, password: "passwd", password_confirmation: "passwd")
     expect(user).to be_valid
   end
 
   it "is invalid with password of 5 characters" do
-    FactoryBot.create(:user, password: "passw")
+    user = FactoryBot.build(:user, password: "passw", password_confirmation: "passw")
     user.valid?
     expect(user.errors[:password]).to include("は6文字以上で入力してください")
   end
