@@ -5,14 +5,12 @@ class LikesController < ApplicationController
   end
 
   def create
-    like = current_user.likes.new(phrase_id: params[:phrase_id])
-    like.save 
-    redirect_back(fallback_location: root_path)
+    @like = current_user.likes.new(phrase_id: params[:phrase_id])
+    @like.save 
   end
 
   def destroy
-    like = current_user.likes.find_by(phrase_id: params[:phrase_id])
-    like.destroy
-    redirect_back(fallback_location: root_path)
+    @like = current_user.likes.find_by(phrase_id: params[:phrase_id])
+    @like.destroy
   end
 end

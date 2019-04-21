@@ -224,16 +224,39 @@ ul.posts {
     margin-right: 3px;
   }
   a.fav-button {
-    color: #FA5882;  
+    color: #FA5882;
   }
   a.fav-button-off {
     color: #BDBDBD;  
+  }
+  a.fav-button-on-animation {
+    animation-name: fav-on;
+    animation-duration: 0.3s;
+    animation-fill-mode: both;
+  }
+
+  a.fav-button-off-animation {
+    animation-name: fav-off;
+    animation-duration: 0.2s;
+    animation-fill-mode: both;
   }
   a.comment-button {
     color: #BDBDBD;
   }
 }
 
+@keyframes fav-on {
+  0% { color: #BDBDBD; }
+  100% {
+    color: #FA5882;
+    font-size: 19px;
+  }
+}
+
+@keyframes fav-off {
+  0% { color: #FA5882; }
+  100% {color: #BDBDBD; }
+}
 
 div.profile {
   padding: 15px;

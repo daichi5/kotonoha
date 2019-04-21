@@ -4,18 +4,18 @@
       <%= link_to phrase do %>
         <div class="post_title"><%= phrase.title %></div>
       <div class="post_date">
-      <div class="post_buttons">
-        <% if liked?(phrase.id) %>
-          <%= link_to like_path(phrase), method: :delete, class: 'fav-button' do %>
-            <i class="fas fa-heart"></i>
-            <%= count_liked(phrase.id) %>
+      <div class="post_buttons" id="post-<%= phrase.id %>">
+          <% if liked?(phrase.id) %>
+            <%= link_to like_path(phrase), method: :delete, remote: true, class: 'fav-button', id: phrase.id do %>
+              <i class="fas fa-heart"></i>
+              <%= count_liked(phrase.id) %>
+            <% end %>
+          <% else %>
+            <%= link_to like_path(phrase), method: :post, remote: true, class: 'fav-button-off', id: phrase.id do %>
+              <i class="far fa-heart"></i>
+              <%= count_liked(phrase.id) %>
+            <% end %>
           <% end %>
-        <% else %>
-          <%= link_to like_path(phrase), method: :post, class: 'fav-button-off' do %>
-            <i class="far fa-heart"></i>
-            <%= count_liked(phrase.id) %>
-          <% end %>
-        <% end %>
         <%= link_to '#', class: 'comment-button' do %>
           <i class="far fa-comment"></i>1 
         <% end %>
