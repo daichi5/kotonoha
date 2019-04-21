@@ -19,6 +19,8 @@ class ApplicationController < ActionController::Base
 
     #自分がlikeしていればtrueを返す
     def liked?(phrase_id)
+      return false unless current_user
+
       current_user.likes.find_by(phrase_id: phrase_id)
     end
     

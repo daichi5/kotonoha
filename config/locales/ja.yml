@@ -16,6 +16,9 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード（確認）
+      phrase:
+        title: 投稿内容
+        content: 詳細
   date:
     abbr_day_names:
     - 日

@@ -32,11 +32,18 @@ RSpec.describe UsersController, type: :controller do
       before do
         @user = FactoryBot.create(:user)
         login(@user)
-        get :show, params: { id: @showed_user.id }
       end
       
-      it ("responds successfully") { expect(response).to be_successful }
-      it ("returns a 200 response") { expect(response).to have_http_status "200" }
+      it "responds successfully" do
+        get :show, params: { id: @showed_user.id }
+        expect(response).to be_successful
+      end
+
+      it "returns a 200 response" do
+        get :show, params: { id: @showed_user.id }
+        expect(response).to have_http_status "200"
+      end
+
     end
 
     context "as a guest" do
