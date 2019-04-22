@@ -9,8 +9,12 @@ RSpec.describe UsersController, type: :controller do
         get :index
       end
 
-      it ("responds successfully") { expect(response).to be_successful } 
-      it ("returns a 200 response") { expect(response).to have_http_status "200" }
+      it "responds successfully" do 
+        aggregate_failures do
+          expect(response).to be_successful
+          expect(response).to have_http_status "200"
+        end
+      end
     end
 
     context "as a guest" do
