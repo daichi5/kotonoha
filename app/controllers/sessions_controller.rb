@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       if (session_params[:remember_me] == '1') 
         remember(user)
       end 
-      flash[:success] = "success!!"
+      flash[:success] = "ログインしました"
       session[:user_id] = user.id
 
       #friendly forwarding
