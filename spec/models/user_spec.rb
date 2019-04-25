@@ -4,6 +4,7 @@ RSpec.describe User, type: :model do
   it "is valid with name, email, and password" do
     user = FactoryBot.build(:user)
     expect(user).to be_valid
+    expect(2).to eq(1)
   end
 
   it "is invalid without a name" do
