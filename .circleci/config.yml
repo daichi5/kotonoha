@@ -2,9 +2,7 @@
 #
 # Check https://circleci.com/docs/2.0/language-ruby/ for more details
 #
-version: 2.1
-orbs:
-  heroku: circleci/heroku@1.0.0
+version: 2.0
 jobs:
   build:
     docker:
@@ -66,7 +64,14 @@ jobs:
     working_directory: /tmp/repo
     steps:
       - checkout
-      - heroku/install
+      - run:
+          name: 'Install Heroku CLI, if necessary'
+          command: |
+            if [[ $(command -v heroku) == "" ]]; then
+              curl https://cli-assets.heroku.com/install.sh | sh
+            else
+              echo "Heroku is already installed. No operation was performed."
+            fi
       - run:
           name: heroku maintenance on
           command: heroku maintenance:on --app ${HEROKU_APP_NAME_STAGE}
