@@ -2,7 +2,9 @@
 #
 # Check https://circleci.com/docs/2.0/language-ruby/ for more details
 #
-version: 2
+version: 2.1
+orbs:
+  heroku: circleci/heroku@1.0.0
 jobs:
   build:
     docker:
@@ -64,6 +66,7 @@ jobs:
     working_directory: /tmp/repo
     steps:
       - checkout
+      - heroku/install
       - run:
           name: heroku maintenance on
           command: heroku maintenance:on --app ${HEROKU_APP_NAME_STAGE}
