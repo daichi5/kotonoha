@@ -82,6 +82,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: set heroku CLI
+          command: sudo snap install --classic heroku
+      - run:
           name: heroku maintenance on
           command: heroku maintenance:on --app ${HEROKU_APP_NAME_PROD}
       - run:
