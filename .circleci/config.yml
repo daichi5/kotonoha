@@ -2,7 +2,7 @@
 #
 # Check https://circleci.com/docs/2.0/language-ruby/ for more details
 #
-version: 2
+version: 2.0
 jobs:
   build:
     docker:
@@ -65,9 +65,23 @@ jobs:
     steps:
       - checkout
       - run:
+          name: 'Install Heroku CLI, if necessary'
+          command: |
+            if [[ $(command -v heroku) == "" ]]; then
+              curl https://cli-assets.heroku.com/install.sh | sh
+            else
+              echo "Heroku is already installed. No operation was performed."
+            fi
+      - run:
+          name: heroku maintenance on
+          command: heroku maintenance:on --app ${HEROKU_APP_NAME_STAGE}
+      - run:
           name: Deploy to Heroku_Staging
           command: |
             git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME_STAGE.git master
+      - run:
+          name: heroku maintenance off
+          command: heroku maintenance:on --app ${HEROKU_APP_NAME_STAGE}
 
   deploy_prod:
     docker:
@@ -76,9 +90,23 @@ jobs:
     steps:
       - checkout
       - run:
+          name: 'Install Heroku CLI, if necessary'
+          command: |
+            if [[ $(command -v heroku) == "" ]]; then
+              curl https://cli-assets.heroku.com/install.sh | sh
+            else
+              echo "Heroku is already installed. No operation was performed."
+            fi
+      - run:
+          name: heroku maintenance on
+          command: heroku maintenance:on --app ${HEROKU_APP_NAME_PROD}
+      - run:
           name: Deploy to Heroku_Production
           command: |
             git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME_PROD.git master
+      - run:
+          name: heroku maintenance off
+          command: heroku maintenance:off --app ${HEROKU_APP_NAME_PROD}
 
 workflows:
   version: 2
