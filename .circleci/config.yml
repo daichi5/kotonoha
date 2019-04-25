@@ -65,7 +65,7 @@ jobs:
           destination: test-results
   deploy:
     docker:
-      image: buildpack-deps:trusty
+      - image: buildpack-deps:trusty
     working_directory: /tmp/repo
     steps:
       - checkout
