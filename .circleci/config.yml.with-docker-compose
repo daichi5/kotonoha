@@ -1,39 +1,22 @@
-# CircleCI上でdocker-composeを使用しない場合はこちらのconfig.ymlを使用 
-# image取得、Build時間が無いためこちらの方が高速で動きますが
-# 開発環境と一致させることができません
+# Ruby CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-ruby/ for more details
+#
 version: 2.0
 jobs:
   build:
-    docker:
-      # specify the version you desire here
-      - image: circleci/ruby:2.6.1-node-browsers
-      - image: circleci/postgres
-
+    machine: true
     working_directory: ~/repo
 
     steps:
       - checkout
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "Gemfile.lock" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
-
       - run:
-          name: install dependencies
+          name: Start container
           command: |
-            bundle install --jobs=4 --retry=3 --path vendor/bundle
+            docker-compose up -d
 
-      - save_cache:
-          paths:
-            - ./vendor/bundle
-          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
-
-      # Database setup
-      - run: mv config/database.yml.ci config/database.yml
-      - run: bundle exec rake db:create
-      - run: bundle exec rake db:schema:load
+      - run: docker-compose exec web rails db:create
+      - run: docker-compose exec web rails db:schema:load
 
       # run tests!
       - run:
@@ -43,7 +26,7 @@ jobs:
             TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
               circleci tests split --split-by=timings)"
 
-            bundle exec rspec \
+             docker-compose exec web rspec \
               --format progress \
               --format RspecJunitFormatter \
               --out /tmp/test-results/rspec.xml \
