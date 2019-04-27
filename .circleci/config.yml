@@ -60,7 +60,11 @@ jobs:
       - run:
           name: Deploy to Heroku_Staging
           command: |
-            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME_STAGE.git master
+            docker login --username=_ --password=$HEROKU_AUTH_TOKEN registry.heroku.com
+            heroku container:push web
+            heroku addons:create heroku-postgresql:hobby-dev
+            heroku run db:migrate
+            heroku container:release web
       - run:
           name: heroku maintenance off
           command: heroku maintenance:on --app ${HEROKU_APP_NAME_STAGE}
