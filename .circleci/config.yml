@@ -62,7 +62,6 @@ jobs:
           command: |
             docker login --username=_ --password=$HEROKU_AUTH_TOKEN registry.heroku.com
             heroku container:push web
-            heroku addons:create heroku-postgresql:hobby-dev
             heroku run db:migrate
             heroku container:release web
       - run:
