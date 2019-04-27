@@ -79,7 +79,7 @@ jobs:
             docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
             docker push registry.heroku.com/${HEROKU_APP_NAME_STAGE}/web
             heroku container:push web --app ${HEROKU_APP_NAME_STAGE}
-            heroku addons:create heroku-postgresql:hobby-dev
+            heroku addons:create heroku-postgresql:hobby-dev --app ${HEROKU_APP_NAME_STAGE}
             heroku run rails db:migrate --app ${HEROKU_APP_NAME_STAGE}
             heroku container:release web --app ${HEROKU_APP_NAME_STAGE}
       - run:
