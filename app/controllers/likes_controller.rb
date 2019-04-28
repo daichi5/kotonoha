@@ -1,4 +1,6 @@
 class LikesController < ApplicationController
+  before_action :login_alert, only: [:create, :destroy]
+
   def show
     @user = User.find(params[:user_id])
     @liked_phrases = @user.liked_phrases
@@ -12,5 +14,10 @@ class LikesController < ApplicationController
   def destroy
     @like = current_user.likes.find_by(phrase_id: params[:phrase_id])
     @like.destroy
+  end
+
+  private
+  def login_alert
+    render 'login_alert'
   end
 end
