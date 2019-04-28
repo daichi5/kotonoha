@@ -184,7 +184,7 @@ ul.posts {
     text-decoration: none;
     color: #000000;
     font-size: 1.01em;
-    transition: 1s;
+    transition: 0.4s;
   }
 
   li img {
@@ -206,7 +206,7 @@ ul.posts {
 }
 
 .post_title {
-  font-size: 2.0em;
+  font-size: 1.2em;
   font-weight: bold;
 }
 
@@ -300,6 +300,38 @@ ul.users {
   max-width: 256px;
   max-height: 256px; 
 }
+
+/* phrases/show */
+
+.phrase-block {
+  min-height: 300px;
+  background: #efefef;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  .post_buttons {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+  }
+}
+
+.phrase-block h2 {
+  font-size: 2em; 
+  padding: 0 20px;
+}
+
+.phrase-user {
+  color: #adadad;  
+  a {
+    color: #adadad;  
+  }
+}
+
+
 /* footer */
 footer {
   padding: 10px;
