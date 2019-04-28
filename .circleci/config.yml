@@ -41,51 +41,51 @@ jobs:
           destination: test-results
 
   deploy_stage:
-    docker:
-      - image: circleci/ruby:2.6.1-node-browsers
-    working_directory: /tmp/repo
+    machine: true
     steps:
       - checkout
       - run:
-          name: 'Install Heroku CLI, if necessary'
-          command: |
-            if [[ $(command -v heroku) == "" ]]; then
-              curl https://cli-assets.heroku.com/install.sh | sh
-            else
-              echo "Heroku is already installed. No operation was performed."
-            fi
+          name: install Heroku CLI
+          command: curl https://cli-assets.heroku.com/install.sh | sh
       - run:
           name: heroku maintenance on
           command: heroku maintenance:on --app ${HEROKU_APP_NAME_STAGE}
       - run:
-          name: Deploy to Heroku_Staging
+          name: deploy to heroku_staging
           command: |
-            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME_STAGE.git master
+            docker login --username=_ --password=${HEROKU_API_KEY} registry.heroku.com
+            heroku container:push web --app ${HEROKU_APP_NAME_STAGE}
+      - run:
+          name: rails db migrate
+          command: heroku run rails db:migrate --app ${HEROKU_APP_NAME_STAGE}
+      - run:
+          name: release app
+          command: heroku container:release web --app ${HEROKU_APP_NAME_STAGE}
       - run:
           name: heroku maintenance off
-          command: heroku maintenance:on --app ${HEROKU_APP_NAME_STAGE}
+          command: heroku maintenance:off --app ${HEROKU_APP_NAME_STAGE}
 
   deploy_prod:
-    docker:
-      - image: circleci/ruby:2.6.1-node-browsers
-    working_directory: /tmp/repo
+    machine: true
     steps:
       - checkout
       - run:
-          name: 'Install Heroku CLI, if necessary'
-          command: |
-            if [[ $(command -v heroku) == "" ]]; then
-              curl https://cli-assets.heroku.com/install.sh | sh
-            else
-              echo "Heroku is already installed. No operation was performed."
-            fi
+          name: install Heroku CLI, if necessary
+          command: curl https://cli-assets.heroku.com/install.sh | sh
       - run:
           name: heroku maintenance on
           command: heroku maintenance:on --app ${HEROKU_APP_NAME_PROD}
       - run:
-          name: Deploy to Heroku_Production
+          name: deploy to heroku_staging
           command: |
-            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME_PROD.git master
+            docker login --username=_ --password=${HEROKU_API_KEY} registry.heroku.com
+            heroku container:push web --app ${HEROKU_APP_NAME_PROD}
+      - run:
+          name: rails db migrate
+          command: heroku run rails db:migrate --app ${HEROKU_APP_NAME_PROD}
+      - run:
+          name: release app
+          command: heroku container:release web --app ${HEROKU_APP_NAME_PROD}
       - run:
           name: heroku maintenance off
           command: heroku maintenance:off --app ${HEROKU_APP_NAME_PROD}
