@@ -1,4 +1,6 @@
 class PhrasesController < ApplicationController
+  before_action :login_required, only: [:new, :create, :edit]
+
   def index
   end
 

@@ -4,9 +4,9 @@
     <%= render partial: 'shared/buttons', locals: { phrase: @phrase } %>
     </div>
   </div>
-  <p>
+  <div class="phrase-description">
     <%= @phrase.content %>
-  </p>
+  </div>
   <div class="phrase-user">
     <%= link_to "#{@phrase.user.name}さん", @phrase.user %>
     <%= @phrase.updated_at.strftime('%Y年%m月%d日 %H:%M:%S') %>
