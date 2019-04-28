@@ -1,11 +1,14 @@
-<h2><%= @phrase.title %></h2>
-<p>
-  <%= @phrase.content %>
-</p>
-<div>
-  共有ユーザー:<%= @phrase.user.name %>
-</div>
-<div>
-  <%= Phrase.human_attribute_name(:updated_at) %>:
-  <%= @phrase.updated_at.strftime('%Y年%m月%d日 %H:%M:%S') %>
+<div class="phrase-show">
+  <div class="phrase-block">
+    <h2>" <%= @phrase.title %> "</h2>
+    <%= render partial: 'shared/buttons', locals: { phrase: @phrase } %>
+    </div>
+  </div>
+  <p>
+    <%= @phrase.content %>
+  </p>
+  <div class="phrase-user">
+    <%= link_to "#{@phrase.user.name}さん", @phrase.user %>
+    <%= @phrase.updated_at.strftime('%Y年%m月%d日 %H:%M:%S') %>
+  </div>
 </div>
