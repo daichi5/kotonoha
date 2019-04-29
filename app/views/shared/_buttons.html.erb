@@ -1,16 +1,15 @@
-<div class="post_buttons" id="post-<%= phrase.id %>">
+<div class="post_buttons" id="post-<%= phrase.id %>"> 
   <% if liked?(phrase.id) %>
     <%= link_to like_path(phrase), method: :delete, remote: true, class: 'fav-button', id: phrase.id do %>
       <i class="fas fa-heart"></i>
-      <%= count_liked(phrase.id) %>
+      <%= phrase.likes.count %>
     <% end %>
   <% else %>
     <%= link_to like_path(phrase), method: :post, remote: true, class: 'fav-button-off', id: phrase.id do %>
       <i class="far fa-heart"></i>
-      <%= count_liked(phrase.id) %>
-    <% end %>
+      <%= phrase.likes.count %>
+    <% end %>    
   <% end %>
-  <%= link_to '#', class: 'comment-button' do %>
-    <i class="far fa-comment"></i>1 
-  <% end %>
+  <i class="far fa-comment"></i>
+  <%= phrase.comments.count %>
 </div>

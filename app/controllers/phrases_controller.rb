@@ -1,9 +1,12 @@
 class PhrasesController < ApplicationController
+  before_action :login_required, only: [:new, :create, :edit]
+
   def index
   end
 
   def show
     @phrase = Phrase.find(params[:id])
+    @comment = @phrase.comments.build
   end
 
   def new
@@ -18,7 +21,6 @@ class PhrasesController < ApplicationController
     else
       render :new
     end
-
   end
 
   def edit

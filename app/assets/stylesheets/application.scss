@@ -218,6 +218,7 @@ ul.posts {
 
 .post_buttons {
   margin-top: 5px;
+  color: #BDBDBD;
   a {
     text-decoration: none;
     font-size: 18px;
@@ -229,6 +230,12 @@ ul.posts {
   a.fav-button-off {
     color: #BDBDBD;  
   }
+
+  a.fav-button-off:hover {
+    color: #888888;  
+    transition: 0.3s;
+  }
+  
   a.fav-button-on-animation {
     animation-name: fav-on;
     animation-duration: 0.3s;
@@ -239,9 +246,6 @@ ul.posts {
     animation-name: fav-off;
     animation-duration: 0.2s;
     animation-fill-mode: both;
-  }
-  a.comment-button {
-    color: #BDBDBD;
   }
 }
 
@@ -303,7 +307,7 @@ ul.users {
 
 /* phrases/show */
 
-.phrase-block {
+.phrase-main {
   min-height: 300px;
   background: #efefef;
   border-radius: 5px;
@@ -319,16 +323,51 @@ ul.users {
   }
 }
 
-.phrase-block h2 {
+.phrase-main h2 {
   font-size: 2em; 
   padding: 0 20px;
 }
 
+.phrase-description {
+  text-align: center;
+  padding: 10px 20px;
+}
+
 .phrase-user {
+  text-align: right;
+  padding: 0px 20px;
   color: #adadad;  
   a {
     color: #adadad;  
   }
+}
+
+/* comments */
+
+ul.comments {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  li {
+    margin-top: 10px;  
+    padding-top: 10px;
+    border-top: solid 1px #ADADAD;
+  }
+}
+
+.comment-content {
+  margin-top: 10px;  
+  font-size: 1.3em;
+}
+
+.comment-user {
+  display: inline-block;
+  font-size: 0.8em;  
+}
+
+.comment-date {
+  display: inline-block;
+  color: #ADADAD;
+  font-size: 0.8em;
 }
 
 

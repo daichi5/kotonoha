@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe 'SignUp', type: :system do  
+RSpec.describe 'SignIn', type: :system, js: true do  
   it "user sign_in" do
     user = FactoryBot.create(:user)
 
-    visit login_path
+    visit '/login'
     fill_in "メールアドレス", with: user.email
     fill_in "パスワード", with: user.password
     click_button "ログイン"

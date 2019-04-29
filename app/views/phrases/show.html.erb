@@ -1,14 +1,27 @@
-<div class="phrase-show">
-  <div class="phrase-block">
-    <h2>" <%= @phrase.title %> "</h2>
-    <%= render partial: 'shared/buttons', locals: { phrase: @phrase } %>
-    </div>
-  </div>
-  <p>
-    <%= @phrase.content %>
-  </p>
-  <div class="phrase-user">
-    <%= link_to "#{@phrase.user.name}さん", @phrase.user %>
-    <%= @phrase.updated_at.strftime('%Y年%m月%d日 %H:%M:%S') %>
-  </div>
+<div class="phrase-main">
+  <h2>" <%= @phrase.title %> "</h2>
+  <%= render partial: 'shared/buttons', locals: { phrase: @phrase } %>
 </div>
+<div class="phrase-description">
+  <%= @phrase.content %>
+</div>
+<div class="phrase-user">
+  <%= link_to "#{@phrase.user.name}さん", @phrase.user %>
+  <%= @phrase.updated_at.strftime('%Y年%m月%d日 %H:%M:%S') %>
+</div>
+
+<%= render partial: 'comments/comments', locals: { comments: @phrase.comments } %>
+
+<%= form_with model: [@phrase, @comment] do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :content %>
+    <%= f.text_area :content, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.submit '投稿', class: 'btn btn-primary' %>
+  </div>
+<% end %>
