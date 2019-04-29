@@ -3,7 +3,10 @@ require 'rails_helper'
 RSpec.describe 'Phrase', type: :system, js: true do
   it 'user create a phrase' do
     user = FactoryBot.create(:user)
-    login_by_capybara(user)
+    visit '/login'
+    fill_in 'メールアドレス', with: user.email
+    fill_in 'パスワード', with: user.password
+    click_button 'ログイン'
 
     expect {
       click_link 'アカウント'

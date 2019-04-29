@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'SignUp', type: :system do
   it 'user sign_up' do
-    visit signup_path
+    visit '/signup'
     fill_in User.human_attribute_name(:name), with: 'test_user'
     fill_in User.human_attribute_name(:email), with: 'test_user@example.com'
     fill_in User.human_attribute_name(:password), with: 'password'
