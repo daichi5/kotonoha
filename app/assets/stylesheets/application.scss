@@ -218,6 +218,7 @@ ul.posts {
 
 .post_buttons {
   margin-top: 5px;
+  color: #BDBDBD;
   a {
     text-decoration: none;
     font-size: 18px;
@@ -229,6 +230,12 @@ ul.posts {
   a.fav-button-off {
     color: #BDBDBD;  
   }
+
+  a.fav-button-off:hover {
+    color: #888888;  
+    transition: 0.3s;
+  }
+  
   a.fav-button-on-animation {
     animation-name: fav-on;
     animation-duration: 0.3s;
@@ -239,9 +246,6 @@ ul.posts {
     animation-name: fav-off;
     animation-duration: 0.2s;
     animation-fill-mode: both;
-  }
-  a.comment-button {
-    color: #BDBDBD;
   }
 }
 
