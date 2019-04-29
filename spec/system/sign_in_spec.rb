@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'SignUp', type: :system do  
+RSpec.describe 'SignUp', type: :system, js: true do  
   it "user sign_in" do
     user = FactoryBot.create(:user)
 
