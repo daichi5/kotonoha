@@ -6,6 +6,7 @@ class PhrasesController < ApplicationController
 
   def show
     @phrase = Phrase.find(params[:id])
+    @comment = @phrase.comments.build
   end
 
   def new
@@ -20,7 +21,6 @@ class PhrasesController < ApplicationController
     else
       render :new
     end
-
   end
 
   def edit

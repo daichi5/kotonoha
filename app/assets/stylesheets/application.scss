@@ -303,7 +303,7 @@ ul.users {
 
 /* phrases/show */
 
-.phrase-block {
+.phrase-main {
   min-height: 300px;
   background: #efefef;
   border-radius: 5px;
@@ -319,21 +319,51 @@ ul.users {
   }
 }
 
-.phrase-block h2 {
+.phrase-main h2 {
   font-size: 2em; 
   padding: 0 20px;
 }
 
 .phrase-description {
+  text-align: center;
   padding: 10px 20px;
 }
 
 .phrase-user {
-  padding: 10px 20px;
+  text-align: right;
+  padding: 0px 20px;
   color: #adadad;  
   a {
     color: #adadad;  
   }
+}
+
+/* comments */
+
+ul.comments {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  li {
+    margin-top: 10px;  
+    padding-top: 10px;
+    border-top: solid 1px #ADADAD;
+  }
+}
+
+.comment-content {
+  margin-top: 10px;  
+  font-size: 1.3em;
+}
+
+.comment-user {
+  display: inline-block;
+  font-size: 0.8em;  
+}
+
+.comment-date {
+  display: inline-block;
+  color: #ADADAD;
+  font-size: 0.8em;
 }
 
 

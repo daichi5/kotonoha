@@ -19,6 +19,9 @@ ja:
       phrase:
         title: 投稿内容
         content: 詳細
+      comment:
+        name: 名前
+        content: コメント
   date:
     abbr_day_names:
     - 日

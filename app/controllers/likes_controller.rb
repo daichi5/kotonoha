@@ -18,6 +18,8 @@ class LikesController < ApplicationController
 
   private
   def login_alert
-    render 'login_alert'
+    unless current_user
+      render 'login_alert'
+    end
   end
 end
