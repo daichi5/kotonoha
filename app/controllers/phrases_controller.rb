@@ -26,6 +26,17 @@ class PhrasesController < ApplicationController
   def edit
   end
 
+  def update
+  end
+
+  def destroy
+    phrase = Phrase.find(params[:id])
+    user = phrase.user
+
+    phrase.destroy
+    redirect_to user
+  end
+
   private
   def phrase_params
     params.require(:phrase).permit(:title, :content)
