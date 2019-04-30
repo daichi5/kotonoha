@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe 'Phrase', type: :system, js: true do
-  it 'user create a phrase' do
+RSpec.describe 'Phrases', type: :system, js: true do
+  it 'user creates a phrase' do
     user = FactoryBot.create(:user)
     visit '/login'
     fill_in 'メールアドレス', with: user.email
@@ -19,5 +19,8 @@ RSpec.describe 'Phrase', type: :system, js: true do
       expect(page).to have_content 'サンプルフレーズ'
     }.to change(user.phrases, :count).by(1)
   end
+  
+  it "user edits a phrase"
 
+  it "user deletes a phrase"
 end
