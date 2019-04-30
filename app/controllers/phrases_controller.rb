@@ -1,16 +1,13 @@
 class PhrasesController < ApplicationController
   before_action :login_required, only: [:new, :create, :edit]
 
-  def index
-  end
-
   def show
     @phrase = Phrase.find(params[:id])
     @comment = @phrase.comments.build
   end
 
   def new
-    @phrase = current_user.phrases.new
+    @phrase = Phrase.new
   end
 
   def create
@@ -24,6 +21,25 @@ class PhrasesController < ApplicationController
   end
 
   def edit
+    @phrase = Phrase.find(params[:id])
+  end
+
+  def update
+    @phrase = Phrase.find(params[:id])
+    if @phrase.update(phrase_params)
+      flash[:success] = '投稿を編集しました'
+      redirect_to @phrase
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    phrase = Phrase.find(params[:id])
+    user = phrase.user
+
+    phrase.destroy
+    redirect_to user
   end
 
   private

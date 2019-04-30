@@ -1,3 +1,9 @@
+<% if current_user && current_user.id == @phrase.user_id %>
+  <div class="phrase-buttons">
+    <%= link_to '編集', edit_phrase_path(@phrase), class: 'btn btn-primary'%>
+    <%= link_to '削除', @phrase, method: :delete, data: {confirm: '投稿を削除します。よろしいですか？'}, class: 'btn btn-danger'  %>
+  </div>
+<% end %>
 <div class="phrase-main">
   <h2>" <%= @phrase.title %> "</h2>
   <%= render partial: 'shared/buttons', locals: { phrase: @phrase } %>
