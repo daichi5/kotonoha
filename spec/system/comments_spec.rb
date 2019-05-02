@@ -13,6 +13,5 @@ RSpec.describe 'Comments', type: :system, js: true do
       expect(page).to have_content("sample comment")
     }.to change(phrase.comments, :count).by(1)
 
-
   end
 end
