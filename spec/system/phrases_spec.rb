@@ -35,5 +35,29 @@ RSpec.describe 'Phrases', type: :system do
     expect(page).to have_content 'content updated'
   end
 
-  it "user deletes a phrase"
+  it "user deletes a phrase" do
+    user = FactoryBot.create(:user)
+    phrase = FactoryBot.create(
+      :phrase,
+      title: 'sample title',
+      content: 'sample content',
+      user: user
+    )
+    login_as(user)
+
+    expect{
+      click_link 'アカウント'
+      click_link 'マイページ'
+      click_link 'sample title'
+
+      expect(page).to have_content('sample title')
+      expect(page).to have_content('sample content')
+
+      click_link '削除'
+
+      expect(page).to_not have_content('sample title')
+      expect(page).to_not have_content('sample content')
+    }.to change(user.phrases, :count).by(-1)
+    
+  end
 end
