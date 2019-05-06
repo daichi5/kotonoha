@@ -50,6 +50,23 @@ img.logo {
   height: auto;
 }
 
+form.search-form {
+  input {
+    line-height: 0.8em;  
+    font-size: 0.7em;
+    height: 25px;
+    border-radius: 10px;
+  }
+
+  button {
+    background: transparent; 
+    border: 0;
+    i {
+      color: #fff;
+    }
+  } 
+}
+
 nav {
   display: flex;
   color: #fff;

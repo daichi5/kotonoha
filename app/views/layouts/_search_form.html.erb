@@ -1,0 +1,6 @@
+<%= form_tag phrases_path, method: :get, enforce_utf8: false, class:"form-inline search-form" do  %>
+  <%= text_field_tag :q, params[:q], class: 'form-control', placeholder: 'Search' %>
+  <%= button_tag type: :submit,name: nil do %>
+    <i class="fas fa-search"></i>
+  <% end %>
+<% end %>

@@ -1,6 +1,12 @@
 class PhrasesController < ApplicationController
   before_action :login_required, only: [:new, :create, :edit]
 
+  def index
+    query = { title_or_content_cont: params[:q] }
+    q = Phrase.ransack(query)
+    @phrases = q.result(distinct: true)
+  end
+
   def show
     @phrase = Phrase.find(params[:id])
     @comment = @phrase.comments.build
