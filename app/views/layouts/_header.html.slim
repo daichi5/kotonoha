@@ -1,0 +1,32 @@
+header
+  nav
+    h1
+      a[href="/"]
+        |  Kotonoha 
+    ul
+      li
+        = render partial: 'layouts/search_form'
+      li
+        = link_to '人気', signup_path
+      li
+        = link_to 'カテゴリ', signup_path
+      - if current_user
+        li.account-menu
+          a[href="#"]
+            | アカウント 
+            i.fas.fa-angle-down
+          ul
+            li
+              = link_to '新規投稿', new_phrase_path
+            li
+              = link_to 'マイページ', current_user
+            li
+              = link_to 'ユーザー', users_path
+            li
+              = link_to 'ログアウト', logout_path, method: :delete
+      - else
+        li
+          = link_to '新規登録', signup_path
+        li
+          = link_to 'ログイン', login_path
+  .top_box

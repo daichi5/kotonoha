@@ -1,0 +1,5 @@
+| var target = ".comments" $(target).html("
+= j ( render partial: 'comments', locals: { comments: @phrase.comments } )
+| "); $('.post_buttons').remove(); $('.phrase-main > h2').after("
+= j ( render partial: 'shared/buttons', locals: { phrase: @phrase} )
+| "); $('#errors').remove(); $('#comment_name').val(''); $('#comment_content').val(''); 

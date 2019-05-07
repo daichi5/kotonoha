@@ -1,6 +1,0 @@
-<%= link_to like_path(phrase), method: :post, remote: true, class: 'fav-button-off-animation', id: phrase.id do %>
-  <i class="far fa-heart"></i>
-  <%= phrase.likes.count %>
-<% end %>
-<i class="far fa-comment"></i>
-<%= phrase.comments.count %>

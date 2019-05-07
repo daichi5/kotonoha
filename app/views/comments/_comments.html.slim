@@ -1,0 +1,9 @@
+ul.comments
+  - comments.each do |comment|
+    li
+      .comment-content
+        = comment.content
+      .comment-user
+        = comment.name
+      .comment-date
+        = comment.created_at
