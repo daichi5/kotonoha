@@ -1,0 +1,6 @@
+|
+  var target = "#post-#{@like.phrase.id}"; 
+  console.log(target);
+  $(target).html(" #{ j ( render partial: 'heart_on', locals: { phrase: @like.phrase } ) } "); 
+  console.log(" #{ j ( render partial: 'heart_on', locals: { phrase: @like.phrase } ) } "); 
+

@@ -1,0 +1,9 @@
+ul.posts
+  - phrases.each do |phrase|
+    li
+      = link_to phrase do
+        .post_title
+          = phrase.title
+        .post_date
+          = render partial: 'shared/buttons', locals: { phrase: phrase }
+          = phrase.updated_at.strftime("%Y年%m月%d日 %H:%M")

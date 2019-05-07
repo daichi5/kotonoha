@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  #viewからメソッドを使用できるように設定
   helper_method :current_user, :liked?
 
   private
@@ -39,4 +38,5 @@ class ApplicationController < ActionController::Base
         redirect_to user
       end
     end
+
 end

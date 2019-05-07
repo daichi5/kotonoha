@@ -1,0 +1,5 @@
+= link_to like_path(phrase), method: :delete, remote: true, class: 'fav-button-on-animation', id: phrase.id do
+  i.fas.fa-heart
+  = phrase.likes.count
+i.far.fa-comment
+= phrase.comments.count

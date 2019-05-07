@@ -1,12 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe 'Phrases', type: :system, js: true do
+RSpec.describe 'Phrases', type: :system do
   it 'user creates a phrase' do
     user = FactoryBot.create(:user)
-    visit '/login'
-    fill_in 'メールアドレス', with: user.email
-    fill_in 'パスワード', with: user.password
-    click_button 'ログイン'
+    login_as(user)
 
     expect {
       click_link 'アカウント'
@@ -20,7 +17,47 @@ RSpec.describe 'Phrases', type: :system, js: true do
     }.to change(user.phrases, :count).by(1)
   end
   
-  it "user edits a phrase"
+  it "user edits a phrase" do
+    user = FactoryBot.create(:user)
+    phrase = FactoryBot.create(:phrase, title: 'sample title', user: user)
+    login_as(user)
 
-  it "user deletes a phrase"
+    click_link 'アカウント'
+    click_link 'マイページ'
+    click_link 'sample title'
+    click_link '編集'
+    fill_in '投稿内容', with: 'title updated'
+    fill_in '詳細', with: 'content updated'
+    click_button '保存'
+
+    expect(page).to have_content '投稿を編集しました'
+    expect(page).to have_content 'title updated'
+    expect(page).to have_content 'content updated'
+  end
+
+  it "user deletes a phrase" do
+    user = FactoryBot.create(:user)
+    phrase = FactoryBot.create(
+      :phrase,
+      title: 'sample title',
+      content: 'sample content',
+      user: user
+    )
+    login_as(user)
+
+    expect{
+      click_link 'アカウント'
+      click_link 'マイページ'
+      click_link 'sample title'
+
+      expect(page).to have_content('sample title')
+      expect(page).to have_content('sample content')
+
+      click_link '削除'
+
+      expect(page).to_not have_content('sample title')
+      expect(page).to_not have_content('sample content')
+    }.to change(user.phrases, :count).by(-1)
+    
+  end
 end
