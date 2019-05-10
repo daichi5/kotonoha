@@ -1,4 +1,4 @@
-= link_to like_path(phrase), method: :post, remote: true, class: 'fav-button-off-animation', id: phrase.id do
+= link_to phrase_likes_path(phrase), method: :post, remote: true, class: 'fav-button-off-animation', id: phrase.id do
   i.far.fa-heart
   = phrase.likes.count
 i.far.fa-comment

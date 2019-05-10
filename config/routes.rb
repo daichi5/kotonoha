@@ -6,15 +6,14 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
   resources :users, except: [:new, :create] do
-      resource :likes, only: [:show]
+    resource :likes, only: :show
   end
 
   resources :phrases do
     resources :comments, only: :create
+    post 'likes' => 'likes#create'
+    delete 'likes' => 'likes#destroy'
   end
-
-  post '/phrases/:phrase_id/likes' => 'likes#create', as: :like
-  delete '/phrases/:phrase_id/likes' => 'likes#destroy'
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
