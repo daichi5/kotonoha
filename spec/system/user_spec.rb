@@ -26,12 +26,14 @@ RSpec.describe 'Users', type: :system, js: true do
     fill_in '名前', with: 'updated name'
     fill_in 'メールアドレス', with: 'updated@example.com'
     fill_in '自己紹介', with: 'updated description'
+    attach_file 'プロフィール画像', Rails.root + 'spec/fixtures/test_icon.jpg'
     click_button '変更を保存'
     @user.reload
 
     expect(@user.name).to eq('updated name')
     expect(@user.email).to eq('updated@example.com')
     expect(@user.description).to eq('updated description')
+    expect(@user['image']).to eq('test_icon.jpg')
 
   end
 end
