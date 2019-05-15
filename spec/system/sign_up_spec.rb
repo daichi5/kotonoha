@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.describe 'SignUp', type: :system do
   it 'user sign_up' do
     visit '/signup'
-    fill_in User.human_attribute_name(:name), with: 'test_user'
-    fill_in User.human_attribute_name(:email), with: 'test_user@example.com'
-    fill_in User.human_attribute_name(:password), with: 'password'
-    fill_in User.human_attribute_name(:password_confirmation), with: 'password'
+    fill_in '名前', with: 'test_user'
+    fill_in 'メールアドレス', with: 'test_user@example.com'
+    fill_in 'パスワード', with: 'password'
+    fill_in 'パスワード（確認）', with: 'password'
 
     expect {
       click_button '登録'

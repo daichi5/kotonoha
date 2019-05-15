@@ -4,6 +4,6 @@
     = render partial: "shared/profile", locals: { user: @user}
   .col-md-8
     h2
-      | 投稿一覧
-    = link_to 'いいね一覧', user_likes_path(@user)
+      | 投稿一覧 
+      = link_to 'いいね一覧', user_likes_path(@user)
     = render partial: "shared/phrases", locals: { phrases: @phrases}
