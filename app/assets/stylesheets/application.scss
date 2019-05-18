@@ -161,7 +161,7 @@ li.account-menu:hover > ul {
 
 
 div.top_box {
-  height: 300px;
+  height: 200px;
   width: 100%;
   background-image: image_url('top-2.png');
   background-size: cover;
@@ -184,9 +184,15 @@ div.top_box {
 
 main {
   width: 90%;
+  min-height: 350px;
   margin: 20px auto;
 }
 
+.static-page {
+  background: #fff;
+  padding: 20px;
+  min-height: 350px;
+}
 
 .posts {
   .col-md-4 {
@@ -285,6 +291,7 @@ div.profile {
   border-radius: 5px;
   background: #fff;
   margin-top: 25px;
+  margin-bottom: 10px;
 }
 div.profile ul {
   padding-top: 5px;
@@ -407,9 +414,10 @@ ul.comments {
 /* footer */
 footer {
   padding: 10px;
-  background: #111111;
-  color: #fff;
+  background: #222222;
+  color: #CDCDCD;
   text-align: center;
+  font-size: 14px;
   ul {
     margin-bottom: 20px;
 
@@ -420,7 +428,7 @@ footer {
 
     li > a {
       text-decoration: none;
-      color: #fff;
+      color: #CDCDCD;
     }
 
     li > a:hover {
@@ -434,9 +442,5 @@ footer {
    display: block;
    width: 200px;
    text-align: left;
-
-   a {
-     font-size: 14px;
-   }
  }
 }
