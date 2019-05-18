@@ -7,6 +7,6 @@ ul.users
         h2
           = link_to user.name, user
         p
-          |  投稿数: XXX ,　いいね数：XXX 
+          = "投稿数: #{user.phrases.count} ,　いいね数：#{user.likes.count}"
         p
           = user.description

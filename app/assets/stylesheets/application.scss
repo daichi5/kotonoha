@@ -59,7 +59,7 @@ form.search-form {
     line-height: 0.8em;  
     font-size: 0.7em;
     height: 25px;
-    border-radius: 10px;
+    border-radius: 6px;
   }
 
   button {
@@ -104,10 +104,10 @@ nav ul  li  a {
   text-decoration: none;
   color: #fff;
   display: inline-block;
-  width: 100px;
+  width: 80px;
   height: 40px;
   line-height: 40px;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 nav ul li a:hover {
@@ -116,6 +116,12 @@ nav ul li a:hover {
   color: #fff;
   text-decoration: none;
 
+}
+
+@media screen and (max-width: 768px) {
+  li.search-menu {
+    display: none;
+  }
 }
 
 li.account-menu {
@@ -155,7 +161,7 @@ li.account-menu:hover > ul {
 
 
 div.top_box {
-  height: 300px;
+  height: 200px;
   width: 100%;
   background-image: image_url('top-2.png');
   background-size: cover;
@@ -178,9 +184,15 @@ div.top_box {
 
 main {
   width: 90%;
+  min-height: 350px;
   margin: 20px auto;
 }
 
+.static-page {
+  background: #fff;
+  padding: 20px;
+  min-height: 350px;
+}
 
 .posts {
   .col-md-4 {
@@ -279,6 +291,7 @@ div.profile {
   border-radius: 5px;
   background: #fff;
   margin-top: 25px;
+  margin-bottom: 10px;
 }
 div.profile ul {
   padding-top: 5px;
@@ -293,8 +306,9 @@ div.profile ul {
 }
 
 ul.users {
-  padding: 0;
+  padding: 20px;
   margin: 0;
+  background: #fff;
   li {
     display: flex;
     padding: 10px;
@@ -314,6 +328,7 @@ ul.users {
   padding: 15px;
   border: 1px solid #ddd;
   border-radius: 5px;
+  background: #fff;
 }
 
 #img_prev {
@@ -322,6 +337,13 @@ ul.users {
 }
 
 /* phrases/show */
+.main-wrapper {
+  width: 80%;
+  margin: 0 auto;
+  background: #fff;
+  padding: 20px;
+
+}
 
 .phrase-buttons {
   text-align: right;
@@ -329,7 +351,7 @@ ul.users {
 }
 .phrase-main {
   min-height: 300px;
-  background: #efefef;
+  background: #F2F2F2;
   border-radius: 5px;
   display: flex;
   justify-content: center;
@@ -351,6 +373,13 @@ ul.users {
 .phrase-description {
   text-align: center;
   padding: 10px 20px;
+}
+
+.phrase-url {
+  text-align :right;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 0px 20px;
 }
 
 .phrase-user {
@@ -390,13 +419,13 @@ ul.comments {
   font-size: 0.8em;
 }
 
-
 /* footer */
 footer {
   padding: 10px;
-  background: #111111;
-  color: #fff;
+  background: #222222;
+  color: #CDCDCD;
   text-align: center;
+  font-size: 14px;
   ul {
     margin-bottom: 20px;
 
@@ -407,7 +436,7 @@ footer {
 
     li > a {
       text-decoration: none;
-      color: #fff;
+      color: #CDCDCD;
     }
 
     li > a:hover {
@@ -421,9 +450,5 @@ footer {
    display: block;
    width: 200px;
    text-align: left;
-
-   a {
-     font-size: 14px;
-   }
  }
 }
