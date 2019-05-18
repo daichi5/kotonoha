@@ -20,7 +20,7 @@
 /* Initialize */
 body {
   font-family: sans-serif, Arial;
-  background-color: #fff;
+  background-color: #DCDCDC;
   font-size: 16px;
 }
 
@@ -36,6 +36,10 @@ ul {
 h2, h3 {
   font-size: 1em;
   font-weight: bold;
+}
+
+.btn {
+  margin: 2px;
 }
 
 
@@ -173,46 +177,34 @@ div.top_box {
 /* main */
 
 main {
-  background: #fff;
-  width: 70%;
+  width: 90%;
   margin: 20px auto;
 }
 
 
-ul.posts {
-  background-color: #fff;
-  border-color: #777777;
-
-  li {
-    text-align: center;
-    display: block;
-    border-bottom: 1px solid #DCDCDC;
+.posts {
+  .col-md-4 {
+    box-sizing: border-box;
+    border: 3px solid #DCDCDC;
+    border-radius: 5px;
+    background: #fff;
   }
 
-
-  li > a {
-    display: inline-block;
+  .col-md-4 > a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
+    min-height: 100px;
     color: #424242;
-
   }
 
-  li > a:hover {
+  .col-md-4 > a:hover {
     text-decoration: none;
-    color: #000000;
+    color: #ACACAC;
     font-size: 1.01em;
     transition: 0.4s;
   }
-
-  li img {
-    width: 30px;
-    height: 30px;
-    border-radius: 10px;
-    margin: 10px 10px 0 0;
-    float: left;
-  }
-
-
 }
 
 .fa-heart {
@@ -285,14 +277,19 @@ div.profile {
   padding: 15px;
   border: 1px solid #ddd;
   border-radius: 5px;
+  background: #fff;
+  margin-top: 25px;
 }
-div.profile ul li {
-  word-wrap: break-word;
-  margin-bottom: 5px;
+div.profile ul {
+  padding-top: 5px;
+  li {
+    word-wrap: break-word;
+    margin-bottom: 5px;
+  }
 }
 
-div.profile h2 {
-  font-size: 2em;  
+.profile-nav {
+  font-weight: bold;
 }
 
 ul.users {

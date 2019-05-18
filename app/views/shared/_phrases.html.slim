@@ -1,9 +1,9 @@
-ul.posts
+.posts.row
   - phrases.each do |phrase|
-    li
+    .col-md-4.col-sm-6
       = link_to phrase do
         .post_title
           = phrase.title
-        .post_date
-          = render partial: 'shared/buttons', locals: { phrase: phrase }
-          = phrase.updated_at.strftime("%Y年%m月%d日 %H:%M")
+      .post_date
+        = render partial: 'shared/buttons', locals: { phrase: phrase }
+        = phrase.updated_at.strftime("%Y年%m月%d日 %H:%M")

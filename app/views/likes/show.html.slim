@@ -3,7 +3,7 @@
   aside.col-md-4
     = render partial: "shared/profile", locals: { user: @user}
   .col-md-8
-    h2
+    .profile-nav
       = link_to '投稿一覧', user_path(@user)
       |  いいね一覧
     = render partial: "shared/phrases", locals: { phrases: @liked_phrases}
