@@ -1,8 +1,9 @@
 .profile
-  h2
-    = image_tag user.image.url, style:"width: 150px; height: 150px;"
-    = user.name
+  = image_tag user.image.url, style:"width: 150px; height: 150px;"
   ul
+    li
+      h2
+        = user.name
     li
       = user.email
     li
