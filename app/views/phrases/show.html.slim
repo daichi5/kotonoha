@@ -11,6 +11,10 @@
     = render partial: 'shared/buttons', locals: { phrase: @phrase }
   .phrase-description
     = @phrase.content
+  - if !@phrase.url.blank?
+    .phrase-url
+      | 引用元 
+      = @phrase.url
   .phrase-user
     = link_to "#{@phrase.user.name}さん", @phrase.user
     = @phrase.updated_at.strftime('%Y年%m月%d日 %H:%M:%S')
