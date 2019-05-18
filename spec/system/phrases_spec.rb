@@ -10,6 +10,7 @@ RSpec.describe 'Phrases', type: :system do
       click_link '新規投稿'
       fill_in '投稿内容', with: 'サンプルフレーズ' 
       fill_in '詳細', with: 'サンプル詳細'
+      fill_in '引用元URL', with: 'http://test.com/'
       click_button '投稿'
 
       expect(page).to have_content '投稿送信完了'
@@ -28,11 +29,13 @@ RSpec.describe 'Phrases', type: :system do
     click_link '編集'
     fill_in '投稿内容', with: 'title updated'
     fill_in '詳細', with: 'content updated'
+    fill_in '引用元URL', with: 'http://updated.com/'
     click_button '保存'
 
     expect(page).to have_content '投稿を編集しました'
     expect(page).to have_content 'title updated'
     expect(page).to have_content 'content updated'
+    expect(page).to have_content 'http://updated.com/'
   end
 
   it "user deletes a phrase" do
