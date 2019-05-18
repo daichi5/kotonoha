@@ -1,4 +1,4 @@
-.phrase-wrapper 
+.main-wrapper 
   - if current_user && current_user.id == @phrase.user_id
     .phrase-buttons
       = link_to '編集', edit_phrase_path(@phrase), class: 'btn btn-primary'
