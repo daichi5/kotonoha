@@ -50,6 +50,21 @@ class PhrasesController < ApplicationController
 
   private
   def phrase_params
-    params.require(:phrase).permit(:title, :content, :url)
+    params[:phrase][:url_title] = save_url_title(params[:phrase][:quoted])
+    params.require(:phrase).permit(:title, :content, :quoted, :url_title)
+  end
+
+  def save_url_title(url)
+    begin
+      doc = Nokogiri::HTML.parse(open(url))
+      title = doc.title
+      if title.length > 30
+        title[0..29] + "..."
+      else
+        title
+      end
+    rescue
+      nil
+    end
   end
 end

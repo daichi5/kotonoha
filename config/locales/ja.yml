@@ -19,7 +19,7 @@ ja:
       phrase:
         title: 投稿内容
         content: 詳細
-        url: 引用元URL
+        url: 引用元(タイトルまたはURL)
       comment:
         name: 名前
         content: コメント

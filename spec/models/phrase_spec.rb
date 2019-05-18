@@ -25,10 +25,4 @@ RSpec.describe Phrase, type: :model do
     phrase = FactoryBot.build(:phrase, user_id: -1 )
     expect(phrase).to_not be_valid
   end
-
-  it "is invalid with an invalid url" do
-    url = "test"
-    phrase = FactoryBot.build(:phrase, url: url)
-    expect(phrase).to_not be_valid
-  end
 end
