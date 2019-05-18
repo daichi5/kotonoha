@@ -1,25 +1,26 @@
-- if current_user && current_user.id == @phrase.user_id
-  .phrase-buttons
-    = link_to '編集', edit_phrase_path(@phrase), class: 'btn btn-primary'
-    = link_to '削除', @phrase, method: :delete, data: {confirm: '投稿を削除します。よろしいですか？'}, class: 'btn btn-danger'
-.phrase-main
-  h2
-    | " 
-    = @phrase.title
-    |  "
-  = render partial: 'shared/buttons', locals: { phrase: @phrase }
-.phrase-description
-  = @phrase.content
-.phrase-user
-  = link_to "#{@phrase.user.name}さん", @phrase.user
-  = @phrase.updated_at.strftime('%Y年%m月%d日 %H:%M:%S')
-= render partial: 'comments/comments', locals: { comments: @phrase.comments }
-= form_with model: [@phrase, @comment] do |f|
-  .form-group
-    = f.label :name
-    = f.text_field :name, class: 'form-control'
-  .form-group
-    = f.label :content
-    = f.text_area :content, class: 'form-control'
-  .form-group
-    = f.submit '投稿', class: 'btn btn-primary'
+.phrase-wrapper 
+  - if current_user && current_user.id == @phrase.user_id
+    .phrase-buttons
+      = link_to '編集', edit_phrase_path(@phrase), class: 'btn btn-primary'
+      = link_to '削除', @phrase, method: :delete, data: {confirm: '投稿を削除します。よろしいですか？'}, class: 'btn btn-danger'
+  .phrase-main
+    h2
+      | " 
+      = @phrase.title
+      |  "
+    = render partial: 'shared/buttons', locals: { phrase: @phrase }
+  .phrase-description
+    = @phrase.content
+  .phrase-user
+    = link_to "#{@phrase.user.name}さん", @phrase.user
+    = @phrase.updated_at.strftime('%Y年%m月%d日 %H:%M:%S')
+  = render partial: 'comments/comments', locals: { comments: @phrase.comments }
+  = form_with model: [@phrase, @comment], class: 'comment-form' do |f|
+    .form-group
+      = f.label :name
+      = f.text_field :name, class: 'form-control'
+    .form-group
+      = f.label :content
+      = f.text_area :content, class: 'form-control'
+    .form-group
+      = f.submit '投稿', class: 'btn btn-primary'
