@@ -11,3 +11,9 @@
     - if current_user && current_user.id == user.id
       li
         = link_to '編集', edit_user_path(user), class: 'btn btn-primary'
+  div
+    <canvas id="myPostChart" width="200" height="200"></canvas>
+    <script>draw_post_graph();</script>
+  div
+    <canvas id="myLikeChart" width="200" height="200"></canvas>
+    <script>draw_like_graph();</script>

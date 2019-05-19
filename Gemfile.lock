@@ -73,6 +73,8 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    chart-js-rails (0.1.6)
+      railties (> 3.1)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
     chromedriver-helper (2.1.1)
@@ -98,6 +100,10 @@ GEM
     ffi (1.10.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    gon (6.2.1)
+      actionpack (>= 3.0)
+      multi_json
+      request_store (>= 1.0)
     hpricot (0.8.6)
     html2slim (0.2.0)
       hpricot
@@ -191,6 +197,8 @@ GEM
     rb-inotify (0.10.0)
       ffi (~> 1.0)
     regexp_parser (1.4.0)
+    request_store (1.4.1)
+      rack (>= 1.4)
     rmagick (3.1.0)
     rspec-core (3.8.0)
       rspec-support (~> 3.8.0)
@@ -286,9 +294,11 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   carrierwave
+  chart-js-rails
   chromedriver-helper
   coffee-rails (~> 4.2)
   factory_bot_rails (~> 4.11)
+  gon
   html2slim
   jbuilder (~> 2.5)
   jquery-rails

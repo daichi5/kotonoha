@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @phrases = @user.phrases.all.order("updated_at DESC").page(params[:page])
+    set_chart(@user)
   end
   
   def new
