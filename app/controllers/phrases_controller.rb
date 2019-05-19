@@ -2,7 +2,7 @@ class PhrasesController < ApplicationController
   before_action :login_required, only: [:new, :create, :edit]
 
   def index
-    query = { title_or_content_cont: params[:q] }
+    query = { title_or_content_or_quoted_or_url_title_cont: params[:q] }
     q = Phrase.ransack(query)
     @phrases = q.result(distinct: true)
     
@@ -59,14 +59,17 @@ class PhrasesController < ApplicationController
   end
 
   def save_url_title(url)
+    if @phrase&.quoted != url
+      scraping_title(url)
+    elsif @phrase
+      @phrase.url_title
+    end
+  end
+
+  def scraping_title(url)
     begin
-      doc = Nokogiri::HTML.parse(open(url))
-      title = doc.title
-      if title.length > 30
-        title[0..29] + "..."
-      else
-        title
-      end
+      title = Nokogiri::HTML.parse(open(url)).title
+      title.length > 30 ? ( title[0..29] + "..." ) : title
     rescue
       nil
     end
