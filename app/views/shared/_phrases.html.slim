@@ -1,12 +1,13 @@
 .posts.row
   - phrases.each do |phrase|
     .col-md-4.col-sm-6
-      = link_to phrase do
-        .post_title
-          = phrase.title
-      .post_tags
-        - phrase.tag_list.first(3).each do |tag|
-          = link_to tag, phrases_path(tag_name: tag), class: 'tag-link'
-        = render partial: 'shared/buttons', locals: { phrase: phrase }
-      .post_date
-        = phrase.updated_at.strftime("%Y年%m月%d日 %H:%M")
+      .phrase-mask
+        = link_to phrase do
+          .post_title
+            = phrase.title
+        .post_tags
+          - phrase.tag_list.first(3).each do |tag|
+            = link_to tag, phrases_path(tag_name: tag), class: 'tag-link'
+          = render partial: 'shared/buttons', locals: { phrase: phrase }
+        .post_date
+          = phrase.updated_at.strftime("%Y年%m月%d日 %H:%M")
