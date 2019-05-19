@@ -17,10 +17,11 @@ ja:
         password: パスワード
         password_confirmation: パスワード（確認）
       phrase:
-        title: 投稿内容
-        content: 詳細
-        quoted: 引用元(タイトルまたはURL)
-        tag_list: タグ（カンマ区切り）　
+        title: 投稿内容　
+        content: 詳細　(任意)
+        author: 作者　(任意)
+        quoted: 引用元(タイトルまたはURL)(任意)
+        tag_list: タグ（カンマ区切り）(任意)　
       comment:
         name: 名前
         content: コメント

@@ -317,6 +317,7 @@ main {
     width: 100%;
     min-height: 100px;
     color: #424242;
+    margin-bottom: 30px;
   }
 
   .post > .phrase-mask > a:hover {
@@ -336,12 +337,22 @@ main {
   margin-right: 2px;
 }
 
+.post_title.popular {
+  font-size: 1.8em;
+}
+
 .post_title {
   font-size: 1.2em;
   font-weight: bold;
   text-align: center;
   padding: 15px;
-  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  text-shadow: 1px 1px 1px rgba(0,0,0, 0.2);
+  span {
+    margin-top: 12px;
+    font-size: 16px;
+  }
 }
 
 .post_buttons {
@@ -488,6 +499,7 @@ ul.users {
   background: #F2F2F2;
   border-radius: 5px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
@@ -504,6 +516,14 @@ ul.users {
   font-size: 2em; 
   line-height: 1.5em;
   padding: 0 20px;
+  margin-bottom: 40px;
+  text-shadow: 1px 1px 1px rgba(0,0,0, 0.2);
+}
+
+.phrase-main span {
+  font-size: 20px;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px rgba(0,0,0, 0.2);
 }
 
 .phrase-description {

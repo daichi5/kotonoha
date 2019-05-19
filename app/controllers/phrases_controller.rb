@@ -55,7 +55,7 @@ class PhrasesController < ApplicationController
   private
   def phrase_params
     params[:phrase][:url_title] = save_url_title(params[:phrase][:quoted])
-    params.require(:phrase).permit(:title, :content, :quoted, :url_title, :tag_list)
+    params.require(:phrase).permit(:title, :content, :author, :quoted, :url_title, :tag_list)
   end
 
   def save_url_title(url)

@@ -6,8 +6,10 @@ h2
   .col-12.post
     .phrase-mask
       = link_to @phrase do
-        .post_title
-          = @phrase.title
+        .post_title.popular
+          | " #{@phrase.title} "
+          span
+            = @phrase.author
       .post_tags
         - @phrase.tag_list.first(3).each do |tag|
           = link_to "# #{tag}", phrases_path(tag_name: tag), class: 'tag-link'
