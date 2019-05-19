@@ -30,7 +30,7 @@ RSpec.describe 'Phrases', type: :system do
     fill_in '投稿内容', with: 'title updated'
     fill_in '詳細', with: 'content updated'
     fill_in '引用元(タイトルまたはURL)', with: 'https://google.com/'
-    click_button '保存'
+    click_button '投稿'
 
     expect(page).to have_content '投稿を編集しました'
     expect(page).to have_content 'title updated'
