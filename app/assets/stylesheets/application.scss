@@ -568,6 +568,25 @@ ul.pagination {
   }
 }
 
+ul.categories > li {
+  font-size: 14px;
+  a {
+    display: inline-block;
+    font-size: 16px;
+    background: #6a6a6a;
+    color: #EDEDED;
+    border-radius: 10px;
+    padding: 6px 12px;
+    margin-top: 5px;
+    margin-right: 15px;
+  }
+
+  a:hover {
+    text-decoration: none;
+    color: #CCCCCC;
+  }
+}
+
 /* comments */
 
 ul.comments {

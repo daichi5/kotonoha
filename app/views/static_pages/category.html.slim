@@ -1,0 +1,10 @@
+- provide('title', 'カテゴリー別')
+.static-page
+  h2
+    i.fas.fa-plus
+    |  カテゴリ一覧
+  ul.categories
+    - @tags.each do |tag|
+      li
+        = link_to tag.name, phrases_path(tag_name: tag.name)
+        | #{tag.taggings_count} 件の投稿

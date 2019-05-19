@@ -11,6 +11,14 @@ class StaticPagesController < ApplicationController
   def help
   end
 
+  def popular
+    @phrases = Phrase.joins(:likes).group(:id).order('count(likes.id) desc').page(1)
+  end
+
+  def category
+    @tags = Phrase.tag_counts.order(taggings_count: "DESC")
+  end
+
   def test_login
     if !session[:user_id]
       session[:user_id] = 1
