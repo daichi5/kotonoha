@@ -10,4 +10,11 @@ class StaticPagesController < ApplicationController
 
   def help
   end
+
+  def test_login
+    if !session[:user_id]
+      session[:user_id] = 1
+    end
+    redirect_to root_path
+  end
 end
