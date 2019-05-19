@@ -1,5 +1,5 @@
 .profile
-  = image_tag user.image.url, style:"width: 150px; height: 150px;"
+  = image_tag user.image.url, style:"width: 120px; height: 120px;"
   ul
     li
       h2
@@ -8,6 +8,6 @@
       = user.email
     li
       = user.description
-  - if current_user && current_user.id == user.id
-    = link_to '編集', edit_user_path(user), class: 'btn btn-primary'
-    = link_to '削除', user, method: :delete, data: {confirm: 'アカウントを削除します。よろしいですか？'}, class: 'btn btn-danger'
+    - if current_user && current_user.id == user.id
+      li
+        = link_to '編集', edit_user_path(user), class: 'btn btn-primary'
