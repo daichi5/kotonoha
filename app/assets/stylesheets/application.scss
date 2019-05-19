@@ -346,8 +346,10 @@ ul.users {
 }
 
 .phrase-buttons {
-  text-align: right;
-  margin-bottom: 5px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
 }
 .phrase-main {
   min-height: 300px;
@@ -389,6 +391,30 @@ ul.users {
   a {
     color: #adadad;  
   }
+}
+
+.post_tags {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 0.8em;
+}
+
+a.tag-link {
+  background: #DCDCDC;
+  color: #888888;
+  padding: 4px 8px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+a.tag-link:hover {
+  color: #444444;
+}
+
+.tag-name {
+  font-size: 18px;
+  font-weight: bold;
 }
 
 /* comments */

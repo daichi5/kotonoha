@@ -1,6 +1,7 @@
 .main-wrapper 
-  - if current_user && current_user.id == @phrase.user_id
-    .phrase-buttons
+  .phrase-buttons
+    = render partial: 'shared/tags', locals: { phrase: @phrase }
+    - if current_user && current_user.id == @phrase.user_id
       = link_to '編集', edit_phrase_path(@phrase), class: 'btn btn-primary'
       = link_to '削除', @phrase, method: :delete, data: {confirm: '投稿を削除します。よろしいですか？'}, class: 'btn btn-danger'
   .phrase-main

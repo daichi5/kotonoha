@@ -5,6 +5,10 @@ class PhrasesController < ApplicationController
     query = { title_or_content_cont: params[:q] }
     q = Phrase.ransack(query)
     @phrases = q.result(distinct: true)
+    
+    if params[:tag_name]
+      @phrases = @phrases.tagged_with(params[:tag_name])
+    end
   end
 
   def show
@@ -51,7 +55,7 @@ class PhrasesController < ApplicationController
   private
   def phrase_params
     params[:phrase][:url_title] = save_url_title(params[:phrase][:quoted])
-    params.require(:phrase).permit(:title, :content, :quoted, :url_title)
+    params.require(:phrase).permit(:title, :content, :quoted, :url_title, :tag_list)
   end
 
   def save_url_title(url)

@@ -11,11 +11,6 @@ RSpec.describe Phrase, type: :model do
     expect(phrase).to_not be_valid
   end
 
-  it "is invalid without a content" do
-    phrase = FactoryBot.build(:phrase, content: nil)
-    expect(phrase).to_not be_valid
-  end
-
   it "is invalid without a user" do
     phrase = FactoryBot.build(:phrase, user: nil)
     expect(phrase).to_not be_valid

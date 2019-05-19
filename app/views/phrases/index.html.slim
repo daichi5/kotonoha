@@ -1,1 +1,4 @@
+- if params[:tag_name]
+  span.tag-name #{params[:tag_name]}
+  | とタグ付けされた投稿一覧
 = render partial: "shared/phrases", locals: { phrases: @phrases }

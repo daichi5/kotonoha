@@ -4,6 +4,8 @@
       = link_to phrase do
         .post_title
           = phrase.title
-      .post_date
+      .post_tags
+        = render partial: 'shared/tags', locals: { phrase: phrase }
         = render partial: 'shared/buttons', locals: { phrase: phrase }
+      .post_date
         = phrase.updated_at.strftime("%Y年%m月%d日 %H:%M")
