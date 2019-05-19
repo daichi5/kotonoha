@@ -1,6 +1,8 @@
 .main-wrapper 
-  - if current_user && current_user.id == @phrase.user_id
-    .phrase-buttons
+  .phrase-buttons
+    - @phrase.tag_list.each do |tag|
+      = link_to "# #{tag}", phrases_path(tag_name: tag), class: 'tag-link'
+    - if current_user && current_user.id == @phrase.user_id
       = link_to '編集', edit_phrase_path(@phrase), class: 'btn btn-primary'
       = link_to '削除', @phrase, method: :delete, data: {confirm: '投稿を削除します。よろしいですか？'}, class: 'btn btn-danger'
   .phrase-main
@@ -11,10 +13,15 @@
     = render partial: 'shared/buttons', locals: { phrase: @phrase }
   .phrase-description
     = @phrase.content
-  - if !@phrase.url.blank?
+  - if !@phrase.quoted.blank?
     .phrase-url
-      | 引用元 
-      = @phrase.url
+      | 引用元：
+      = @phrase.quoted_title
+      - if @phrase.url?
+        | (
+        = link_to @phrase.quoted, target: '_blank' do
+          = @phrase.quoted_url
+        | )
   .phrase-user
     = link_to "#{@phrase.user.name}さん", @phrase.user
     = @phrase.updated_at.strftime('%Y年%m月%d日 %H:%M:%S')

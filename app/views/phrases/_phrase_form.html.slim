@@ -1,0 +1,15 @@
+= form_for phrase do |f|
+  .form-group
+    = f.label :title
+    = f.text_area :title, class: "form-control"
+    br
+    = f.label :content
+    = f.text_area :content, class: "form-control"
+    br
+    = f.label :quoted
+    = f.text_field :quoted, class: "form-control"
+    br
+    = f.label :tag_list
+    = f.text_field :tag_list, value: "#{phrase.tag_list}", class: "form-control", placeholder: "例) ビジネス, 情熱, 有名人", maxlength: "15"
+    br
+    = f.submit '投稿', class: 'btn btn-primary'

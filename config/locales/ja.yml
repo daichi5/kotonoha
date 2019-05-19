@@ -19,7 +19,8 @@ ja:
       phrase:
         title: 投稿内容
         content: 詳細
-        url: 引用元URL
+        quoted: 引用元(タイトルまたはURL)
+        tag_list: タグ（カンマ区切り）　
       comment:
         name: 名前
         content: コメント

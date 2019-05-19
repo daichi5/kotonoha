@@ -1,1 +1,7 @@
+- if params[:q]
+  span.search-word #{params[:q]}
+  | に関連する投稿一覧
+- elsif params[:tag_name]
+  span.search-word #{params[:tag_name]}
+  | とタグ付けされた投稿一覧
 = render partial: "shared/phrases", locals: { phrases: @phrases }

@@ -2,6 +2,10 @@ require 'rails_helper'
 
 RSpec.describe StaticPagesController, type: :controller do
   describe "#home" do
+    before do
+      FactoryBot.create(:like)
+    end
+
     it "reponds successfully" do
       get :home
       expect(response).to be_successful

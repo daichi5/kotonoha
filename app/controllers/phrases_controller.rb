@@ -2,9 +2,13 @@ class PhrasesController < ApplicationController
   before_action :login_required, only: [:new, :create, :edit]
 
   def index
-    query = { title_or_content_cont: params[:q] }
+    query = { title_or_content_or_quoted_or_url_title_cont: params[:q] }
     q = Phrase.ransack(query)
-    @phrases = q.result(distinct: true)
+    @phrases = q.result(distinct: true).order(created_at: "DESC").page(params[:page])
+    
+    if params[:tag_name]
+      @phrases = @phrases.tagged_with(params[:tag_name])
+    end
   end
 
   def show
@@ -50,6 +54,24 @@ class PhrasesController < ApplicationController
 
   private
   def phrase_params
-    params.require(:phrase).permit(:title, :content, :url)
+    params[:phrase][:url_title] = save_url_title(params[:phrase][:quoted])
+    params.require(:phrase).permit(:title, :content, :quoted, :url_title, :tag_list)
+  end
+
+  def save_url_title(url)
+    if @phrase&.quoted != url
+      scraping_title(url)
+    elsif @phrase
+      @phrase.url_title
+    end
+  end
+
+  def scraping_title(url)
+    begin
+      title = Nokogiri::HTML.parse(open(url)).title
+      title.length > 30 ? ( title[0..29] + "..." ) : title
+    rescue
+      nil
+    end
   end
 end

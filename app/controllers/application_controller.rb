@@ -38,5 +38,4 @@ class ApplicationController < ActionController::Base
         redirect_to user
       end
     end
-
 end
