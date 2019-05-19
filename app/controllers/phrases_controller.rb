@@ -4,7 +4,7 @@ class PhrasesController < ApplicationController
   def index
     query = { title_or_content_or_quoted_or_url_title_cont: params[:q] }
     q = Phrase.ransack(query)
-    @phrases = q.result(distinct: true)
+    @phrases = q.result(distinct: true).order(created_at: "DESC").page(params[:page])
     
     if params[:tag_name]
       @phrases = @phrases.tagged_with(params[:tag_name])

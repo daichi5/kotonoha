@@ -4,7 +4,7 @@ class Phrase < ApplicationRecord
   has_many :comments, dependent: :destroy
   validates :title, presence: true
   acts_as_taggable
-  
+
   def quoted_title
     if self.url?
       self.url_title

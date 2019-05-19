@@ -195,6 +195,7 @@ main {
 }
 
 .posts {
+  margin-bottom: 10px;
   .col-md-4 {
     padding: 5px;
     background: transparent;
@@ -420,6 +421,18 @@ a.tag-link:hover {
 .search-word {
   font-size: 18px;
   font-weight: bold;
+}
+
+ul.pagination {
+  margin: 0 auto;
+  padding: 10px 0;
+  li > a {
+    color: #777777;
+  }
+  li.page-item.active > a {
+    background: #4d4d4d;
+    border-color: #4d4d4d;
+  }
 }
 
 /* comments */
