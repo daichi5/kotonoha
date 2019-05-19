@@ -26,7 +26,5 @@ header
               = link_to 'ログアウト', logout_path, method: :delete
       - else
         li
-          = link_to '新規登録', signup_path
-        li
-          = link_to 'ログイン', login_path
-  .top_box
+          = link_to 'はじめる', signup_path
+= render :partial => "layouts/header_image"
