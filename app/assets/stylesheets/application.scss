@@ -296,7 +296,7 @@ main {
 
 .posts {
   margin-bottom: 10px;
-  .col-md-4 {
+  .post { 
     padding: 5px;
     background: transparent;
     .phrase-mask {
@@ -310,7 +310,7 @@ main {
     }
   }
 
-  .col-md-4 > .phrase-mask > a {
+  .post > .phrase-mask > a {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -319,7 +319,7 @@ main {
     color: #424242;
   }
 
-  .col-md-4 > .phrase-mask > a:hover {
+  .post > .phrase-mask > a:hover {
     text-decoration: none;
     color: #ACACAC;
     font-size: 1.01em;
@@ -563,7 +563,7 @@ ul.pagination {
     color: #777777;
   }
   li.page-item.active > a {
-    background: #4d4d4d;
+    background: #006400;
     border-color: #4d4d4d;
   }
 }

@@ -1,6 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
-    @user = User.all
+    phrase_id = Like.group(:phrase_id).order(count_all: "DESC").count.first[0]
+    @phrase = Phrase.find(phrase_id)
     @phrases = Phrase.order(created_at: "DESC").page(params[:page])
   end
 

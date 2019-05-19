@@ -12,11 +12,13 @@ RSpec.describe 'SignIn', type: :system, js: true do
   end
 
   it "user signs out" do
+    FactoryBot.create(:like)
     login_as(user)
     visit '/'
     click_link 'アカウント'
     click_link 'ログアウト'
-    expect(page).to have_content('ログイン')
+
+    expect(page).to have_content('はじめる')
     expect(page).to_not have_content('アカウント')
   end
 
