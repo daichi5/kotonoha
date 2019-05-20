@@ -11,7 +11,7 @@
       = @phrase.title
       |  "
     span
-      = @phrase.author || "作者不詳"
+      = @phrase.author
     = render partial: 'shared/buttons', locals: { phrase: @phrase }
   .phrase-description
     = @phrase.content

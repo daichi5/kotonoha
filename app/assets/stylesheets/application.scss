@@ -219,8 +219,6 @@ li.account-menu:hover > ul {
   }
 }
 
-
-
 div.header-image {
   height: 400px;
   width: 100%;
@@ -338,17 +336,18 @@ main {
       border-radius: 15px;
       position: relative;
       box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 30px;
     }
   }
 
   .post > .phrase-mask > a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
     width: 100%;
     min-height: 100px;
     color: #424242;
-    margin-bottom: 30px;
   }
 
   .post > .phrase-mask > a:hover {
@@ -434,27 +433,46 @@ main {
 
 div.profile {
   width: 100%;
-  padding: 10px;
+  padding: 5px;
   border-radius: 5px;
   background: #fff;
   margin: 0 5px 10px;
   display: flex;
+  justify-content: start;
+  align-items: center;
   img {
-    margin-top: 20px;
+    height: 120px;
+    width: 120px;
+  }
+  ul {
+    margin: 20px 50px 0 10px;
+    padding-top: 5px;
+    li {
+      word-wrap: break-word;
+      margin-bottom: 5px;
+    }
   }
   div {
-    margin-left: 30px;
+    margin-right: 30px;
   }
 }
 
+@media screen and (max-width: 768px) {
+  canvas#myLikeChart {
+    visibility: hidden;
+  }
+  div.profile > ul {
+    margin: 0;
+  }
+  div.profile> div {
+    margin: 0;
+  }
+}
 
-div.profile ul {
-  margin-top: 20px;
-  margin-left: 20px;
-  padding-top: 5px;
-  li {
-    word-wrap: break-word;
-    margin-bottom: 5px;
+@media screen and (max-width: 576px) {
+  div.profile > img {
+    height: 80px;
+    width: 80px;
   }
 }
 

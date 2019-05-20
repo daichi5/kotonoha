@@ -1,11 +1,12 @@
 .profile
-  = image_tag user.image.url, style:"width: 120px; height: 120px;"
+  = image_tag user.image.url
   ul
     li
       h2
         = user.name
-    li
-      = user.email
+    - if current_user && current_user.id == user.id
+      li
+        = user.email
     li
       = user.description
     - if current_user && current_user.id == user.id

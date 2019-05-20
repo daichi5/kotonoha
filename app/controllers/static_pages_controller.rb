@@ -23,6 +23,6 @@ class StaticPagesController < ApplicationController
     if !session[:user_id]
       session[:user_id] = 1
     end
-    redirect_to root_path
+    redirect_to user_path(1)
   end
 end
