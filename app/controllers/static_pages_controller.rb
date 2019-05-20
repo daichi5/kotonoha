@@ -12,7 +12,7 @@ class StaticPagesController < ApplicationController
   end
 
   def popular
-    @phrases = Phrase.joins(:likes).group(:id).order('count(likes.id) desc').page(1)
+    @phrases = Phrase.joins(:likes).group(:id).order('count(likes.id) desc').page(params[:page])
   end
 
   def category
@@ -22,7 +22,9 @@ class StaticPagesController < ApplicationController
   def test_login
     if !session[:user_id]
       session[:user_id] = 1
+      redirect_to user_path(1)
+    else
+      redirect_to root_path
     end
-    redirect_to user_path(1)
   end
 end

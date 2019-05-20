@@ -1,10 +1,6 @@
 class LikesController < ApplicationController
   before_action :login_alert, only: [:create, :destroy]
 
-  def index
-
-  end
-
   def show
     @user = User.find(params[:user_id])
     @liked_phrases = @user.liked_phrases.order(created_at: "DESC").page(params[:page])
@@ -22,6 +18,7 @@ class LikesController < ApplicationController
   end
 
   private
+
   def login_alert
     unless current_user
       render 'login_alert'

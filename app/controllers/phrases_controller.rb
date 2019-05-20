@@ -2,12 +2,11 @@ class PhrasesController < ApplicationController
   before_action :login_required, only: [:new, :create, :edit]
 
   def index
-    query = { title_or_content_or_quoted_or_url_title_cont: params[:q] }
-    q = Phrase.ransack(query)
-    @phrases = q.result(distinct: true).order(created_at: "DESC").page(params[:page])
-    
     if params[:tag_name]
-      @phrases = @phrases.tagged_with(params[:tag_name])
+      @phrases = Phrase.tagged_with(params[:tag_name]).page(params[:page])
+    else
+      q = Phrase.ransack( { title_or_content_or_quoted_or_url_title_cont: params[:q] } )
+      @phrases = q.result(distinct: true).order(created_at: "DESC").page(params[:page])
     end
   end
 
@@ -47,12 +46,12 @@ class PhrasesController < ApplicationController
   def destroy
     phrase = Phrase.find(params[:id])
     user = phrase.user
-
     phrase.destroy
     redirect_to user
   end
 
   private
+
   def phrase_params
     params[:phrase][:url_title] = save_url_title(params[:phrase][:quoted])
     params.require(:phrase).permit(:title, :content, :author, :quoted, :url_title, :tag_list)
