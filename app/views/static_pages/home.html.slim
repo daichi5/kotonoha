@@ -1,19 +1,20 @@
 - provide('welcome', 'on')
-h2
-  i.fas.fa-fire-alt
-  |  人気の投稿
-.posts
-  .col-12.post
-    .phrase-mask
-      = link_to @phrase do
-        .post_title.popular
-          | " #{@phrase.title} "
-          span
-            = @phrase.author
-      .post_tags
-        - @phrase.tag_list.first(3).each do |tag|
-          = link_to "# #{tag}", phrases_path(tag_name: tag), class: 'tag-link'
-        = render partial: 'shared/buttons', locals: { phrase: @phrase }
+- if @phrase
+  h2
+    i.fas.fa-fire-alt
+    |  人気の投稿
+  .posts
+    .col-12.post
+      .phrase-mask
+        = link_to @phrase do
+          .post_title.popular
+            | " #{@phrase.title} "
+            span
+              = @phrase.author
+        .post_tags
+          - @phrase.tag_list.first(3).each do |tag|
+            = link_to "# #{tag}", phrases_path(tag_name: tag), class: 'tag-link'
+          = render partial: 'shared/buttons', locals: { phrase: @phrase }
 h2
   i.fas.fa-plus
   |  最新の投稿

@@ -18,6 +18,7 @@ RSpec.describe 'Users', type: :system, js: true do
 
   it 'user edits a profile' do
     login_as(user)
+    visit '/'
     click_link 'アカウント'
     click_link 'マイページ'
     click_link '編集'

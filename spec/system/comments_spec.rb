@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'Comments', type: :system, js: true do
   it 'visitor creates a comment' do
-    phrase = FactoryBot.create(:phrase)
+    user = FactoryBot.create(:user)
+    phrase = FactoryBot.create(:phrase, user: user)
     
     expect {
       visit "/phrases/#{phrase.id}"
