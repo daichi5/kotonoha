@@ -20,7 +20,7 @@ RSpec.describe 'Users', type: :system, js: true do
     login_as(user)
     visit '/'
     click_link 'アカウント'
-    click_link 'マイページ'
+    click_link 'マイページ', match: :first
     click_link '編集'
     fill_in '名前', with: 'updated name'
     fill_in 'メールアドレス', with: 'updated@example.com'

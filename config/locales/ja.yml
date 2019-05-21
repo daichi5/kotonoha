@@ -16,6 +16,8 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード（確認）
+        description: 自己紹介
+        image: プロフィール画像
       phrase:
         title: 投稿内容　
         content: 詳細　(任意)

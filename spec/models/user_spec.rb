@@ -56,4 +56,16 @@ RSpec.describe User, type: :model do
     user.valid?
     expect(user.errors[:password]).to include("は6文字以上で入力してください")
   end
+
+  it "is valid with a description 120 characters " do
+    user = FactoryBot.build(:user, description: "a" * 120 )
+    expect(user).to be_valid
+  end
+
+  it "is invalid with a description over 120 characters " do
+    user = FactoryBot.build(:user, description: "a" * 121 )
+    user.valid?
+    expect(user.errors[:description]).to include("は120文字以内で入力してください")
+  end
+
 end
