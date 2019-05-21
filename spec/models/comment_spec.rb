@@ -41,4 +41,19 @@ RSpec.describe Comment, type: :model do
     expect(comment.errors["content"]).to include('は200文字以内で入力してください')
   end
 
+  it "is deleted when parent phase is deleted" do
+    comment.save
+    phrase = Phrase.find(comment.phrase_id)
+    phrase.destroy
+    expect(Comment.find_by(id: comment.id)).to be_falsy
+  end
+
+  it "is deleted when parent user is deleted" do
+    comment.save
+    phrase = Phrase.find(comment.phrase_id)
+    user = User.find(phrase.user_id)
+    user.destroy
+    expect(Comment.find_by(id: comment.id)).to be_falsy
+  end
+
 end

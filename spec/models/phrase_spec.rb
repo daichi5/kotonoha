@@ -66,4 +66,11 @@ RSpec.describe Phrase, type: :model do
     phrase.user_id = -1
     expect(phrase).to_not be_valid
   end
+
+  it "is deleted when parent user id deleted" do
+    phrase.save
+    user = User.find(phrase.user_id)
+    user.destroy
+    expect(Phrase.find_by(id: phrase.id)).to be_falsy
+  end
 end
