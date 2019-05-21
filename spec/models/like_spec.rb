@@ -26,4 +26,12 @@ RSpec.describe Like, type: :model do
     like.phrase_id = -1
     expect(like).to_not be_valid
   end
+
+  it "is invalid when duplicated record exists" do
+    dup_like = FactoryBot.create(:like)
+    like.user_id = dup_like.user_id
+    like.phrase_id = dup_like.phrase_id
+    like.valid?
+    expect(like.errors["user_id"]).to include('は既にいいねしています')
+  end
 end
