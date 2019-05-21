@@ -1,6 +1,4 @@
 .main-wrapper
-  h2
-    | 投稿の編集
-  - if @phrase.errors.any?
-    = render partial: 'shared/errors', locals: { errors: @phrase.errors }
+  h2 投稿の編集
+  = render partial: 'shared/errors', locals: { errors: @phrase.errors }
   = render partial: 'phrase_form', locals: { phrase: @phrase }

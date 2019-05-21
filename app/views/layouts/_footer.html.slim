@@ -1,12 +1,9 @@
 footer
   ul
     li
-      a[href="/"]
-        | トップページ
+      = link_to 'トップページ', root_path
     li
-      a[href="/about"]
-        | ガイド
+      = link_to 'ガイド', about_path
     li
-      a[href="/contact"]
-        | 運営者情報
+      = link_to '運営者情報', contact_path
   |  Copyright 2019 kotonoha.com 

@@ -644,13 +644,23 @@ ul.users li {
   padding: 20px;
 }
 
-.phrase-buttons {
+/* phrases > index */
+
+.search-word {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* phrases > show */
+
+.post-header {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   margin-bottom: 5px;
 }
-.phrase-main {
+
+.post-main {
   min-height: 300px;
   background: #F2F2F2;
   border-radius: 5px;
@@ -666,35 +676,35 @@ ul.users li {
     bottom: 5px;
     right: 5px;
   }
+
+  h2 {
+    font-size: 2em; 
+    line-height: 1.5em;
+    padding: 0 20px;
+    margin-bottom: 40px;
+    text-shadow: 1px 1px 1px rgba(0,0,0, 0.2);
+  }
+  
+  span {
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px rgba(0,0,0, 0.2);
+  }
 }
 
-.phrase-main h2 {
-  font-size: 2em; 
-  line-height: 1.5em;
-  padding: 0 20px;
-  margin-bottom: 40px;
-  text-shadow: 1px 1px 1px rgba(0,0,0, 0.2);
-}
-
-.phrase-main span {
-  font-size: 20px;
-  font-weight: bold;
-  text-shadow: 1px 1px 1px rgba(0,0,0, 0.2);
-}
-
-.phrase-description {
+.post-description {
   text-align: center;
   padding: 10px 20px;
 }
 
-.phrase-url {
+.post-quoted {
   text-align :right;
   font-size: 18px;
   font-weight: bold;
   padding: 0px 20px;
 }
 
-.phrase-user {
+.post-user {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -708,12 +718,41 @@ ul.users li {
   }
 }
 
-
-
-.search-word {
-  font-size: 18px;
-  font-weight: bold;
+.comment-form {
+  width: 80%;
+  margin: 0 auto;
 }
+
+/* comments */
+
+ul.comments {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+ul.comments > li {
+  margin-top: 10px;  
+  padding-top: 10px;
+  border-top: solid 1px #ADADAD;
+
+  .comment-content {
+    margin-top: 10px;  
+    font-size: 1.3em;
+  }
+  
+  .comment-user {
+    display: inline-block;
+    font-size: 0.8em;  
+  }
+  
+  .comment-date {
+    display: inline-block;
+    color: #ADADAD;
+    font-size: 0.8em;
+  }
+}
+
+/* pagination nav */
 
 ul.pagination {
   display: flex;
@@ -737,34 +776,6 @@ ul.pagination {
     background: #006400;
     border-color: #4d4d4d;
   }
-}
-
-/* comments */
-
-ul.comments {
-  padding-bottom: 20px;
-  margin-bottom: 20px;
-  li {
-    margin-top: 10px;  
-    padding-top: 10px;
-    border-top: solid 1px #ADADAD;
-  }
-}
-
-.comment-content {
-  margin-top: 10px;  
-  font-size: 1.3em;
-}
-
-.comment-user {
-  display: inline-block;
-  font-size: 0.8em;  
-}
-
-.comment-date {
-  display: inline-block;
-  color: #ADADAD;
-  font-size: 0.8em;
 }
 
 /* footer */

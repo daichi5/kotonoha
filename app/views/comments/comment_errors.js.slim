@@ -1,3 +1,4 @@
 |
+  $('#errors').remove();
   var target = "form.comment-form";
-  $(target).before(" #{ j ( render partial: 'shared/errors', locals: { errors: @comment.errors } ) } "); 
+  $(target).prepend(" #{ j ( render partial: 'shared/errors', locals: { errors: @comment.errors } ) } "); 
