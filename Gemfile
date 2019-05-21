@@ -24,6 +24,9 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'kaminari'
+gem 'chart-js-rails'
+gem 'gon'
+gem 'faker'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

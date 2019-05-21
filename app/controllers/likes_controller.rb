@@ -4,6 +4,7 @@ class LikesController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     @liked_phrases = @user.liked_phrases.order(created_at: "DESC").page(params[:page])
+    set_chart(@user)
   end
 
   def create
@@ -17,6 +18,7 @@ class LikesController < ApplicationController
   end
 
   private
+
   def login_alert
     unless current_user
       render 'login_alert'

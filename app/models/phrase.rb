@@ -3,28 +3,24 @@ class Phrase < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
   validates :title, presence: true
+  validates :author, length: { maximum: 15 }
+  validates :quoted, length: { maximum: 800 }
   acts_as_taggable
 
   def quoted_title
-    if self.url?
-      self.url_title
-    else
-      self.quoted
-    end
+    self.url? ? self.url_title : self.quoted
   end
 
   def quoted_url
     url = self.quoted
     if self.url? && url.length > 30
-        url = url[0..29] + "..."
+      url[0..29] + "..."
     else
       url
     end
   end
 
   def url?
-    if !self.url_title.blank?
-      true
-    end
+    self.url_title.present?
   end
 end

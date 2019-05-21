@@ -1,13 +1,20 @@
 .profile
-  = image_tag user.image.url, style:"width: 120px; height: 120px;"
+  = image_tag user.image.url
   ul
     li
       h2
         = user.name
-    li
-      = user.email
+    - if current_user && current_user.id == user.id
+      li
+        = user.email
     li
       = user.description
     - if current_user && current_user.id == user.id
       li
         = link_to '編集', edit_user_path(user), class: 'btn btn-primary'
+  div
+    <canvas id="myPostChart" width="200" height="200"></canvas>
+    <script>draw_post_graph();</script>
+  div
+    <canvas id="myLikeChart" width="200" height="200"></canvas>
+    <script>draw_like_graph();</script>
