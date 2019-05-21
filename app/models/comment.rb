@@ -1,5 +1,5 @@
 class Comment < ApplicationRecord
   belongs_to :phrase
-  validates :name, presence: true
-  validates :content, presence: true
+  validates :name, presence: true, length: { maximum: 30 }
+  validates :content, presence: true, length: { maximum: 200 }
 end
