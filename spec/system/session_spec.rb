@@ -18,8 +18,8 @@ RSpec.describe 'SignIn', type: :system, js: true do
     click_link 'アカウント'
     click_link 'ログアウト'
 
-    expect(page).to have_content('はじめる')
     expect(page).to_not have_content('アカウント')
+    expect(page).to have_content('はじめる')
   end
 
 end

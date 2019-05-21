@@ -2,8 +2,9 @@ class Phrase < ApplicationRecord
   belongs_to :user
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
-  validates :title, presence: true
-  validates :author, length: { maximum: 15 }
+  validates :title, presence: true, length: { maximum: 150 }
+  validates :content, length: { maximum: 200 }
+  validates :author, length: { maximum: 50 }
   validates :quoted, length: { maximum: 800 }
   acts_as_taggable
 

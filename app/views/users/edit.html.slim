@@ -10,17 +10,17 @@
             = message
   = form_for @user do |f|
     .form-group
-      = f.label :name, '名前'
+      = f.label :name
       = f.text_field :name, class:'form-control'
       br
-      = f.label :email, 'メールアドレス'
+      = f.label :email
       = f.text_field :email, class:'form-control'
       br
-      = f.label :description, '自己紹介'
+      = f.label :description
       = f.text_area :description, row: 3, class: 'form-control'
       br
       br
-      = f.label :image, 'プロフィール画像'
+      = f.label :image
       br
       = image_tag @user.image.url, id: :img_prev
       br
