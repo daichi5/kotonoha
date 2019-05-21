@@ -1,4 +1,4 @@
-div class="post_buttons" id="post-#{phrase.id}"
+div class="post-buttons" id="post-#{phrase.id}"
   - if liked?(phrase.id)
     = link_to phrase_likes_path(phrase), method: :delete, remote: true, class: 'fav-button', id: phrase.id do
       i.fas.fa-heart

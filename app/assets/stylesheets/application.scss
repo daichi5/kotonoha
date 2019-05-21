@@ -48,6 +48,7 @@ h2, h3 {
   border-radius: 5px;
   color: #008000;
 }
+
 .btn-primary:hover {
   background: #008000;
   border: 1px solid #008000;
@@ -65,18 +66,7 @@ h2, h3 {
   background: #dd0000;
 }
 
-
-/* header */
-
-header {
-  background: #fff;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  right: 0;
-  left: 0;
-  border-bottom: solid 1px #006400;
-}
+/* notice */
 
 .notice {
   width: 100%;
@@ -91,7 +81,7 @@ header {
   background: #ff8c00;
   color: #fff;
   animation-name: fadeout;
-  animation-duration: 6s;
+  animation-duration: 1.4s;
   animation-iteration-count: 1; 
 }
 
@@ -100,7 +90,7 @@ header {
     opacity: 1;
     visibility: visible;
   }
-  80% {
+  30% {
     opacity: 1;
   }
   100% {
@@ -109,12 +99,65 @@ header {
   }
 }
 
-img.logo {
-  width: 150px;
-  height: auto;
+/* header */
+
+header {
+  background: #fff;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  left: 0;
+  border-bottom: solid 1px #006400;
 }
 
-form.search-form {
+header nav {
+  display: flex;
+  width: 80%;
+  height: 40px;
+  margin: 0 auto;
+
+  h1 {
+    margin-right: auto;
+    font-size: 1.4em;
+    font-weight: bold;
+    line-height: 40px;
+  }
+
+  h1 a, h1 a:hover {
+    text-decoration: none;
+    color: #252525;
+  }
+
+  ul {
+    align-items: center;
+    display: flex;
+  }
+  
+  ul li {
+    text-align: center;
+  }
+  
+  ul  li  a {
+    text-decoration: none;
+    color: #4f4f4f;
+    display: inline-block;
+    width: 80px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 13px;
+  }
+  
+  ul li a:hover {
+    border-bottom: 1px solid #858585;
+    height: 39px;
+    color: #858585;
+    text-decoration: none;
+  
+  }
+}
+
+header nav form.search-form {
   input {
     line-height: 0.8em;  
     font-size: 0.7em;
@@ -126,56 +169,11 @@ form.search-form {
   button {
     background: transparent; 
     border: 0;
+
     i {
       color: #4f4f4f;
     }
   } 
-}
-
-nav {
-  display: flex;
-  width: 80%;
-  height: 40px;
-  margin: 0 auto;
-}
-
-nav h1 {
-  margin-right: auto;
-  font-size: 1.4em;
-  font-weight: bold;
-  line-height: 40px;
-}
-
-nav h1 a, nav h1 a:hover {
-  text-decoration: none;
-  color: #252525;
-}
-
-nav ul {
-  align-items: center;
-  display: flex;
-}
-
-nav ul li {
-  text-align: center;
-}
-
-nav ul  li  a {
-  text-decoration: none;
-  color: #4f4f4f;
-  display: inline-block;
-  width: 80px;
-  height: 40px;
-  line-height: 40px;
-  font-size: 13px;
-}
-
-nav ul li a:hover {
-  border-bottom: 1px solid #858585;
-  height: 39px;
-  color: #858585;
-  text-decoration: none;
-
 }
 
 @media screen and (max-width: 768px) {
@@ -186,14 +184,14 @@ nav ul li a:hover {
 
 li.account-menu {
   position: relative;
-}
 
-li.account-menu > a {
-  display: block;
-}
-
-li.account-menu > a:hover {
-  border: 0; 
+  a {
+    display: block;
+  }
+  
+  a:hover {
+    border: 0; 
+  }
 }
 
 li.account-menu > ul {
@@ -229,10 +227,12 @@ div.header-image {
   overflow: hidden;
   display: flex;
 }
-.header-image-inner {
+
+div.header-image-inner {
   position: relative;
   width: 80%;
   margin: 0 auto;
+
   p {
     position: absolute;
     top: 80px;
@@ -254,6 +254,7 @@ div.header-image {
       font-size: 22px;
       border-radius: 15px;
     }
+
     a.first-button {
       background: #006400;
       color: #fff;
@@ -281,7 +282,8 @@ div.header-image {
 
 div.header-image.shorter {
   height: 200px;
-  .header-image-inner > p {
+
+  div.header-image-inner > p {
     font-size: 2em;
     top: 70px;
     color: #000;
@@ -307,8 +309,6 @@ div.header-image.shorter {
   }
 }
 
-
-
 /* main */
 
 main {
@@ -317,61 +317,56 @@ main {
   margin: 20px auto;
 }
 
-.static-page {
-  background: #fff;
-  padding: 20px;
-  min-height: 350px;
-}
+/* shared > _phrases */
 
 .posts {
   margin-bottom: 10px;
-  .post { 
-    padding: 5px;
-    background: transparent;
-    .phrase-mask {
+}
+
+.posts > .post { 
+  padding: 5px;
+  background: transparent;
+
+  .post-mask {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    padding: 8px;
+    border-radius: 15px;
+    position: relative;
+    box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 30px;
+
+    > a {
       width: 100%;
-      height: 100%;
-      background: #fff;
-      padding: 8px;
-      border-radius: 15px;
-      position: relative;
-      box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.1);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding-bottom: 30px;
+      min-height: 100px;
+      color: #424242;
+    }
+  
+    > a:hover {
+      text-decoration: none;
+      color: #ACACAC;
+      font-size: 1.01em;
+      transition: 0.4s;
     }
   }
-
-  .post > .phrase-mask > a {
-
-    width: 100%;
-    min-height: 100px;
-    color: #424242;
-  }
-
-  .post > .phrase-mask > a:hover {
-    text-decoration: none;
-    color: #ACACAC;
-    font-size: 1.01em;
-    transition: 0.4s;
-  }
 }
 
-.fa-heart {
-  font-size: 22px;
-  margin-right: 2px;
-}
-.fa-comment {
-  font-size: 22px;
-  margin-right: 2px;
-}
-
-.post_title.popular {
-  font-size: 1.8em;
+.post-tags {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 0.8em;
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  padding-left: 10px;
 }
 
-.post_title {
+.post-title {
   font-size: 1.2em;
   font-weight: bold;
   text-align: center;
@@ -385,7 +380,33 @@ main {
   }
 }
 
-.post_buttons {
+
+/* shared > _tags */
+
+a.tag-link {
+  background: #DCDCDC;
+  color: #888888;
+  padding: 4px 8px;
+  margin-right: 5px;
+  border-radius: 5px;
+}
+
+a.tag-link:hover {
+  color: #444444;
+}
+
+/* shared > _buttons */
+
+.fa-heart {
+  font-size: 22px;
+  margin-right: 2px;
+}
+.fa-comment {
+  font-size: 22px;
+  margin-right: 2px;
+}
+
+.post-buttons {
   font-size: 18px;
   margin-top: 5px;
   color: #BDBDBD;
@@ -393,6 +414,7 @@ main {
     text-decoration: none;
     margin-right: 5px;
   }
+
   a.fav-button {
     color: #FA5882;
   }
@@ -431,6 +453,8 @@ main {
   100% {color: #BDBDBD; }
 }
 
+/* shared > _profile */
+
 div.profile {
   width: 100%;
   padding: 5px;
@@ -440,18 +464,22 @@ div.profile {
   display: flex;
   justify-content: start;
   align-items: center;
+
   img {
     height: 120px;
     width: 120px;
   }
+
   ul {
     margin: 20px 50px 0 10px;
     padding-top: 5px;
+
     li {
       word-wrap: break-word;
       margin-bottom: 5px;
     }
   }
+
   div {
     margin-right: 30px;
   }
@@ -461,9 +489,11 @@ div.profile {
   canvas#myLikeChart {
     visibility: hidden;
   }
+
   div.profile > ul {
     margin: 0;
   }
+
   div.profile> div {
     margin: 0;
   }
@@ -476,28 +506,93 @@ div.profile {
   }
 }
 
+/* shared > _errors */
+
+.alert {
+  font-size: 13px;
+}
+
+/* static-pages */
+
+.static-page {
+  background: #fff;
+  padding: 20px;
+  min-height: 350px;
+}
+
+/* static-pages > category */
+
+ul.categories > li {
+  font-size: 14px;
+
+  a {
+    display: inline-block;
+    font-size: 16px;
+    background: #6a6a6a;
+    color: #EDEDED;
+    border-radius: 10px;
+    padding: 6px 12px;
+    margin-top: 5px;
+    margin-right: 15px;
+  }
+
+  a:hover {
+    text-decoration: none;
+    color: #CCCCCC;
+  }
+}
+
+/* static-pages > home */
+
+.post-title.post-popular {
+  font-size: 1.8em;
+}
+
+/* users > show */
+
 .profile-nav {
   font-weight: bold;
 }
+
+/* users > index */
 
 ul.users {
   padding: 20px;
   margin: 0;
   background: #fff;
-  li {
-    display: flex;
-    padding: 10px;
-    img {
-      width: 100px;
-      height: 100px;
-      margin-right: 15px;
-      border-radius: 10px;
-    }
+}
 
+ul.users li {
+  display: flex;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-bottom: solid 1px #DCDCDC;
+
+  img {
+    width: 100px;
+    height: 100px;
+    margin-right: 15px;
+    border-radius: 10px;
+  }
+
+  .users-profile {
+    a {
+      display: block;
+      font-weight: bold;
+      color: #1e90ff;
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+  
+    p {
+      font-size: 13px;
+    }
   }
 }
 
-.input_form {
+/* users > new & sessions > new */
+
+.sign-form {
   width: 400px;
   margin: 0 auto;
   padding: 15px;
@@ -506,15 +601,16 @@ ul.users {
   background: #fff;
   box-shadow: 1px 1px 1px 1px rgba(0,0,0, 0.1);
 
-  ul {
+  ul.sign-menu {
     display: flex;
     margin-bottom: 10px;
+
     li {
       width: 50%;
       text-align: center;
     }
 
-    li.active{
+    li.active {
       border-bottom: solid 2px #008000;
     }
 
@@ -532,18 +628,20 @@ ul.users {
   }
 }
 
+/* users > edit */
+
 #img_prev {
   max-width: 256px;
   max-height: 256px; 
 }
 
-/* phrases/show */
+/* phrases */
+
 .main-wrapper {
   width: 100%;
   margin: 0 auto;
   background: #fff;
   padding: 20px;
-
 }
 
 .phrase-buttons {
@@ -563,7 +661,7 @@ ul.users {
   position: relative;
   text-align: center;
 
-  .post_buttons {
+  .post-buttons {
     position: absolute;
     bottom: 5px;
     right: 5px;
@@ -610,28 +708,7 @@ ul.users {
   }
 }
 
-.post_tags {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  font-size: 0.8em;
-  position: absolute;
-  bottom: 5px;
-  right: 10px;
-  padding-left: 10px;
-}
 
-a.tag-link {
-  background: #DCDCDC;
-  color: #888888;
-  padding: 4px 8px;
-  margin-right: 5px;
-  border-radius: 5px;
-}
-
-a.tag-link:hover {
-  color: #444444;
-}
 
 .search-word {
   font-size: 18px;
@@ -639,34 +716,26 @@ a.tag-link:hover {
 }
 
 ul.pagination {
+  display: flex;
+  justify-content: center;
   margin: 0 auto;
   padding-top: 10px;
+
+  li {
+    width: 80px;
+    height: 40px;
+  }
+
   li > a {
     padding-top: 10px;
     color: #777777;
+    text-align: center;
+    font-size: 13px;
   }
+
   li.page-item.active > a {
     background: #006400;
     border-color: #4d4d4d;
-  }
-}
-
-ul.categories > li {
-  font-size: 14px;
-  a {
-    display: inline-block;
-    font-size: 16px;
-    background: #6a6a6a;
-    color: #EDEDED;
-    border-radius: 10px;
-    padding: 6px 12px;
-    margin-top: 5px;
-    margin-right: 15px;
-  }
-
-  a:hover {
-    text-decoration: none;
-    color: #CCCCCC;
   }
 }
 
