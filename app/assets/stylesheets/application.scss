@@ -81,7 +81,7 @@ h2, h3 {
   background: #ff8c00;
   color: #fff;
   animation-name: fadeout;
-  animation-duration: 1.4s;
+  animation-duration: 2.2s;
   animation-iteration-count: 1; 
 }
 
@@ -90,7 +90,7 @@ h2, h3 {
     opacity: 1;
     visibility: visible;
   }
-  30% {
+  40% {
     opacity: 1;
   }
   100% {
@@ -518,6 +518,21 @@ div.profile {
   background: #fff;
   padding: 20px;
   min-height: 350px;
+
+  h1 {
+    font-weight: bold;
+  }
+
+  h2 {
+    margin-top: 24px;
+    font-size: 26px;
+  }
+
+  p {
+    margin: 12px 0 0 36px;
+    font-size: 16px;
+    line-height: 32px;
+  }
 }
 
 /* static-pages > category */
@@ -779,6 +794,7 @@ ul.pagination {
 }
 
 /* footer */
+
 footer {
   padding: 10px;
   background: #222222;
