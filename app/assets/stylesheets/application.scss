@@ -99,6 +99,16 @@ h2, h3 {
   }
 }
 
+/* breadcrumbs */
+
+.breadcrumbs {
+  margin-bottom: 10px;  
+  
+  span.current {
+    font-weight: bold;
+  }
+}
+
 /* header */
 
 header {

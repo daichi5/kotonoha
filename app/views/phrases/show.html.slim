@@ -1,3 +1,5 @@
+- provide 'title', "#{@phrase.user.name}さんの投稿"
+- breadcrumb :phrases_show, @phrase
 .main-wrapper 
   .post-header
     = render partial: 'shared/tags', locals: { tags: @phrase.tag_list }
