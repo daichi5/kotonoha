@@ -46,13 +46,33 @@ end
 
 #phrases
 
-crumb :phrases_index do
-  link '投稿一覧', phrases_path
+crumb :phrases_index do |param|
+  if param
+    link param, phrases_path(tag_name: param)
+    parent :category
+  else
+    link '投稿一覧', phrases_path
+  end
 end
 
-crumb :phrases_show do |phrase|
+crumb :phrases_show do |phrase, referer|
   link '投稿', phrase_path(phrase)
-  parent :users_show, phrase.user
+
+  if referer
+    uri = URI.parse(referer)
+  
+    if uri.path.include?('/popular')
+      parent :popular
+    elsif uri.path.include?('/likes')
+      user = User.find(uri.path[/\A\/users\/(.*)\/likes\z/, 1])
+      parent :users_show, user
+    elsif uri.path.include?('/users') || uri.path.include?('/edit')
+      parent :users_show, phrase.user
+    elsif uri.query
+      uri = Hash[URI.decode_www_form(uri.query)]
+      parent :phrases_index, uri['tag_name'] if uri['tag_name']
+    end
+  end
 end
 
 crumb :phrases_new do |user|
@@ -62,7 +82,7 @@ end
 
 crumb :phrases_edit do |phrase|
   link '投稿の編集'
-  parent :phrases_show, phrase
+  parent :phrases_show, phrase, '/users'
 end
 
 #sessions
