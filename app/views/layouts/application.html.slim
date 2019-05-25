@@ -18,6 +18,6 @@ html
           = msg
     = render :partial => "layouts/header"
     main
-
+      == breadcrumbs separator: ' > ' 
       = yield
     = render :partial => "layouts/footer"

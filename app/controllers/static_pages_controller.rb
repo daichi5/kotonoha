@@ -22,6 +22,7 @@ class StaticPagesController < ApplicationController
   def test_login
     if !session[:user_id]
       session[:user_id] = 1
+      flash[:success] = 'テストユーザーとしてログインしました'
       redirect_to user_path(1)
     else
       redirect_to root_path

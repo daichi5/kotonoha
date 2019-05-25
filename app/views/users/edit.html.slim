@@ -1,13 +1,9 @@
-- provide('title', 'プロフィール編集')
+- provide 'title', 'プロフィール編集'
+- breadcrumb :users_edit, @user
 .main-wrapper
-  h2
-    | プロフィール編集
-  - if @user.errors.any?
-    .alert.alert-danger
-      ul
-        - @user.errors.full_messages.each do |message|
-          li
-            = message
+  h2 プロフィール編集
+  br
+  = render partial: 'shared/errors', locals: { errors: @user.errors }
   = form_for @user do |f|
     .form-group
       = f.label :name
@@ -29,5 +25,20 @@
       br
       br
       = f.submit '変更を保存', class: 'btn btn-primary'
+      
   script[type="text/javascript"]
-    |  $(function() { function readURL(input) { if (input.files && input.files[0]) { var reader = new FileReader(); reader.onload = function (e) { $('#img_prev').attr('src', e.target.result); } reader.readAsDataURL(input.files[0]); } } $("#user_image").change(function(){ readURL(this); }); }); 
+    |
+      $(function() {
+        function readURL(input) {
+          if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+              $('#img_prev').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+          }
+        }
+        $("#user_image").change(function(){
+          readURL(this);
+        });
+      });

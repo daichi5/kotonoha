@@ -1,21 +1,28 @@
 - provide('title', 'help')
+- breadcrumb :contact
 .static-page
-  h1
-    | 使い方
-  br
-  |  sentences..
-  br
-  |  sentences..
-  br
-  |  sentences..
-  br
-  |  sentences..
-  br
-  |  sentences..
-  br
-  |  sentences..
-  br
-  |  sentences..
-  br
-  |  sentences..
-  br
+  h1 運営情報
+  h2 運営体制
+  p
+    | Kotonohaは個人が運営しているWEBサービスです
+    br
+    b
+      = link_to 'daichi_develop', 'https://twitter.com/daichi_develop', target: '_blank'
+    | が制作、運営しており
+    br
+    | WEB開発企業への転職の際して提示するポートフォリオの一つとする予定です。
+    br
+    | 目的の１つとしています。
+  h2 運営者へのお問い合わせ
+  p
+    b
+      | Twitter:
+      = link_to 'daichi_develop', 'https://twitter.comd/dacihi_develop', target: '_blank'
+      br
+      | Github:
+      = link_to 'daichi5', 'https://github.com/daichi5', target: '_blank'
+      br
+      | Qiita:
+      = link_to 'daichi41', 'https://qiita.com/daichi41', target: '_blank'
+
+

@@ -1,6 +1,7 @@
-- provide('title', 'ログイン')
-.input_form
-  ul
+- provide 'title', 'ログイン'
+- breadcrumb :sessions_new
+.sign-form
+  ul.sign-menu
     li
       = link_to '新規登録', signup_path
     li.active ログイン

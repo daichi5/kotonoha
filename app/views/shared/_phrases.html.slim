@@ -1,12 +1,11 @@
 .posts.row
   - phrases.each do |phrase|
     .col-md-4.col-sm-6.post
-      .phrase-mask
+      .post-mask
         = link_to phrase do
-          .post_title
+          .post-title
             = phrase.title
-        .post_tags
-          - phrase.tag_list.first(3).each do |tag|
-            = link_to "# #{tag}", phrases_path(tag_name: tag), class: 'tag-link'
+        .post-tags
+          = render partial: 'shared/tags', locals: { tags: phrase.tag_list.first(3) }
           = render partial: 'shared/buttons', locals: { phrase: phrase }
 = paginate phrases

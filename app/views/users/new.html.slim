@@ -1,11 +1,11 @@
-- provide('title', '新規登録')
-.input_form
-  ul
+- provide 'title', '新規登録'
+- breadcrumb :users_new
+.sign-form
+  ul.sign-menu
     li.active 新規登録
     li
       =link_to 'ログイン', login_path
-  - if @user.errors.any?
-    = render partial: 'shared/errors', locals: { errors: @user.errors }
+  = render partial: 'shared/errors', locals: { errors: @user.errors }
   = form_for @user, url: signup_path do |f|
     .form-group
       = f.label :name

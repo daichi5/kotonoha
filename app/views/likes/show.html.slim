@@ -1,4 +1,5 @@
-- provide('title', @user.name)
+- provide 'title', @user.name
+- breadcrumb :users_show, @user
 .row
   = render partial: "shared/profile", locals: { user: @user}
 .profile-nav

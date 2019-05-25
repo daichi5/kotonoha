@@ -1,11 +1,12 @@
+- provide 'title', "#{@phrase.user.name}さんの投稿"
+- breadcrumb :phrases_show, @phrase, request.headers[:referer]
 .main-wrapper 
-  .phrase-buttons
-    - @phrase.tag_list.each do |tag|
-      = link_to "# #{tag}", phrases_path(tag_name: tag), class: 'tag-link'
+  .post-header
+    = render partial: 'shared/tags', locals: { tags: @phrase.tag_list }
     - if current_user && current_user.id == @phrase.user_id
       = link_to '編集', edit_phrase_path(@phrase), class: 'btn btn-primary'
       = link_to '削除', @phrase, method: :delete, data: {confirm: '投稿を削除します。よろしいですか？'}, class: 'btn btn-danger'
-  .phrase-main
+  .post-main
     h2
       | " 
       = @phrase.title
@@ -13,10 +14,10 @@
     span
       = @phrase.author
     = render partial: 'shared/buttons', locals: { phrase: @phrase }
-  .phrase-description
+  .post-description
     = @phrase.content
   - if !@phrase.quoted.blank?
-    .phrase-url
+    .phrase-quoted
       | 引用元：
       = @phrase.quoted_title
       - if @phrase.url?
@@ -24,7 +25,7 @@
         = link_to @phrase.quoted, target: '_blank' do
           = @phrase.quoted_url
         | )
-  .phrase-user
+  .post-user
     = link_to "#{@phrase.user.name}さん", @phrase.user
     span
       = @phrase.updated_at.strftime('%Y年%m月%d日 %H:%M:%S')
