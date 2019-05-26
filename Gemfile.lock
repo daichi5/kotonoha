@@ -108,9 +108,6 @@ GEM
       request_store (>= 1.0)
     gretel (3.0.9)
       rails (>= 3.1.0)
-    hpricot (0.8.6)
-    html2slim (0.2.0)
-      hpricot
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
     io-like (0.3.0)
@@ -305,7 +302,6 @@ DEPENDENCIES
   faker
   gon
   gretel
-  html2slim
   jbuilder (~> 2.5)
   jquery-rails
   kaminari
