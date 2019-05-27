@@ -3,15 +3,14 @@ class PhrasesController < ApplicationController
 
   def index
     if params[:tag_name]
-      @phrases = Phrase.tagged_with(params[:tag_name]).page(params[:page])
+      @phrases = Phrase.set_buttons.tagged_with(params[:tag_name]).page(params[:page])
     else
-      q = Phrase.ransack( { title_or_content_or_quoted_or_url_title_cont: params[:q] } )
-      @phrases = q.result(distinct: true).order(created_at: "DESC").page(params[:page])
+      @phrases = Phrase.set_buttons.search_with(params[:q]).order(created_at: "DESC").page(params[:page])
     end
   end
 
   def show
-    @phrase = Phrase.find(params[:id])
+    @phrase = Phrase.set_buttons.find(params[:id])
     @comment = @phrase.comments.build
   end
 

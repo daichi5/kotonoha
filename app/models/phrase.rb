@@ -6,7 +6,14 @@ class Phrase < ApplicationRecord
   validates :content, length: { maximum: 200 }
   validates :author, length: { maximum: 50 }
   validates :quoted, length: { maximum: 800 }
+
+  scope :search_with, ->  (q) { ransack( { title_or_content_or_quoted_or_url_title_cont: q } ).result(distinct: true) }
+  scope :set_buttons, -> { includes(:tags).left_joins(:likes, :comments).group(:id).select('phrases.*, COUNT(likes.id) AS likes_count, COUNT(comments.id) AS comments_count')
+  }
+  
+
   acts_as_taggable
+
 
   def quoted_title
     self.url? ? self.url_title : self.quoted

@@ -6,6 +6,6 @@
           .post-title
             = phrase.title
         .post-tags
-          = render partial: 'shared/tags', locals: { tags: phrase.tag_list.first(3) }
+          = render partial: 'shared/tags', locals: { tags: phrase.tags.pluck(:name)[0..2] }
           = render partial: 'shared/buttons', locals: { phrase: phrase }
 = paginate phrases

@@ -2,10 +2,10 @@ div class="post-buttons" id="post-#{phrase.id}"
   - if liked?(phrase.id)
     = link_to phrase_likes_path(phrase), method: :delete, remote: true, class: 'fav-button', id: phrase.id do
       i.fas.fa-heart
-      = phrase.likes.count
+      = phrase['likes_count']
   - else
     = link_to phrase_likes_path(phrase), method: :post, remote: true, class: 'fav-button-off', id: phrase.id do
       i.far.fa-heart
-      = phrase.likes.count
+      = phrase['likes_count']
   i.far.fa-comment
-  = phrase.comments.count
+  = phrase['comments_count']

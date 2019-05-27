@@ -2,7 +2,7 @@
 - breadcrumb :phrases_show, @phrase, request.headers[:referer]
 .main-wrapper 
   .post-header
-    = render partial: 'shared/tags', locals: { tags: @phrase.tag_list }
+    = render partial: 'shared/tags', locals: { tags: @phrase.tags.pluck(:name) }
     - if current_user && current_user.id == @phrase.user_id
       = link_to '編集', edit_phrase_path(@phrase), class: 'btn btn-primary'
       = link_to '削除', @phrase, method: :delete, data: {confirm: '投稿を削除します。よろしいですか？'}, class: 'btn btn-danger'

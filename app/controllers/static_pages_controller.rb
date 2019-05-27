@@ -1,8 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
-    phrase_id = Like.group(:phrase_id).order(count_all: "DESC").count.keys.first
-    @phrase = Phrase.find_by(id: phrase_id)
-    @phrases = Phrase.order(created_at: "DESC").page(params[:page])
+    @phrase = Phrase.set_buttons.order(likes_count: "DESC").first
+    @phrases = Phrase.set_buttons.order(created_at: "DESC").page(params[:page])
   end
 
   def about
@@ -12,7 +11,7 @@ class StaticPagesController < ApplicationController
   end
 
   def popular
-    @phrases = Phrase.joins(:likes).group(:id).order('count(likes.id) desc').page(params[:page])
+    @phrases = Phrase.set_buttons.order(likes_count: "DESC").page(params[:page])
   end
 
   def category
