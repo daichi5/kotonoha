@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
 
   def liked?(phrase_id)
     return false unless current_user
-    current_user.likes.find_by(phrase_id: phrase_id)
+    current_user.likes.pluck(:phrase_id).include?(phrase_id)
   end
   
   def login_required
@@ -36,13 +36,13 @@ class ApplicationController < ActionController::Base
   def set_chart(user)
     dataset = { post: {}, like: {}}
     list = {
-      post: user.phrases,
-      like: user.liked_phrases
+      post: user.phrases.includes(:tags),
+      like: user.liked_phrases.includes(:tags)
     } 
     
     list.each do |key, value|
       hash = Hash.new(0)
-      value = value.map(&:tag_list).flatten
+      value = value.map{|v| v.tags.pluck(:name) }.flatten
       value.each {|i| hash[i] += 1 }
       hash = Hash[hash.sort{|(k1, v1), (k2, v2)| v2 <=> v1 }]
       dataset[key]["data"] = hash.values[0..5]
