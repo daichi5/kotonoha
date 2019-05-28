@@ -19,14 +19,14 @@ gem 'slim'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
-gem 'carrierwave'
-gem 'rmagick'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'kaminari'
 gem 'chart-js-rails'
 gem 'gon'
 gem 'faker'
 gem 'gretel'
+gem 'mini_magick'
+gem 'aws-sdk-s3', require: false
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

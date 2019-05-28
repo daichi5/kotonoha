@@ -8,8 +8,8 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: VALID_EMAIL_REGEX }
   validates :password, presence: true, length: { minimum: 6 }, on: :create
   validates :description, length: { maximum: 120 }
+  has_one_attached :image
   has_secure_password
-  mount_uploader :image, ImageUploader
 
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
@@ -27,6 +27,10 @@ class User < ApplicationRecord
 
   def authenticated?(remember_token)
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  end
+
+  def get_image
+    self.image.attached? ? self.image : '/images/default.png'
   end
 
 end

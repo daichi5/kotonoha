@@ -18,7 +18,7 @@
       br
       = f.label :image
       br
-      = image_tag @user.image.url, id: :img_prev
+      = image_tag @user.get_image, id: :img_prev
       br
       br
       = f.file_field :image, accept: "image/png, image/jpeg, image/gif", id: :user_image

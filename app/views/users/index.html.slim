@@ -3,7 +3,7 @@
 ul.users
   - @users.each do |user|
     li
-      = link_to (image_tag user.image.url), user
+      = link_to image_tag(user.get_image), user
       .users-profile
         = link_to user.name, user
         p
