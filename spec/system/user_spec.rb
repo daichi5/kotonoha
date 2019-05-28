@@ -18,6 +18,9 @@ RSpec.describe 'Users', type: :system, js: true do
 
   it 'user edits a profile' do
     login_as(user)
+
+    expect(user.image.attached?).to be_falsey
+
     visit '/'
     click_link 'アカウント'
     click_link 'マイページ', match: :first
@@ -32,7 +35,7 @@ RSpec.describe 'Users', type: :system, js: true do
     expect(user.name).to eq('updated name')
     expect(user.email).to eq('updated@example.com')
     expect(user.description).to eq('updated description')
-    expect(user['image']).to eq('test_icon.jpg')
+    expect(user.image.attached?).to be_truthy
 
   end
 end
