@@ -30,7 +30,7 @@ class User < ApplicationRecord
   end
 
   def get_image
-    self.image.attached? ? self.image : '/images/default.png'
+    self.image.attached? ? self.image : 'default.png'
   end
 
 end
