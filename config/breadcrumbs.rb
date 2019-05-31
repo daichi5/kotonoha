@@ -23,7 +23,7 @@ end
 #users
 
 crumb :users_show do |user|
-  if user.id == current_user.id
+  if current_user && user.id == current_user.id
     link 'マイページ', user_path(user)
   else
     link user.name , user_path(user)
