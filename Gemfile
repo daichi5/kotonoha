@@ -14,19 +14,28 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'ransack'
-gem 'slim'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+# CSSフレームワーク
 gem 'bootstrap', '~> 4.3.1'
+# テンプレートエンジン
+gem 'slim'
+# 検索フォーム
+gem 'ransack'
 gem 'jquery-rails'
+# タグ付け機能
 gem 'acts-as-taggable-on', '~> 6.0'
+# ページネーション
 gem 'kaminari'
+# チャート描画
 gem 'chart-js-rails'
 gem 'gon'
-gem 'faker'
+# パンくずリスト
 gem 'gretel'
+# ActiveStorage
 gem 'mini_magick'
 gem 'aws-sdk-s3', require: false
+# seedデータ生成用
+gem 'faker'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
