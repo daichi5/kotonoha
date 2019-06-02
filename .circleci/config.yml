@@ -34,54 +34,26 @@ jobs:
           destination: test-results
 
   deploy_stage:
-    machine: true
+    docker:
+      - image: cdssnc/aws-cli
     steps:
-      - checkout
       - run:
-          name: install Heroku CLI
-          command: curl https://cli-assets.heroku.com/install.sh | sh
+          name: set AWS region
+          command: aws configure set region ap-northeast-1
       - run:
-          name: heroku maintenance on
-          command: heroku maintenance:on --app ${HEROKU_APP_NAME_STAGE}
-      - run:
-          name: deploy to heroku_staging
-          command: |
-            docker login --username=_ --password=${HEROKU_API_KEY} registry.heroku.com
-            heroku container:push web --app ${HEROKU_APP_NAME_STAGE}
-      - run:
-          name: rails db migrate
-          command: heroku run rails db:migrate --app ${HEROKU_APP_NAME_STAGE}
-      - run:
-          name: release app
-          command: heroku container:release web --app ${HEROKU_APP_NAME_STAGE}
-      - run:
-          name: heroku maintenance off
-          command: heroku maintenance:off --app ${HEROKU_APP_NAME_STAGE}
+          name: deploy to ec2
+          command: aws deploy create-deployment --application-name kotonoha --deployment-group-name kotonoha-prod --github-location repository=daichi5/kotonoha,commitId=$CIRCLE_SHA1
 
   deploy_prod:
-    machine: true
+    docker:
+      - image: cdssnc/aws-cli
     steps:
-      - checkout
       - run:
-          name: install Heroku CLI, if necessary
-          command: curl https://cli-assets.heroku.com/install.sh | sh
+          name: set AWS region
+          command: aws configure set region ap-northeast-1
       - run:
-          name: heroku maintenance on
-          command: heroku maintenance:on --app ${HEROKU_APP_NAME_PROD}
-      - run:
-          name: deploy to heroku_staging
-          command: |
-            docker login --username=_ --password=${HEROKU_API_KEY} registry.heroku.com
-            heroku container:push web --app ${HEROKU_APP_NAME_PROD}
-      - run:
-          name: rails db migrate
-          command: heroku run rails db:migrate --app ${HEROKU_APP_NAME_PROD}
-      - run:
-          name: release app
-          command: heroku container:release web --app ${HEROKU_APP_NAME_PROD}
-      - run:
-          name: heroku maintenance off
-          command: heroku maintenance:off --app ${HEROKU_APP_NAME_PROD}
+          name: deploy to ec2
+          command: aws deploy create-deployment --application-name kotonoha --deployment-group-name kotonoha-deploy --github-location repository=daichi5/kotonoha,commitId=$CIRCLE_SHA1
 
 workflows:
   version: 2
