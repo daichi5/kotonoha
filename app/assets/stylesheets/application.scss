@@ -312,9 +312,14 @@ div.header-image.shorter {
       font-size: 2em;
     }
 
+    div {
+      bottom: 15px;  
+    }
+
     div > a {
       font-size: 18px;
       padding: 10px 20px;
+      margin-bottom: 5px;
     }
   }
 }
@@ -511,12 +516,17 @@ div.profile {
 
 @media screen and (max-width: 576px) {
   canvas#myLikeChart, canvas#myPostChart {
-    visibility: hidden;
+    display: none!important;
+  }
+
+  div.profile {
+    padding: 10px;  
   }
 
   div.profile > img {
     height: 80px;
     width: 80px;
+    margin-right: 5px;
   }
 }
 
