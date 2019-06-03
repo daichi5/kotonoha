@@ -3,7 +3,7 @@ Kotonohaとは自分が大切にしている言葉を投稿、共有できるサ
 言葉は時に人々を奮い立たせたり、落ち着かせたりする力を持っています。  
 このサービスを通じて素敵な言葉に出会えることを願っています。
 
-## **[本番環境(http://3.113.104.117/)](http://3.113.104.117/)**  
+## **[本番環境(http://kotonoha.link/)](http://kotonoha.link/)**  
 ↑ ※GitHubではtarget=_blankに対応していないため同一タブで開かれます、ご容赦下さい、、
 <br>
 <br>
@@ -23,9 +23,7 @@ Kotonohaとは自分が大切にしている言葉を投稿、共有できるサ
   - EC2
   - CodeDeploy
   - System Manager (parameter store) 
-  - VPC
-  - IAM
-  - CLI
+  - その他(VPC, IAM, Route5, ACM)
 - Nginx
 - Github  
   - Git flow
