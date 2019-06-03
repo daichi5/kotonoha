@@ -301,7 +301,7 @@ div.header-image.shorter {
   }
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 768px) {
   div.header-image  {
     height: 300px;
     width: 100%;
@@ -510,6 +510,10 @@ div.profile {
 }
 
 @media screen and (max-width: 576px) {
+  canvas#myLikeChart, canvas#myPostChart {
+    visibility: hidden;
+  }
+
   div.profile > img {
     height: 80px;
     width: 80px;
@@ -714,6 +718,7 @@ ul.users li {
     font-size: 20px;
     font-weight: bold;
     text-shadow: 1px 1px 1px rgba(0,0,0, 0.2);
+    margin-bottom: 20px;
   }
 }
 
@@ -740,6 +745,12 @@ ul.users li {
   }
   a {
     color: #adadad; 
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .post-user {
+    flex-direction: column;
   }
 }
 
