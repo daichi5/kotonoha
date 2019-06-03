@@ -42,7 +42,7 @@ jobs:
           command: aws configure set region ap-northeast-1
       - run:
           name: deploy to ec2
-          command: aws deploy create-deployment --application-name kotonoha --deployment-group-name kotonoha-prod --github-location repository=daichi5/kotonoha,commitId=$CIRCLE_SHA1
+          command: aws deploy create-deployment --application-name kotonoha --deployment-group-name kotonoha-stage --github-location repository=daichi5/kotonoha,commitId=$CIRCLE_SHA1
 
   deploy_prod:
     docker:
@@ -53,7 +53,7 @@ jobs:
           command: aws configure set region ap-northeast-1
       - run:
           name: deploy to ec2
-          command: aws deploy create-deployment --application-name kotonoha --deployment-group-name kotonoha-deploy --github-location repository=daichi5/kotonoha,commitId=$CIRCLE_SHA1
+          command: aws deploy create-deployment --application-name kotonoha --deployment-group-name kotonoha-prod --github-location repository=daichi5/kotonoha,commitId=$CIRCLE_SHA1
 
 workflows:
   version: 2
