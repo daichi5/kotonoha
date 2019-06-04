@@ -301,7 +301,7 @@ div.header-image.shorter {
   }
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 768px) {
   div.header-image  {
     height: 300px;
     width: 100%;
@@ -312,9 +312,14 @@ div.header-image.shorter {
       font-size: 2em;
     }
 
+    div {
+      bottom: 15px;  
+    }
+
     div > a {
       font-size: 18px;
       padding: 10px 20px;
+      margin-bottom: 5px;
     }
   }
 }
@@ -510,9 +515,18 @@ div.profile {
 }
 
 @media screen and (max-width: 576px) {
+  canvas#myLikeChart, canvas#myPostChart {
+    display: none!important;
+  }
+
+  div.profile {
+    padding: 10px;  
+  }
+
   div.profile > img {
     height: 80px;
     width: 80px;
+    margin-right: 5px;
   }
 }
 
@@ -714,6 +728,7 @@ ul.users li {
     font-size: 20px;
     font-weight: bold;
     text-shadow: 1px 1px 1px rgba(0,0,0, 0.2);
+    margin-bottom: 20px;
   }
 }
 
@@ -740,6 +755,12 @@ ul.users li {
   }
   a {
     color: #adadad; 
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .post-user {
+    flex-direction: column;
   }
 }
 
