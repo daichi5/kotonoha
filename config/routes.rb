@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
   get root 'static_pages#home'
-  get '/about' => 'static_pages#about'
-  get '/contact'  => 'static_pages#contact'
-  get '/test_login'  => 'static_pages#test_login'
-  get '/popular'  => 'static_pages#popular'
-  get '/category'  => 'static_pages#category'
+  %w(about contact popular category test_login).each do |path|
+    get path => "static_pages##{path}"
+  end
 
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
@@ -21,6 +19,5 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
-
 
 end

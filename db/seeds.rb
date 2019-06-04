@@ -1,3 +1,5 @@
+return if User.count > 0
+
 require 'csv'
 path =  Rails.root.join('db', 'post_seeds.csv')
 csv = CSV.read(path, { headers: true })
