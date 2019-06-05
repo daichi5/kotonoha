@@ -33,17 +33,6 @@ jobs:
           path: /tmp/test-results
           destination: test-results
 
-  deploy_stage:
-    docker:
-      - image: cdssnc/aws-cli
-    steps:
-      - run:
-          name: set AWS region
-          command: aws configure set region ap-northeast-1
-      - run:
-          name: deploy to ec2
-          command: aws deploy create-deployment --application-name kotonoha --deployment-group-name kotonoha-stage --github-location repository=daichi5/kotonoha,commitId=$CIRCLE_SHA1
-
   deploy_prod:
     docker:
       - image: cdssnc/aws-cli
@@ -60,13 +49,6 @@ workflows:
   build-deploy:
     jobs:
       - build
-      - deploy_stage:
-          requires:
-            - build
-          filters:
-            branches:
-              only:
-                - staging
       - deploy_prod:
           requires:
             - build
