@@ -1,0 +1,8 @@
+{
+  "containerOverrides": [
+    {
+      "name": "kotonoha-container",
+      "command": ["bundle", "exec", "rails", "db:migrate"]
+    }
+  ]
+}
