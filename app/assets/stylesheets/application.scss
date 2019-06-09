@@ -697,6 +697,11 @@ ul.users li {
   justify-content: flex-end;
   align-items: center;
   margin-bottom: 5px;
+
+  span.post_pv {
+    margin-right: auto;
+    margin-left: 10px;
+  }
 }
 
 .post-main {
