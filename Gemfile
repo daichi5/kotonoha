@@ -39,6 +39,8 @@ gem 'faker'
 # AssetsのCDN配信（S3オリジン)
 gem 'asset_sync'
 gem "fog-aws"
+# 個別投稿アクセス数取得とランキング取得
+gem 'redis', '~> 4.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

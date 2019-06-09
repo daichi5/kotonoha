@@ -2,6 +2,7 @@
 - breadcrumb :phrases_show, @phrase, request.headers[:referer]
 .main-wrapper 
   .post-header
+    span.post_pv = "#{@pv} views" 
     = render partial: 'shared/tags', locals: { tags: @phrase.tags.pluck(:name) }
     - if current_user && current_user.id == @phrase.user_id
       = link_to '編集', edit_phrase_path(@phrase), class: 'btn btn-primary'
@@ -27,8 +28,7 @@
         | )
   .post-user
     = link_to "#{@phrase.user.name}さん", @phrase.user
-    span
-      = @phrase.updated_at.strftime('%Y年%m月%d日 %H:%M:%S')
+    span = @phrase.updated_at.strftime('%Y年%m月%d日 %H:%M:%S')
     = render partial: 'twitter_button', locals: { phrase: @phrase }
   = render partial: 'comments/comments', locals: { comments: @phrase.comments }
   = form_with model: [@phrase, @comment], class: 'comment-form' do |f|

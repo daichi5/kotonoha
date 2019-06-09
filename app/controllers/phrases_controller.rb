@@ -12,6 +12,10 @@ class PhrasesController < ApplicationController
   def show
     @phrase = Phrase.set_buttons.find(params[:id])
     @comment = @phrase.comments.build
+
+    date = Date.today.strftime(format = '%Y%m%d')
+    @pv = Redis.current.zscore(date, @phrase.id).to_i
+    Redis.current.zincrby(date, 1, @phrase.id)
   end
 
   def new
