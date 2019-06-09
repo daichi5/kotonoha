@@ -12,10 +12,7 @@ class PhrasesController < ApplicationController
   def show
     @phrase = Phrase.set_buttons.find(params[:id])
     @comment = @phrase.comments.build
-
-    date = Date.today.strftime(format = '%Y%m%d')
-    @pv = Redis.current.zscore(date, @phrase.id).to_i
-    Redis.current.zincrby(date, 1, @phrase.id)
+    @pv = access_count(@phrase)
   end
 
   def new
@@ -58,6 +55,19 @@ class PhrasesController < ApplicationController
   def phrase_params
     params[:phrase][:url_title] = save_url_title(params[:phrase][:quoted])
     params.require(:phrase).permit(:title, :content, :author, :quoted, :url_title, :tag_list)
+  end
+
+  def access_count(phrase)
+    redis = Redis.current
+    key = request.remote_ip.to_s + ":" + phrase.id.to_s
+    date = Date.today.strftime(format = '%Y%m%d')
+    unless redis.exists(key)
+      ttl = 60 * 60 * 3
+      redis.zincrby(date, 1, phrase.id)
+      redis.set(key, true)
+      redis.expire(key, ttl)
+    end
+    redis.zscore(date, phrase.id).to_i
   end
 
   def save_url_title(url)
