@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 class PhrasesController < ApplicationController
-  before_action :login_required, only: [:new, :create, :edit]
+  before_action :login_required, only: %i[new create edit]
 
   def index
     if params[:tag_name]
       @phrases = Phrase.set_buttons.tagged_with(params[:tag_name]).page(params[:page])
     else
-      @phrases = Phrase.set_buttons.search_with(params[:q]).order(created_at: "DESC").page(params[:page])
+      @phrases = Phrase.set_buttons.search_with(params[:q]).order(created_at: 'DESC').page(params[:page])
     end
   end
 
@@ -79,11 +81,9 @@ class PhrasesController < ApplicationController
   end
 
   def scraping_title(url)
-    begin
-      title = Nokogiri::HTML.parse(open(url)).title
-      title.length > 30 ? ( title[0..29] + "..." ) : title
-    rescue
-      nil
-    end
+    title = Nokogiri::HTML.parse(open(url)).title
+    title.length > 30 ? (title[0..29] + '...') : title
+  rescue StandardError
+    nil
   end
 end

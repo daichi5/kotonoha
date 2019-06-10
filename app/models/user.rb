@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
   attr_accessor :remember_token
   has_many :phrases, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -11,12 +13,12 @@ class User < ApplicationRecord
   has_one_attached :image
   has_secure_password
 
-  def User.digest(string)
+  def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end
 
-  def User.new_token
+  def self.new_token
     SecureRandom.urlsafe_base64
   end
 
@@ -30,7 +32,6 @@ class User < ApplicationRecord
   end
 
   def get_image
-    self.image.attached? ? self.image : 'default.png'
+    image.attached? ? image : 'default.png'
   end
-
 end
