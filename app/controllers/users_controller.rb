@@ -1,18 +1,20 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
-  before_action :login_required, only: [:index, :edit, :update, :destroy]
-  before_action :logout_required, only: [:new, :create]
-  before_action :correct_user, only: [:edit, :update, :destroy]
-  
+  before_action :login_required, only: %i[index edit update destroy]
+  before_action :logout_required, only: %i[new create]
+  before_action :correct_user, only: %i[edit update destroy]
+
   def index
     @users = User.all
   end
 
   def show
     @user = User.find(params[:id])
-    @phrases = @user.phrases.set_buttons.order("updated_at DESC").page(params[:page])
+    @phrases = @user.phrases.set_buttons.order('updated_at DESC').page(params[:page])
     set_chart(@user)
   end
-  
+
   def new
     @user = User.new
   end
@@ -51,7 +53,7 @@ class UsersController < ApplicationController
   end
 
   private
-  
+
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :description, :image)
   end
@@ -60,5 +62,4 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     redirect_to root_path unless user.id == current_user.id
   end
-
 end

@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Users', type: :system, js: true do
-  let(:user) { FactoryBot.create(:user, name: "testuser", email: "test@example.com") }
+  let(:user) { FactoryBot.create(:user, name: 'testuser', email: 'test@example.com') }
 
   it 'visitor signs up' do
     visit '/signup'
@@ -10,9 +12,9 @@ RSpec.describe 'Users', type: :system, js: true do
     fill_in 'パスワード', with: 'password'
     fill_in 'パスワード（確認）', with: 'password'
 
-    expect {
+    expect do
       click_button '登録'
-    }.to change(User, :count).by(1)
+    end.to change(User, :count).by(1)
     expect(page).to have_content '登録が完了しました'
   end
 
@@ -36,7 +38,5 @@ RSpec.describe 'Users', type: :system, js: true do
     expect(user.email).to eq('updated@example.com')
     expect(user.description).to eq('updated description')
     expect(user.image.attached?).to be_truthy
-
   end
 end
-
