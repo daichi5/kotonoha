@@ -1,23 +1,22 @@
+# frozen_string_literal: true
+
 class SessionsController < ApplicationController
-  before_action :logout_required, only: [:new, :create]
+  before_action :logout_required, only: %i[new create]
   before_action :login_required, only: [:destroy]
 
-  def new
-  end
+  def new; end
 
   def create
     user = User.find_by(email: session_params[:email])
 
-    if user && user.authenticate(session_params[:password])
-      #永続セッション保持
-      if (session_params[:remember_me] == '1') 
-        remember(user)
-      end 
-      flash[:success] = "ログインしました"
+    if user&.authenticate(session_params[:password])
+      # 永続セッション保持
+      remember(user) if session_params[:remember_me] == '1'
+      flash[:success] = 'ログインしました'
       session[:user_id] = user.id
 
-      #friendly forwarding
-      redirect_to ( session[:forwarding_url] || user ) 
+      # friendly forwarding
+      redirect_to ( session[:forwarding_url] || user)
       session.delete(:forwarding_url)
     else
       flash.now[:danger] = 'Emailまたはパスワードが間違っています'

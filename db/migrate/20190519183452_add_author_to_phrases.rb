@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class AddAuthorToPhrases < ActiveRecord::Migration[5.2]
   def change
-    add_column :phrases, :author, :string 
+    add_column :phrases, :author, :string
   end
 end

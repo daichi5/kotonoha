@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class StaticPagesController < ApplicationController
   def home
     date = Date.today.strftime(format = '%Y%m%d')
@@ -6,18 +8,16 @@ class StaticPagesController < ApplicationController
     @phrases = Phrase.set_buttons.order(created_at: "DESC").page(params[:page])
   end
 
-  def about
-  end
+  def about; end
 
-  def help
-  end
+  def help; end
 
   def popular
-    @phrases = Phrase.set_buttons.order(likes_count: "DESC").page(params[:page])
+    @phrases = Phrase.set_buttons.order(likes_count: 'DESC').page(params[:page])
   end
 
   def category
-    @tags = Phrase.tag_counts.order(taggings_count: "DESC")
+    @tags = Phrase.tag_counts.order(taggings_count: 'DESC')
   end
 
   def test_login

@@ -1,4 +1,6 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "StaticPages", type: :request do
+RSpec.describe 'StaticPages', type: :request do
 end

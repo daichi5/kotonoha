@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 class LikesController < ApplicationController
-  before_action :login_alert, only: [:create, :destroy]
+  before_action :login_alert, only: %i[create destroy]
 
   def show
     @user = User.find(params[:user_id])
-    @liked_phrases = @user.liked_phrases.set_buttons.order(created_at: "DESC").page(params[:page])
+    @liked_phrases = @user.liked_phrases.set_buttons.order(created_at: 'DESC').page(params[:page])
     set_chart(@user)
   end
 
   def create
     @like = current_user.likes.new(phrase_id: params[:phrase_id])
-    @like.save 
+    @like.save
   end
 
   def destroy
@@ -20,8 +22,6 @@ class LikesController < ApplicationController
   private
 
   def login_alert
-    unless current_user
-      render 'login_alert'
-    end
+    render 'login_alert' unless current_user
   end
 end
