@@ -49,6 +49,6 @@ production:
   <<: *default
   database: kotonohadb
   username: kotonohauser
-  password: <%= ENV['KOTONOHA_DATABASE_PASSWORD'] %>
+  password: <%= Rails.application.credentials.dig(:database_password) %>
   host: kotonoha-production.cxxske0skkpp.ap-northeast-1.rds.amazonaws.com
   port: 5432
