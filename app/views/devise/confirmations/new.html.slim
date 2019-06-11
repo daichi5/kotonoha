@@ -1,0 +1,14 @@
+- provide 'title', '登録確認メールが届かない方'
+- breadcrumb :confirmation_new
+.sign-form
+  .text-center
+    h2 登録確認メールが届かない方
+    = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
+      = render "devise/shared/error_messages", resource: resource 
+      .form-group
+        = f.label :email
+        = f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: 'form-control'
+      .form-group
+        = f.submit "登録確認メールを再送する", class: 'btn btn-primary'
+
+  = render "devise/shared/links"

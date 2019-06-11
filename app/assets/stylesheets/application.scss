@@ -66,6 +66,10 @@ h2, h3 {
   background: #dd0000;
 }
 
+input[type=checkbox] {
+  margin-right: 5px;
+}
+
 /* notice */
 
 .notice {
@@ -724,7 +728,7 @@ ul.users li {
   h2 {
     font-size: 2em; 
     line-height: 1.5em;
-    padding: 0 20px;
+    padding: 20px 20px 0;
     margin-bottom: 40px;
     text-shadow: 1px 1px 1px rgba(0,0,0, 0.2);
   }
