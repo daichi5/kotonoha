@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class PhrasesController < ApplicationController
-  before_action :login_required, only: %i[new create edit]
+  before_action :authenticate_user!, only: %i[new create edit]
 
   def index
     if params[:tag_name]

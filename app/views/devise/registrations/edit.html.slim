@@ -1,0 +1,59 @@
+- provide 'title', 'プロフィール編集'
+- breadcrumb :users_edit, @user
+.main-wrapper
+  h2 プロフィール編集
+  br
+  = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| 
+    = render "devise/shared/error_messages", resource: resource
+    .form-group
+      = f.label :name
+      = f.text_field :name, class:'form-control', autofocus: true, autocomplete: "name"
+    .form-group
+      = f.label :email
+      = f.email_field :email, class:'form-control', autocomplete: "email"
+    .form-group
+      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+        = "Currently waiting confirmation for: #{resource.unconfirmed_email}"
+    .form-group
+      = f.label :description
+      = f.text_area :description, row: 3, class: 'form-control'
+    .form-group
+      = f.label :image
+      br
+      = image_tag @user.get_image, id: :img_prev
+    .form-group
+      = f.file_field :image, accept: "image/png, image/jpeg, image/gif", id: :user_image
+    .form-group
+      = f.label :password
+      - if @minimum_password_length
+        em  = "(#{@minimum_password_length} 文字以上) ※変更がない場合は不要です"
+      = f.password_field :password, class:'form-control', autocomplete: "new-password"
+    .form-group
+      = f.label :password_confirmation
+      = "※変更がない場合は不要です"
+      = f.password_field :password_confirmation, class:'form-control', autocomplete: "new-password"
+    .form-group
+      = f.label :current_password
+      = f.password_field :current_password, class:'form-control', autocomplete: "current-password" 
+
+    .form-group
+      = f.submit '変更を保存', class: 'btn btn-primary'
+
+    = link_to "戻る", :back
+
+script[type="text/javascript"]
+  |
+    $(function() {
+      function readURL(input) {
+        if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function (e) {
+            $('#img_prev').attr('src', e.target.result);
+          }
+          reader.readAsDataURL(input.files[0]);
+        }
+      }
+      $("#user_image").change(function(){
+        readURL(this);
+      });
+    });
