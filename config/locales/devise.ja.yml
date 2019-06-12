@@ -18,11 +18,11 @@ ja:
       unconfirmed: "本登録を行ってください。"
     mailer:
       confirmation_instructions:
-        subject: "アカウントの登録方法"
+        subject: "メールアドレスの確認 - kotonoha"
       reset_password_instructions:
-        subject: "パスワードの再設定"
+        subject: "パスワードの再設定 - kotonoha"
       unlock_instructions:
-        subject: "アカウントのロック解除"
+        subject: "アカウントのロック解除 - kotonoha"
     omniauth_callbacks:
       failure: "%{kind} から承認されませんでした。理由：%{reason}"
       success: "%{kind} から承認されました。"
