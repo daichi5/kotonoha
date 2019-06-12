@@ -46,8 +46,8 @@ Rails.application.configure do
     :address => "smtp.gmail.com",
     :port => 587,
     :domain => 'smtp.gmail.com',
-    :user_name => Rails.application.credentials.dig(:gmail, :address)
-    :password => Rails.application.credentials.dig(:gmail, :app_pass)
+    :user_name => Rails.application.credentials.dig(:gmail, :address),
+    :password => Rails.application.credentials.dig(:gmail, :app_pass),
     :authentication => 'login',
   }
   # Print deprecation notices to the Rails logger.
