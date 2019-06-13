@@ -3,7 +3,7 @@ Kotonohaとは自分が大切にしている言葉を投稿、共有できるサ
 言葉は時に人々を奮い立たせたり、落ち着かせたりする力を持っています。  
 このサービスを通じて素敵な言葉に出会えることを願っています。
 
-## **[本番環境(http://kotonoha.link/)](http://kotonoha.link/)**  
+## **[本番環境(https://kotonoha.link/)](https://kotonoha.link/)**  
 ↑ ※GitHubではtarget=_blankに対応していないため同一タブで開かれます、ご容赦下さい、、
 <br>
 <br>
@@ -18,12 +18,14 @@ Kotonohaとは自分が大切にしている言葉を投稿、共有できるサ
 - Docker
 - CircleCI
 - AWS
+  - ECS
+  - EC2
   - S3
   - RDM (PostgreSQL)
-  - EC2
-  - CodeDeploy
-  - System Manager (parameter store) 
-  - その他(VPC, IAM, Route5, ACM)
+  - ElastiCache
+  - Route53
+  - CloudFront
+  - その他(VPC, IAM, ACM)
 - Nginx
 - Github  
   - Git flow
@@ -94,6 +96,13 @@ Kotonohaとは自分が大切にしている言葉を投稿、共有できるサ
   勉強も兼ねてAWS EC2へ移行しました。  
   Herokuはアクセスが無いとスリープ状態に入ってしまうのでそれが原因かと思います.
 
+  - **RDB(RDS)処理の一部をRedisへ移行**
+  RDBに対するクエリ削減は行いましたが他にも一部の処理をNoSQLであるRedisに移行しました。
+  具体的には個別記事のPV数をRedisで管理し、特に重い処理であった
+  人気ランキングの値取得もRedisで行うように変更しました。
+  サーバーに関してはAWS ElastiCacheを利用しています。
+  この結果、トップページに表示している人気の記事および、人気ランキング、アクセスカウントの
+  レンダリング速度が上昇しました。
 
   現状でも高速とは言えないとは思いますが上記対策の結果、  
   表示速度は２倍以上となりました。
