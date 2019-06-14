@@ -11,7 +11,8 @@ first_user = User.new(
   email: 'test@example.com',
   description: 'テストユーザーです',
   password: 'password',
-  password_confirmation: 'password'
+  password_confirmation: 'password',
+  confirmed_at: Time.now
 )
 
 if first_user.save

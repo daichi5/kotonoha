@@ -75,9 +75,9 @@ Rails.application.configure do
     :address => "smtp.gmail.com",
     :port => 587,
     :domain => 'smtp.gmail.com',
-    :user_name => Rails.application.credentials.dig(:gmail, :address)
-    :password => Rails.application.credentials.dig(:gmail, :app_pass)
-    :authentication => 'login',
+    :user_name => Rails.application.credentials.dig(:gmail, :address),
+    :password => Rails.application.credentials.dig(:gmail, :app_pass),
+    :authentication => 'login'
   }
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.

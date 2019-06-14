@@ -257,37 +257,38 @@ div.header-image-inner {
 
   div {
     position: absolute;
-    bottom: 60px;
+    bottom: 20px;
     left: 0;
-    font-weight: bold;
 
-    a {
+    a, input[type=submit] {
       display: inline-block;
       padding: 20px 30px;
+      margin-bottom: 10px;
       text-decoration: none;
       font-size: 22px;
+      font-weight: bold;
       border-radius: 15px;
     }
 
-    a.first-button {
+    .first-button {
       background: #006400;
       color: #fff;
       margin-right: 5px;
       transition: 0.4s;
     }
 
-    a.first-button:hover {
+    .first-button:hover {
       background: #009900;
       transition: 0.4s;
     }
     
-    a.second-button {
+    .second-button {
       background: #ff8c00;
       color: #fff;
       transition: 0.4s;
     }
 
-    a.second-button:hover {
+    .second-button:hover {
       background: #ffac00;
       transition: 0.4s;
     }
@@ -320,7 +321,7 @@ div.header-image.shorter {
       bottom: 15px;  
     }
 
-    div > a {
+    div > a, div input[type=submit] {
       font-size: 18px;
       padding: 10px 20px;
       margin-bottom: 5px;
