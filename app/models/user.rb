@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :liked_phrases, through: :likes, source: :phrase
   validates :name, presence: true, length: { maximum: 20 }
   validates :email, presence: true, uniqueness: { case_sensitive: false }
+  validates :description, length: { maximum: 120 }
   has_one_attached :image
 
   def get_image
