@@ -66,6 +66,10 @@ h2, h3 {
   background: #dd0000;
 }
 
+input[type=checkbox] {
+  margin-right: 5px;
+}
+
 /* notice */
 
 .notice {
@@ -253,37 +257,38 @@ div.header-image-inner {
 
   div {
     position: absolute;
-    bottom: 60px;
+    bottom: 20px;
     left: 0;
-    font-weight: bold;
 
-    a {
+    a, input[type=submit] {
       display: inline-block;
       padding: 20px 30px;
+      margin-bottom: 10px;
       text-decoration: none;
       font-size: 22px;
+      font-weight: bold;
       border-radius: 15px;
     }
 
-    a.first-button {
+    .first-button {
       background: #006400;
       color: #fff;
       margin-right: 5px;
       transition: 0.4s;
     }
 
-    a.first-button:hover {
+    .first-button:hover {
       background: #009900;
       transition: 0.4s;
     }
     
-    a.second-button {
+    .second-button {
       background: #ff8c00;
       color: #fff;
       transition: 0.4s;
     }
 
-    a.second-button:hover {
+    .second-button:hover {
       background: #ffac00;
       transition: 0.4s;
     }
@@ -316,7 +321,7 @@ div.header-image.shorter {
       bottom: 15px;  
     }
 
-    div > a {
+    div > a, div input[type=submit] {
       font-size: 18px;
       padding: 10px 20px;
       margin-bottom: 5px;
@@ -488,6 +493,7 @@ div.profile {
   ul {
     margin: 20px 50px 0 10px;
     padding-top: 5px;
+    width: 30%;
 
     li {
       word-wrap: break-word;
@@ -507,6 +513,7 @@ div.profile {
 
   div.profile > ul {
     margin: 0;
+    width: 50%;
   }
 
   div.profile> div {
@@ -521,12 +528,15 @@ div.profile {
 
   div.profile {
     padding: 10px;  
-  }
+    ul {
+      width: 70%;  
+    }
 
-  div.profile > img {
-    height: 80px;
-    width: 80px;
-    margin-right: 5px;
+    img {
+      height: 80px;
+      width: 80px;
+      margin-right: 5px;
+    }
   }
 }
 
@@ -724,7 +734,7 @@ ul.users li {
   h2 {
     font-size: 2em; 
     line-height: 1.5em;
-    padding: 0 20px;
+    padding: 20px 20px 0;
     margin-bottom: 40px;
     text-shadow: 1px 1px 1px rgba(0,0,0, 0.2);
   }

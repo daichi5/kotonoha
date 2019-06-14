@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
+  devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
   get root 'static_pages#home'
-  %w(about contact popular category test_login).each do |path|
+
+  %w[about contact popular category test_login].each do |path|
     get path => "static_pages##{path}"
   end
 
-  get '/signup' => 'users#new'
-  post '/signup' => 'users#create'
-  resources :users, except: [:new, :create] do
+  resources :users, only: %i[index show] do
     resource :likes, only: :show
   end
 
@@ -15,9 +17,5 @@ Rails.application.routes.draw do
     post 'likes' => 'likes#create'
     delete 'likes' => 'likes#destroy'
   end
-
-  get '/login' => 'sessions#new'
-  post '/login' => 'sessions#create'
-  delete '/logout' => 'sessions#destroy'
 
 end

@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 crumb :root do
-  link "Home", root_path
+  link 'Home', root_path
 end
 
-#static_pages
+# static_pages
 
 crumb :category do
   link 'カテゴリ', category_path
@@ -20,13 +22,13 @@ crumb :contact do
   link '運営情報', contact_path
 end
 
-#users
+# users
 
 crumb :users_show do |user|
   if current_user && user.id == current_user.id
     link 'マイページ', user_path(user)
   else
-    link user.name , user_path(user)
+    link user.name, user_path(user)
     parent :users_index
   end
 end
@@ -39,12 +41,12 @@ crumb :users_new do
   link '新規登録'
 end
 
-crumb :users_edit do | user|
+crumb :users_edit do |user|
   link 'プロフィール編集'
   parent :users_show, user
 end
 
-#phrases
+# phrases
 
 crumb :phrases_index do |param|
   if param
@@ -60,11 +62,11 @@ crumb :phrases_show do |phrase, referer|
 
   if referer
     uri = URI.parse(referer)
-  
+
     if uri.path.include?('/popular')
       parent :popular
     elsif uri.path.include?('/likes')
-      user = User.find(uri.path[/\A\/users\/(.*)\/likes\z/, 1])
+      user = User.find(uri.path[%r{\A/users/(.*)/likes\z}, 1])
       parent :users_show, user
     elsif uri.path.include?('/users') || uri.path.include?('/edit')
       parent :users_show, phrase.user
@@ -85,8 +87,20 @@ crumb :phrases_edit do |phrase|
   parent :phrases_show, phrase, '/users'
 end
 
-#sessions
+# devise
 
 crumb :sessions_new do
   link 'ログイン'
+end
+
+crumb :password_new do
+  link 'パスワードをお忘れの方'
+end
+
+crumb :password_edit do
+  link '新しいパスワードの設定'
+end
+
+crumb :confirmation_new do
+  link '確認メールが届かない方'
 end

@@ -1,6 +1,7 @@
-Rails.application.configure do
+# frozen_string_literal: true
 
-  #ソースコード修正の即時反映
+Rails.application.configure do
+  # ソースコード修正の即時反映
   config.reload_classes_only_on_change = false
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -38,6 +39,17 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  config.action_mailer.smtp_settings = {
+    :enable_starttls_auto => true,
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :domain => 'smtp.gmail.com',
+    :user_name => Rails.application.credentials.dig(:gmail, :address),
+    :password => Rails.application.credentials.dig(:gmail, :app_pass),
+    :authentication => 'login',
+  }
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
@@ -61,5 +73,4 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-
 end

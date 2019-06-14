@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 if defined?(AssetSync)
   AssetSync.configure do |config|
     config.fog_provider = 'AWS'
@@ -14,7 +16,7 @@ if defined?(AssetSync)
     #
     # Use http instead of https. Default should be "https" (at least for fog-aws)
     # config.fog_scheme = "http"
-    config.fog_directory = 'kotonoha-assets' 
+    config.fog_directory = 'kotonoha-assets'
 
     # Invalidate a file on a cdn after uploading files
     # config.cdn_distribution_id = "12345"

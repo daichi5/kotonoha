@@ -1,0 +1,16 @@
+- provide 'title', 'パスワードをお忘れの方へ'
+- breadcrumb :password_new
+.sign-form
+  .text-center
+    h2 パスワードをお忘れの方へ
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+      .form-group
+        = render "devise/shared/error_messages", resource: resource
+        = f.label :email
+        br
+        = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control'
+      .form-group
+      = f.submit "パスワード確認メールを送信", class: 'btn btn-primary'
+      br
+      br
+  = render "devise/shared/links"
