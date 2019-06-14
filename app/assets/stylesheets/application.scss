@@ -492,6 +492,7 @@ div.profile {
   ul {
     margin: 20px 50px 0 10px;
     padding-top: 5px;
+    width: 30%;
 
     li {
       word-wrap: break-word;
@@ -511,6 +512,7 @@ div.profile {
 
   div.profile > ul {
     margin: 0;
+    width: 50%;
   }
 
   div.profile> div {
@@ -525,12 +527,15 @@ div.profile {
 
   div.profile {
     padding: 10px;  
-  }
+    ul {
+      width: 70%;  
+    }
 
-  div.profile > img {
-    height: 80px;
-    width: 80px;
-    margin-right: 5px;
+    img {
+      height: 80px;
+      width: 80px;
+      margin-right: 5px;
+    }
   }
 }
 
