@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe 'Likes', type: :system, js: true do
   before do
-    @user = FactoryBot.create(:user)
+    @user = FactoryBot.create(:user, confirmed_at: Time.now)
     @phrase = FactoryBot.create(:phrase)
     login_as(@user)
   end

@@ -1,0 +1,22 @@
+- provide 'title', '新しいパスワードの設定'
+- breadcrumb :password_edit
+.sign-form
+  .text-center
+    h2 新しいパスワードの設定
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+      = render "devise/shared/error_messages", resource: resource 
+      = f.hidden_field :reset_password_token 
+      .form-group
+        = f.label :password, "新しいパスワード"
+        -if  @minimum_password_length
+          em = "(#{@minimum_password_length}文字以上)"
+          br
+        = f.password_field :password, autofocus: true, autocomplete: "new-password", class: 'form-control'
+      .form-group
+        = f.label :password_confirmation, "新しいパスワード(確認)"
+        br
+        = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
+      .form-group
+        = f.submit "変更", class: 'btn btn-primary'
+
+  = render "devise/shared/links"

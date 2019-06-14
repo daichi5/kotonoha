@@ -10,7 +10,7 @@ header
         = link_to '人気', popular_path
       li
         = link_to 'カテゴリ', category_path
-      - if current_user
+      - if user_signed_in?
         li.account-menu
           a[href="#"]
             | アカウント 
@@ -23,8 +23,8 @@ header
             li
               = link_to 'ユーザー', users_path
             li
-              = link_to 'ログアウト', logout_path, method: :delete
+              = link_to 'ログアウト', destroy_user_session_path, method: :delete
       - else
         li
-          = link_to 'はじめる', signup_path
+          = link_to 'はじめる', new_user_registration_path
 = render :partial => "layouts/header_image"

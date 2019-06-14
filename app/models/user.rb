@@ -1,37 +1,21 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
-  attr_accessor :remember_token
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable, :confirmable
   has_many :phrases, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :liked_phrases, through: :likes, source: :phrase
   validates :name, presence: true, length: { maximum: 20 }
-  validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: VALID_EMAIL_REGEX }
-  validates :password, presence: true, length: { minimum: 6 }, on: :create
+  validates :email, presence: true, uniqueness: { case_sensitive: false }
   validates :description, length: { maximum: 120 }
   has_one_attached :image
-  has_secure_password
-
-  def self.digest(string)
-    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
-    BCrypt::Password.create(string, cost: cost)
-  end
-
-  def self.new_token
-    SecureRandom.urlsafe_base64
-  end
-
-  def remember
-    self.remember_token = User.new_token
-    update_attribute(:remember_digest, User.digest(remember_token))
-  end
-
-  def authenticated?(remember_token)
-    BCrypt::Password.new(remember_digest).is_password?(remember_token)
-  end
 
   def get_image
     image.attached? ? image : 'default.png'
+  end
+
+  def send_devise_notification(notification, *args)
+    devise_mailer.send(notification, self, *args).deliver_later
   end
 end

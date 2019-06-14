@@ -7,12 +7,12 @@
         | シェアしよう
       - if yield('welcome') == 'on'
         div
-          - if current_user
+          - if user_signed_in?
             = link_to '新規投稿', new_phrase_path, class: 'first-button'
             = link_to 'マイページ', current_user, class: 'second-button'
           - else
             = link_to 'テストユーザーでログイン', test_login_path, class: 'first-button'
-            = link_to '登録する', signup_path, class: 'second-button'
+            = link_to 'はじめる', new_user_registration_path, class: 'second-button'
 - else
   .header-image.shorter
     .header-image-inner

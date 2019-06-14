@@ -5,7 +5,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.1'
 
-gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
@@ -43,6 +42,8 @@ gem 'asset_sync'
 gem "fog-aws"
 # 個別投稿アクセス数取得とランキング取得
 gem 'redis', '~> 4.0'
+# ログイン認証
+gem 'devise', '~> 4.6.2'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
@@ -59,9 +60,10 @@ end
 
 group :test do
   gem 'capybara', '>= 2.15'
-  gem 'chromedriver-helper'
+  gem 'capybara-email', '~> 3.0.1'
   gem 'factory_bot_rails', '~> 4.11'
   gem 'rspec-rails', '~> 3.8'
   gem 'rspec_junit_formatter'
   gem 'selenium-webdriver'
+  gem 'webdrivers'
 end

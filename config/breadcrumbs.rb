@@ -87,8 +87,20 @@ crumb :phrases_edit do |phrase|
   parent :phrases_show, phrase, '/users'
 end
 
-# sessions
+# devise
 
 crumb :sessions_new do
   link 'ログイン'
+end
+
+crumb :password_new do
+  link 'パスワードをお忘れの方'
+end
+
+crumb :password_edit do
+  link '新しいパスワードの設定'
+end
+
+crumb :confirmation_new do
+  link '確認メールが届かない方'
 end
