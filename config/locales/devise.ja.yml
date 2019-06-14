@@ -37,8 +37,8 @@ ja:
       signed_up: "アカウント登録を受け付けました。"
       signed_up_but_inactive: "アカウントは登録されていますが、アクティブになっていないため利用できません。"
       signed_up_but_locked: "アカウントは登録されていますが、ロックされているため利用できません。"
-      signed_up_but_unconfirmed: "確認メールを登録したメールアドレス宛に送信しました。リンクを開いてアカウントを有効にして下さい。"
-      update_needs_confirmation: "アカウント情報が更新されました。更新の確認メールを新しいメールアドレス宛に送信しましたので、リンクを開いて更新を有効にして下さい。"
+      signed_up_but_unconfirmed: "確認メールを登録したメールアドレス宛に送信しました"
+      update_needs_confirmation: "確認メールを新しいメールアドレス宛に送信しました"
       updated: "アカウントが更新されました。"
     sessions:
       signed_in: "ログインしました。"

@@ -3,10 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe 'SignIn', type: :system, js: true do
-  let(:user) { FactoryBot.create(:user) }
+  let(:user) { FactoryBot.create(:user, confirmed_at: Time.now) }
 
   it 'user signs in' do
-    visit '/login'
+    visit '/users/sign_in'
     fill_in 'メールアドレス', with: user.email
     fill_in 'パスワード', with: user.password
     click_button 'ログイン'
@@ -14,7 +14,6 @@ RSpec.describe 'SignIn', type: :system, js: true do
   end
 
   it 'user signs out' do
-    FactoryBot.create(:like)
     login_as(user)
     visit '/'
     click_link 'アカウント'
