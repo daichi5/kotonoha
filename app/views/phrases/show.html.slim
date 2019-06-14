@@ -17,14 +17,14 @@
     = render partial: 'shared/buttons', locals: { phrase: @phrase }
   .post-description
     = @phrase.content
-  - if !@phrase.quoted.blank?
+  - if @phrase.quoted.present?
     .phrase-quoted
       | 引用元：
-      = @phrase.quoted_title
-      - if @phrase.url?
+      = @phrase.url_title.present? ? @phrase.url_title : @phrase.quoted 
+      - if @phrase.url_title.present?
         | (
         = link_to @phrase.quoted, target: '_blank' do
-          = @phrase.quoted_url
+          = modified_url(@phrase)
         | )
   .post-user
     = link_to "#{@phrase.user.name}さん", @phrase.user

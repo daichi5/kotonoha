@@ -15,7 +15,6 @@ class ApplicationController < ActionController::Base
 
   def liked?(phrase_id)
     return false unless current_user
-
     current_user.likes.pluck(:phrase_id).include?(phrase_id)
   end
 

@@ -13,23 +13,25 @@ class Phrase < ApplicationRecord
   scope :set_buttons, lambda {
     includes(:tags).left_joins(:likes, :comments).group(:id).select('phrases.*, COUNT(likes.id) AS likes_count, COUNT(comments.id) AS comments_count')
   }
-
   acts_as_taggable
-
-  def quoted_title
-    url? ? url_title : quoted
-  end
-
-  def quoted_url
-    url = quoted
-    if url? && url.length > 30
-      url[0..29] + '...'
-    else
-      url
+  
+  def access_count(ip)
+    redis = Redis.current
+    key = ip.to_s + ":" + self.id.to_s
+    date = Date.today.strftime(format = '%Y%m%d')
+    unless redis.exists(key)
+      ttl = 60 * 60 * 3
+      redis.zincrby(date, 1, self.id)
+      redis.set(key, true)
+      redis.expire(key, ttl)
     end
+    redis.zscore(date, self.id).to_i
   end
 
-  def url?
-    url_title.present?
+  def self.scraping_title(url)
+    title = Nokogiri::HTML.parse(open(url)).title
+    title.length > 30 ? (title[0..29] + '...') : title
+  rescue StandardError
+    nil
   end
 end
