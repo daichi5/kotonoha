@@ -3,13 +3,13 @@ Kotonohaとは自分が大切にしている言葉を投稿、共有できるサ
 言葉は時に人々を奮い立たせたり、落ち着かせたりする力を持っています。  
 このサービスを通じて素敵な言葉に出会えることを願っています。
 
-## **[本番環境(https://kotonoha.link/)](https://kotonoha.link/)**  
-↑ ※GitHubではtarget=_blankに対応していないため同一タブで開かれます、ご容赦下さい、、
+## 本番環境  
+↑ ※現在AWSでの運用を一時停止中です
 <br>
 <br>
 
 ## 開発構成図
-![構成図](https://cacoo.com/diagrams/ET8RhdVr011MCI4Y-FD776.png)
+![構成図](https://user-images.githubusercontent.com/48108735/62868041-ae8c3100-bd4f-11e9-87a3-9af880a5c2c2.png)
 (構成図は **[Cacoo](https://app.cacoo.com/)** を使用して作成)
 
 ## 使用技術一覧
